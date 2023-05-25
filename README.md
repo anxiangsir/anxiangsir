@@ -1,5 +1,5 @@
 ### Hi👋  
-My name is An Xiang and I work as a research and development engineer at DeepGlint. I have a keen interest in image feature representation learning.  
+My name is An Xiang.  
 
 <!--
 **anxiangsir/anxiangsir** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.

@@ -1,6 +1,10 @@
 ### Hi👋  
 My name is An Xiang.  
 
+Thank you for your visit!
+
+![](http://profile-counter.glitch.me/anxiangsir/count.svg)
+
 <!--
 **anxiangsir/anxiangsir** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 

@@ -1,6 +1,4 @@
-### Hi👋  
-My name is An Xiang.  
-
+### Hi👋, My name is An Xiang.  
 Thank you for your visit!
 
 ![](http://profile-counter.glitch.me/anxiangsir/count.svg)

@@ -1,4 +1,4 @@
-### News
+### Thank you for your visit! Welcome to discuss our latest work.
 Personalized Face Generation:  
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v1)
 
@@ -7,7 +7,7 @@ Personalized Face Generation:
 
 
 
-Thank you for your visit!
+
 
 ![](http://profile-counter.glitch.me/anxiangsir/count.svg)
 

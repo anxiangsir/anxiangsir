@@ -1,4 +1,14 @@
 ### Hi👋, My name is An Xiang.  
+
+## News
+Personalized Face Generation:  
+[IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v1)
+
+
+
+
+
+
 Thank you for your visit!
 
 ![](http://profile-counter.glitch.me/anxiangsir/count.svg)

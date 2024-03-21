@@ -1,6 +1,4 @@
-### Hi👋, My name is An Xiang.  
-
-## News
+### News
 Personalized Face Generation:  
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v1)
 

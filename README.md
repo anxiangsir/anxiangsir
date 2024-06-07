@@ -1,11 +1,11 @@
 ### Welcome to discuss our latest work.
 
-Vision RWKV Pretrain:  
+- Vision RWKV Pretrain:  
 [RWKV-CLIP: A Robust Vision-Language Representation Learner](https://github.com/deepglint/RWKV-CLIP/tree/main)
 
 ![fig](https://github.com/deepglint/RWKV-CLIP/blob/main/figure/RWKV_architecture_00.png)
 
-Personalized Face Generation:  
+- Personalized Face Generation:  
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2)
 
 
@@ -13,9 +13,10 @@ Personalized Face Generation:
 
 
 
+- Distributed and Hybrid Parallel Large-Scale Classification Algorithm:  
+[Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf)
 
-
-
+![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/pfc.png)
 
 <!--
 ![](http://profile-counter.glitch.me/anxiangsir/count.svg)

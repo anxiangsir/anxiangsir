@@ -1,5 +1,10 @@
 ### Welcome to discuss our latest work.
 
+Vision RWKV Pretrain:  
+[RWKV-CLIP: A Robust Vision-Language Representation Learner](https://github.com/deepglint/RWKV-CLIP/tree/main)
+
+![fig](https://github.com/deepglint/RWKV-CLIP/blob/main/figure/RWKV_architecture_00.png)
+
 Personalized Face Generation:  
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2)
 

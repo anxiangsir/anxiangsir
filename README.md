@@ -1,13 +1,13 @@
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=anxiangsir.anxiangsir)
+[![](https://img.shields.io/github/stars/anxiangsir?color=fefb7b&logo=Undertale)](https://github-readme-stats.vercel.app/api?username=anxiangsir&hide_title=false&hide_border=true&show_icons=true&include_all_commits=true&line_height=20&bg_color=0,EC6C6C,FFD479,FFFC79,73FA79&theme=graywhite&locale=cn)
+[![](https://img.shields.io/github/followers/anxiangsir?color=27da6b&logo=Handshake)](https://github.com/anxiangsir?tab=followers)
 <p align="left">
-  <br>
-  <samp>
-    Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=zh-CN">Xiang An</a></b>.
-    <br>I'm a Computer Engineering.<br>
-
+<br>
+<samp>
+Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=zh-CN">Xiang An</a></b>.
+<br>I'm a Computer Engineering.<br>  
 </samp>
-
-  <img src="https://raw.githubusercontent.com/TanZng/TanZng/master/assets/hollor_knight3.gif" width="200" alt=""/>
-
+<img src="https://raw.githubusercontent.com/TanZng/TanZng/master/assets/hollor_knight3.gif" width="200" alt=""/>
 </p>
 
 # &#x1f4c8; GitHub Stats

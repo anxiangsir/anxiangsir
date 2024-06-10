@@ -36,16 +36,16 @@
 - Personalized Face Generation:  
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2)
 
-
+1
 ![fig](https://github.com/anxiangsir/anxiangsir/assets/31175974/9e2a76ed-8f3e-44f0-8423-7b5618d2ab47)
 
 - Large-scale Vision Model Trained on **LAION400M** with Weak Supervision:  
-[UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884)    
+[UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884) in **ICLR2023**    
 ![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/unicom.png)  
 
 
 - **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm:  
-[Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf)
+[Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2023**    
 
 ![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/pfc.png)
 

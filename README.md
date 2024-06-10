@@ -11,7 +11,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 <img src="https://raw.githubusercontent.com/TanZng/TanZng/master/assets/hollor_knight3.gif" width="200" alt=""/>
 </p>
 
-# &#x1f4c8; GitHub Stats
+## &#x1f4c8; GitHub Stats
 
 <p href="https://github.com/deepinsight/insightface">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=deepinsight&repo=insightface&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />

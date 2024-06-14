@@ -45,7 +45,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 
 - **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm:  
-[Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2023**    
+[Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2022**    
 
 ![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/pfc.png)
 

@@ -40,7 +40,8 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 ![fig](https://github.com/anxiangsir/anxiangsir/assets/31175974/9e2a76ed-8f3e-44f0-8423-7b5618d2ab47)
 
 - Large-scale Vision Model Trained on **LAION400M** with Weak Supervision:  
-[UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884) in **ICLR2023**    
+[UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884) in **ICLR2023**
+
 ![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/unicom.png)  
 
 

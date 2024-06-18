@@ -28,6 +28,11 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 ###### Welcome to discuss our latest work.
 
+- High-Fidelity Facial Albedo:  
+[High-Fidelity Facial Albedo Estimation via Texture Quantization]()
+
+![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/hifi_albedo.jpg)
+
 - Vision RWKV Pretrain:  
 [RWKV-CLIP: A Robust Vision-Language Representation Learner](https://github.com/deepglint/RWKV-CLIP/tree/main)
 

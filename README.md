@@ -29,7 +29,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 ###### Welcome to discuss our latest work.
 
 - High-Fidelity Facial Albedo:  
-[High-Fidelity Facial Albedo Estimation via Texture Quantization]()
+[High-Fidelity Facial Albedo Estimation via Texture Quantization](https://hifialbedo.github.io/)
 
 ![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/hifi_albedo.jpg)
 

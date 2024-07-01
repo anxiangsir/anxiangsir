@@ -28,6 +28,12 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 ###### Welcome to discuss our latest work.
 
+- Large-scale Vision Model Trained on **LAION400M** with Weak Supervision in **ECCV2024**:  
+[Multi-labelCluster Discrimination for Visual Representation Learning]()
+
+![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/MLCD.png)
+
+
 - High-Fidelity Facial Albedo:  
 [High-Fidelity Facial Albedo Estimation via Texture Quantization](https://hifialbedo.github.io/)
 

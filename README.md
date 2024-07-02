@@ -44,8 +44,8 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 ![fig](https://github.com/deepglint/RWKV-CLIP/blob/main/figure/RWKV_architecture_00.png)
 
-- Personalized Face Generation:  in **CVPRW2024**
-[IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2)
+- Personalized Face Generation:  
+[IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2) in **CVPRW2024**
 
 
 ![fig](https://github.com/anxiangsir/anxiangsir/assets/31175974/9e2a76ed-8f3e-44f0-8423-7b5618d2ab47)

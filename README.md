@@ -44,7 +44,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 ![fig](https://github.com/deepglint/RWKV-CLIP/blob/main/figure/RWKV_architecture_00.png)
 
-- Personalized Face Generation:  
+- Personalized Face Generation:  in **CVPRW2024**
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2)
 
 

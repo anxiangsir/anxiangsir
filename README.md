@@ -78,5 +78,3 @@ Here are some ideas to get you started:
 -->
 
 ## Welcome
-
-<a href='https://mapmyvisitors.com/web/1bw5d'  title='Visit tracker'><img src='https://mapmyvisitors.com/map.png?cl=ffffff&w=1024&t=n&d=4nNvm2vKBgzSldyJAaPintu5_WTF-Vf3mj9zXTIeaXQ'/></a>

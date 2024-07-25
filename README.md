@@ -10,17 +10,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 <img src="https://raw.githubusercontent.com/TanZng/TanZng/master/assets/hollor_knight3.gif" width="200" alt=""/>
 </p>
 
-## &#x1f4c8; GitHub Stats
 
-<p href="https://github.com/deepinsight/insightface">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=deepinsight&repo=insightface&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</p>
-<p href="https://github.com/anxiangsir/urban_seg">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=anxiangsir&repo=urban_seg&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</p>  
-<p href="https://github.com/deepglint/unicom">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=deepglint&repo=unicom&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
-</p>  
 
 
 
@@ -29,7 +19,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 ###### Welcome to discuss our latest work.
 
 - Large-scale Vision Model Trained on LAION400M with Weak Supervision in **ECCV2024**:  
-[Multi-label Cluster Discrimination for Visual Representation Learning]()
+[Multi-label Cluster Discrimination for Visual Representation Learning](https://arxiv.org/abs/2407.17331)
 
 ![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/MLCD.png)
 

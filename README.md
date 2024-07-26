@@ -18,21 +18,23 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 ###### Welcome to discuss our latest work.
 
+
+
 - Large-scale Vision Model Trained on LAION400M with Weak Supervision in **ECCV2024**:  
 [Multi-label Cluster Discrimination for Visual Representation Learning](https://arxiv.org/abs/2407.17331)
 
-![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/MLCD.png)
+
 
 
 - High-Fidelity Facial Albedo:  
 [High-Fidelity Facial Albedo Estimation via Texture Quantization](https://hifialbedo.github.io/)
 
-![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/hifi_albedo.jpg)
+
 
 - Vision RWKV Pretrain:  
 [RWKV-CLIP: A Robust Vision-Language Representation Learner](https://github.com/deepglint/RWKV-CLIP/tree/main)
 
-![fig](https://github.com/deepglint/RWKV-CLIP/blob/main/figure/RWKV_architecture_00.png)
+
 
 - Personalized Face Generation:  
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2) in **CVPRW2024**
@@ -40,10 +42,12 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 ![fig](https://github.com/anxiangsir/anxiangsir/assets/31175974/9e2a76ed-8f3e-44f0-8423-7b5618d2ab47)
 
+- Language-Image Pre-training with Synthetic Caption:  
+[ALIP: Adaptive Language-Image Pre-training with Synthetic Caption](https://openaccess.thecvf.com/content/ICCV2023/papers/Yang_ALIP_Adaptive_Language-Image_Pre-Training_with_Synthetic_Caption_ICCV_2023_paper.pdf)  in **ICCV2023**
+
+
 - Large-scale Vision Model Trained on **LAION400M** with Weak Supervision:  
 [UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884) in **ICLR2023**
-
-![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/unicom.png)  
 
 
 - **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm:  

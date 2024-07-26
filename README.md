@@ -20,7 +20,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 
 
-- Large-scale Vision Model Trained on LAION400M with Weak Supervision in **ECCV2024**:  
+- Large-scale Vision Model Trained on **LAION400M** and **COYO700M** with Weak Supervision in **ECCV2024**:  
 [Multi-label Cluster Discrimination for Visual Representation Learning](https://arxiv.org/abs/2407.17331)
 
 

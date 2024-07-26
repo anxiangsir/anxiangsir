@@ -40,7 +40,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 [IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2) in **CVPRW2024**
 
 
-![fig](https://github.com/anxiangsir/anxiangsir/assets/31175974/9e2a76ed-8f3e-44f0-8423-7b5618d2ab47)
+
 
 - Language-Image Pre-training with Synthetic Caption:  
 [ALIP: Adaptive Language-Image Pre-training with Synthetic Caption](https://openaccess.thecvf.com/content/ICCV2023/papers/Yang_ALIP_Adaptive_Language-Image_Pre-Training_with_Synthetic_Caption_ICCV_2023_paper.pdf)  in **ICCV2023**
@@ -53,7 +53,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 - **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm:  
 [Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2022**    
 
-![fig](https://github.com/anxiangsir/insightface_arcface_log/blob/master/pfc.png)
+
 
 <!--
 ![](http://profile-counter.glitch.me/anxiangsir/count.svg)

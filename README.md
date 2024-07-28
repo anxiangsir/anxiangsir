@@ -26,7 +26,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 
 
-- High-Fidelity Facial Albedo, trained with **WebFace260M**:  
+- High-Fidelity Facial Albedo, trained on **WebFace260M**:  
 [High-Fidelity Facial Albedo Estimation via Texture Quantization](https://hifialbedo.github.io/)
 
 
@@ -50,7 +50,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 [UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884) in **ICLR2023**
 
 
-- **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm:  
+- **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm, trained on **WebFace260M**:  
 [Partial FC:Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2022**    
 
 

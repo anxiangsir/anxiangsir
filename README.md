@@ -26,7 +26,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 
 
-- High-Fidelity Facial Albedo:  
+- High-Fidelity Facial Albedo, trained with **WebFace260M**:  
 [High-Fidelity Facial Albedo Estimation via Texture Quantization](https://hifialbedo.github.io/)
 
 

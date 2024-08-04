@@ -14,7 +14,7 @@ Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="
 
 
 
-## &#x270d; Paper & Writing
+## &#x270d; Work
 
 ###### Welcome to discuss our latest work.
 

@@ -27,7 +27,7 @@ Hello there! I'm Xiang An.
 
 
 - Large-scale Vision Model Trained on **LAION400M** and **COYO700M** with Weak Supervision in **ECCV2024**:  
-[Multi-label Cluster Discrimination for Visual Representation Learning](https://arxiv.org/abs/2407.17331)
+[Multi-label Cluster Discrimination for Visual Representation Learning](https://github.com/deepglint/unicom?tab=readme-ov-file#multi-label-cluster-discrimination-mlcd)
 
 
 

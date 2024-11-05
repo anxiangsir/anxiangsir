@@ -1,7 +1,7 @@
 ## About Me
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=anxiangsir.anxiangsir)
 [![](https://img.shields.io/github/followers/anxiangsir?color=27da6b&logo=Handshake)](https://github.com/anxiangsir?tab=followers)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-xiangan-yellow)](https://huggingface.co/xianganI)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-xiangan-yellow)](https://huggingface.co/xiangan)
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-xiangan-blue)](https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=en)
 
 

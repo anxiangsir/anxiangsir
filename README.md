@@ -2,12 +2,14 @@
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=anxiangsir.anxiangsir)
 [![](https://img.shields.io/github/followers/anxiangsir?color=27da6b&logo=Handshake)](https://github.com/anxiangsir?tab=followers)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-xiangan-yellow)](https://huggingface.co/DeepGlint-AI)
+[![Google Scholar](https://img.shields.io/badge/Google%20Scholar-xiangan-blue)](https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=en)
+
 
 
 <p align="left">
 <br>
 <samp>
-Hello there! I'm <b><a rel="nofollow noopener noreferrer" target="_blank" href="https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=zh-CN">Xiang An</a></b>.
+Hello there! I'm Xiang An.
 <br>I'm a Computer Engineering.<br>  
 </samp>
 

@@ -20,7 +20,7 @@ Hello there! I'm Xiang An.
 
 <img src="https://raw.githubusercontent.com/TanZng/TanZng/master/assets/hollor_knight3.gif" width="200" alt=""/>
 
-## &#x270d; Work
+## Work
 
 ###### Welcome to discuss our latest work.
 

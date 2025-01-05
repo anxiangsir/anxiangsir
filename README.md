@@ -30,28 +30,6 @@ Hello there! I'm Xiang An.
 [Multi-label Cluster Discrimination for Visual Representation Learning](https://github.com/deepglint/unicom?tab=readme-ov-file#multi-label-cluster-discrimination-mlcd)
 
 
-
-
-- High-Fidelity Facial Albedo, trained on **WebFace260M**:  
-[High-Fidelity Facial Albedo Estimation via Texture Quantization](https://hifialbedo.github.io/)
-
-
-
-- Vision RWKV Pretrain:  
-[RWKV-CLIP: A Robust Vision-Language Representation Learner](https://github.com/deepglint/RWKV-CLIP/tree/main) in **EMNLP2024** 
-
-
-
-- Personalized Face Generation:  
-[IDAdapter: Learning Mixed Features for Tuning-Free Personalization of Text-to-Image Models](https://arxiv.org/html/2403.13535v2) in **CVPRW2024**
-
-
-
-
-- Language-Image Pre-training with Synthetic Caption:  
-[ALIP: Adaptive Language-Image Pre-training with Synthetic Caption](https://openaccess.thecvf.com/content/ICCV2023/papers/Yang_ALIP_Adaptive_Language-Image_Pre-Training_with_Synthetic_Caption_ICCV_2023_paper.pdf)  in **ICCV2023**
-
-
 - Large-scale Vision Model Trained on **LAION400M** with Weak Supervision:  
 [UNICOM: Universal and Compact Representation Learning for Image Retrieval](https://arxiv.org/pdf/2304.05884) in **ICLR2023**
 

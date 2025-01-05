@@ -40,7 +40,7 @@ Hello there! I'm Xiang An.
 
 ## Join Us
 
-If you are interested in joining our team, please send your resume to xiangan@deepglint.com. We look forward to advancing the frontiers of **vision and video pre-training** together with you!
+If you are interested in joining our team, please send your resume to xiangan@deepglint.com. We look forward to advancing the frontiers of **VISION and VIDEO PRETRAINING** together with you!
 
 
 

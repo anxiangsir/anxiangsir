@@ -38,8 +38,9 @@ Hello there! I'm Xiang An.
 [Partial FC: Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2022**    
 
 
+## Join Us
 
-
+If you are interested in joining our team, please send your resume to xiangan@deepglint.com. We look forward to advancing the frontiers of **vision and video pre-training** together with you!
 
 
 

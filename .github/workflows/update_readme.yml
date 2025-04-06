@@ -1,0 +1,32 @@
+name: Update README with random image
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # 每10分钟运行一次
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Generate random image
+      id: random-image
+      run: |
+        MINUTE=$(date +'%M')
+        IMAGE_NUM=$((MINUTE % 3 + 1))
+        echo "IMAGE_NUM=$IMAGE_NUM" >> $GITHUB_ENV
+
+    - name: Update README
+      run: |
+        sed -i "s|!\[Knight Image\](.*)|![Knight Image](knight_$IMAGE_NUM.gif)|" README.md
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git commit -am "Update README with random image"
+        git push

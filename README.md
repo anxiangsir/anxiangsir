@@ -26,7 +26,7 @@ Hello there! I'm Xiang An.
 ###### Welcome to discuss our latest work.
 
 - Fully Open Framework for **Democratized Multimodal Training**  
- [LLaVA-OneVision-1.5](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5)
+ [LLaVA-OneVision-1.5: Fully Open Framework for Democratized Multimodal Training](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5)
 
 
 - Enhancing the **OCR** and **localization** capabilities of Large Pretrain Vision Transformer (ViT) in **ICCV2025**:  

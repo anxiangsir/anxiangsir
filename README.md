@@ -26,10 +26,10 @@ Hello there! I'm Xiang An.
 
 
 - Enhancing the **OCR** and **localization** capabilities of Large Pretrain Vision Transformer (ViT) in **ICCV2025**:  
-[Region-based Cluster Discrimination for Visual Representation Learning](https://github.com/deepglint/MVT)
+[RICE: Region-based Cluster Discrimination for Visual Representation Learning](https://github.com/deepglint/MVT)
 
 - Large-scale Vision Model Trained on **LAION400M** and **COYO700M** with Weak Supervision in **ECCV2024**:  
-[Multi-label Cluster Discrimination for Visual Representation Learning](https://github.com/deepglint/unicom)
+[MLCD: Multi-label Cluster Discrimination for Visual Representation Learning](https://github.com/deepglint/unicom)
 
 
 - Large-scale Vision Model Trained on **LAION400M** with Weak Supervision:  

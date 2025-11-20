@@ -8,7 +8,7 @@
 <p align="left">
 <br>
 <samp>
-Hello there! I'm Xiang An.
+Hello there! I'm [Xiang An](https://anxiangsir.github.io/).
 <br>I'm a Computer Engineering.<br>  
 </samp>
 
@@ -17,7 +17,7 @@ Hello there! I'm Xiang An.
 
 <img src="megatron.gif" width="400" alt=""/>
 
-## Work
+<!-- ## Work
 
 ###### Welcome to discuss our latest work.
 
@@ -37,8 +37,7 @@ Hello there! I'm Xiang An.
 
 
 - **Distributed and Hybrid Parallel Large-Scale Classification** Algorithm, trained on **WebFace260M**:  
-[Partial FC: Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2022**    
-
+[Partial FC: Efficient and Robust Training of Face Recognition CNNs by Partial FC](https://openaccess.thecvf.com/content/CVPR2022/papers/An_Killing_Two_Birds_With_One_Stone_Efficient_and_Robust_Training_CVPR_2022_paper.pdf) in **CVPR2022**     -->
 
 ## Join Us
 

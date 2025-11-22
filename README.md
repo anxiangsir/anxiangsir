@@ -41,7 +41,7 @@ Hello there! I'm [Xiang An](https://anxiangsir.github.io/).
 
 ## Join Us
 
-If you are interested in joining our team, please send your resume to xiangan@deepglint.com. We look forward to advancing the frontiers of **Vision** and **Video Pretraining** together with you!
+If you are interested in joining our team, please send your resume to anxiangsir@outlook.com. We look forward to advancing the frontiers of **Vision** and **Video Pretraining** together with you!
 
 
 

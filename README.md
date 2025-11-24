@@ -29,7 +29,9 @@
 ### 📊 GitHub Stats
 
 <a href="https://github.com/anuraghazra/github-readme-stats">
-  <img src="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=000&text_color=333&align=left" alt="Xiang An's GitHub stats" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=fff&text_color=fff&icon_color=fff&align=left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=000&text_color=333&align=left" />
+    <img src="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=000&text_color=333&align=left" alt="Xiang An's GitHub stats" />
 </a>
 
 

@@ -4,7 +4,7 @@
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-xiangan-blue)](https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=en)
 
 
-
+[![Xiang An's GitHub stats](https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true)](https://github.com/anuraghazra/github-readme-stats)
 <p align="left">
 <br>
 <samp>
@@ -15,9 +15,11 @@ Hello there! I'm [Xiang An](https://anxiangsir.github.io/).
 </p>
 
 
-<img src="megatron.gif" width="400" alt=""/>
+
 
 <!-- ## Work
+
+<img src="megatron.gif" width="400" alt=""/>
 
 ###### Welcome to discuss our latest work.
 

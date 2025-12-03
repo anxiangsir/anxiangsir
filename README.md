@@ -7,8 +7,6 @@
 <p align="left">
   <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/🌐_Portfolio-Visit_Website-6366F1?style=for-the-badge" alt="Website"></a>
   <a href="https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=en"><img src="https://img.shields.io/badge/📚_Google_Scholar-Citations-4285F4?style=for-the-badge" alt="Google Scholar"></a>
-  <a href="https://huggingface.co/xiangan"><img src="https://img.shields.io/badge/🤗_Hugging_Face-Models-FFD21E?style=for-the-badge" alt="Hugging Face"></a>
-  <a href="mailto:anxiangsir@outlook.com"><img src="https://img.shields.io/badge/📧_Email-Contact_Me-D14836?style=for-the-badge" alt="Email"></a>
 </p>
 
 

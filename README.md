@@ -40,7 +40,7 @@
 <tr>
 <td align="center"><b>2023</b></td>
 <td align="center"><img src="https://img.shields.io/badge/ICLR-2023-F59E0B?style=for-the-badge" alt="ICLR 2023"></td>
-<td><b><a href="https://arxiv.org/pdf/2304.05884">🔗 UNICOM: Universal and Compact Representation</a></b><br><i>Universal and Compact Representation Learning</i></td>
+<td><b><a href="https://arxiv.org/pdf/2304.05884">🔗 UNICOM</a></b><br><i>Universal and Compact Representation Learning</i></td>
 </tr>
 <tr>
 <td align="center"><b>2022</b></td>

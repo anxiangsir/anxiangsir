@@ -1,10 +1,14 @@
-## Hi there, I'm Xiang An 👋
+<h1 align="left">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&random=false&width=600&lines=Hi+there%2C+I'm+Xiang+An+%F0%9F%91%8B;Vision+%26+Multimodal+Researcher;Building+Next-Gen+AI+Systems" alt="Typing SVG" />
+  </a>
+</h1>
 
 <p align="left">
-  <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/Website-Portfolio-black?style=flat-square&logo=google-chrome" alt="Website"></a>
-  <a href="https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=en"><img src="https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=flat-square&logo=google-scholar&logoColor=white" alt="Google Scholar"></a>
-  <a href="https://huggingface.co/xiangan"><img src="https://img.shields.io/badge/Hugging_Face-Models-FFD21E?style=flat-square&logo=huggingface&logoColor=black" alt="Hugging Face"></a>
-  <a href="mailto:anxiangsir@outlook.com"><img src="https://img.shields.io/badge/Email-Contact_Me-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
+  <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/🌐_Portfolio-Visit_Website-6366F1?style=for-the-badge" alt="Website"></a>
+  <a href="https://scholar.google.com.hk/citations?user=1ckaPgwAAAAJ&hl=en"><img src="https://img.shields.io/badge/📚_Google_Scholar-Citations-4285F4?style=for-the-badge" alt="Google Scholar"></a>
+  <a href="https://huggingface.co/xiangan"><img src="https://img.shields.io/badge/🤗_Hugging_Face-Models-FFD21E?style=for-the-badge" alt="Hugging Face"></a>
+  <a href="mailto:anxiangsir@outlook.com"><img src="https://img.shields.io/badge/📧_Email-Contact_Me-D14836?style=for-the-badge" alt="Email"></a>
 </p>
 
 

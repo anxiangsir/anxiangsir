@@ -1,8 +1,4 @@
-<h1 align="left">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&random=false&width=600&lines=Hi+there%2C+I'm+Xiang+An+%F0%9F%91%8B;Vision+%26+Multimodal+Researcher;Building+Next-Gen+AI+Systems" alt="Typing SVG" />
-  </a>
-</h1>
+
 
 <p align="left">
   <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/🌐_Portfolio-Visit_Website-6366F1?style=for-the-badge" alt="Website"></a>
@@ -28,13 +24,7 @@
 
 --->
 
-### 📊 GitHub Stats
-
-<a href="https://github.com/anuraghazra/github-readme-stats">
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=fff&text_color=fff&icon_color=fff&align=left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=000&text_color=333&align=left" />
-    <img src="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=anxiangsir&include_orgs=true&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage&rank_icon=github&count_private=true&include_all_commits=true&theme=transparent&hide_border=true&title_color=000&text_color=333&align=left" alt="Xiang An's GitHub stats" />
-</a>
+![](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anxiangsir&theme=2077&count_private=true&include_all_commits=true)
 
 
 ---

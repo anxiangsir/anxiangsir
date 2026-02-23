@@ -26,6 +26,17 @@
 
 ![](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anxiangsir&theme=2077&count_private=true&include_all_commits=true)
 
+### ⭐ Open Source Stars
+
+| Repository | Stars | Grade |
+| :--- | :---: | :---: |
+| [deepinsight/insightface](https://github.com/deepinsight/insightface) | ![insightface stars](https://img.shields.io/github/stars/deepinsight/insightface?style=flat-square) | ![S](https://img.shields.io/badge/S-Top-purple?style=flat-square) |
+| [LLaVA-VL/LLaVA-NeXT](https://github.com/LLaVA-VL/LLaVA-NeXT) | ![LLaVA-NeXT stars](https://img.shields.io/github/stars/LLaVA-VL/LLaVA-NeXT?style=flat-square) | ![A](https://img.shields.io/badge/A-Excellent-blue?style=flat-square) |
+| [EvolvingLMMs-Lab/LLaVA-OneVision-1.5](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5) | ![LLaVA-OneVision-1.5 stars](https://img.shields.io/github/stars/EvolvingLMMs-Lab/LLaVA-OneVision-1.5?style=flat-square) | ![B](https://img.shields.io/badge/B-Great-green?style=flat-square) |
+| [deepglint/unicom](https://github.com/deepglint/unicom) | ![unicom stars](https://img.shields.io/github/stars/deepglint/unicom?style=flat-square) | ![C](https://img.shields.io/badge/C-Good-yellow?style=flat-square) |
+| [EvolvingLMMs-Lab/OneVision-Encoder](https://github.com/EvolvingLMMs-Lab/OneVision-Encoder) | ![OneVision-Encoder stars](https://img.shields.io/github/stars/EvolvingLMMs-Lab/OneVision-Encoder?style=flat-square) | ![D](https://img.shields.io/badge/D-Growing-lightgrey?style=flat-square) |
+| [anxiangsir/urban_seg](https://github.com/anxiangsir/urban_seg) | ![urban_seg stars](https://img.shields.io/github/stars/anxiangsir/urban_seg?style=flat-square) | ![D](https://img.shields.io/badge/D-Growing-lightgrey?style=flat-square) |
+
 
 ---
 

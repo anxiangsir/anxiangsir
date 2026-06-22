@@ -28,4 +28,5 @@ jobs:
           git add profile-3d-contrib
           git diff --cached --quiet && exit 0
           git commit -m "Update 3D contribution profile"
+          git pull --rebase origin main
           git push

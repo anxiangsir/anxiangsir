@@ -19,7 +19,7 @@
 </p>
 
 <p align="left">
-  <img data-showcase src="knight_flower.gif" alt="Showcase" width="420">
+  <img data-showcase src="megatron.gif" alt="Showcase" width="420">
 </p>
 
 <p align="left">

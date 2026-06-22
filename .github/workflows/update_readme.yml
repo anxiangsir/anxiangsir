@@ -2,8 +2,11 @@ name: Update README with random image
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # 每10分钟运行一次
+    - cron: "0 8 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-readme:
@@ -11,22 +14,23 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Generate random image
       id: random-image
       run: |
-        MINUTE=$(date +'%M')
-        IMAGE_NUM=$((MINUTE % 3 + 1))
-        echo "IMAGE_NUM=$IMAGE_NUM" >> $GITHUB_ENV
+        IMAGES=("knight_flower.gif" "megatron.gif")
+        IMAGE_INDEX=$(($(date +'%j') % ${#IMAGES[@]}))
+        echo "IMAGE=${IMAGES[$IMAGE_INDEX]}" >> $GITHUB_ENV
 
     - name: Update README
       run: |
-        sed -i "s|!\[Knight Image\](.*)|![Knight Image](knight_$IMAGE_NUM.gif)|" README.md
+        sed -i "s|<img data-showcase src=\"[^\"]*\"|<img data-showcase src=\"$IMAGE\"|" README.md
 
     - name: Commit changes
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git commit -am "Update README with random image"
+        git diff --quiet && exit 0
+        git commit -am "Update README showcase"
         git push

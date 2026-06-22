@@ -7,5 +7,9 @@
 </p>
 
 <p align="left">
+  <img src="https://gh-trophy.cdnsoft.net/?username=anxiangsir&theme=flat&no-frame=true&no-bg=true&margin-w=8&rank=SSS,SS,S,AAA,AA,A,B" alt="Xiang An's GitHub trophies">
+</p>
+
+<p align="left">
   <img src="https://github-readme-stats-psi-plum-61.vercel.app/api?username=anxiangsir&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true" alt="Xiang An's GitHub stats">
 </p>

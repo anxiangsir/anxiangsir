@@ -4,46 +4,65 @@
   <svg x="0" y="0" width="370" height="208.13" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" font-family="-apple-system, 'PingFang SC', system-ui, sans-serif">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="#0c1430"/>
-      <stop offset="34%" stop-color="#3a2a5c"/>
-      <stop offset="60%" stop-color="#9c3f5e"/>
-      <stop offset="80%" stop-color="#e0683f"/>
-      <stop offset="100%" stop-color="#f7b15c"/>
+      <stop offset="0%"  stop-color="#0a1130"/>
+      <stop offset="28%" stop-color="#2c2154"/>
+      <stop offset="52%" stop-color="#7a3a64"/>
+      <stop offset="72%" stop-color="#c2593f"/>
+      <stop offset="88%" stop-color="#ec8a47"/>
+      <stop offset="100%" stop-color="#f9c06a"/>
     </linearGradient>
     <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="#e8915a"/>
-      <stop offset="22%" stop-color="#7a3a5e"/>
-      <stop offset="100%" stop-color="#0a0a1c"/>
+      <stop offset="0%"  stop-color="#eda165"/>
+      <stop offset="20%" stop-color="#824064"/>
+      <stop offset="100%" stop-color="#080814"/>
     </linearGradient>
 
     <radialGradient id="sun" cx="50%" cy="50%" r="50%">
-      <stop offset="0%"  stop-color="#fff8e6"/>
-      <stop offset="32%" stop-color="#ffd98a"/>
+      <stop offset="0%"  stop-color="#fff9ea"/>
+      <stop offset="30%" stop-color="#ffdc8e"/>
       <stop offset="100%" stop-color="#ffb24d" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffe7b0" stop-opacity=".5"/>
       <stop offset="100%" stop-color="#ffe7b0" stop-opacity="0"/>
     </linearGradient>
+    <radialGradient id="cloud" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffcf9c" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#ffcf9c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flareOrb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#bfe9ff" stop-opacity=".7"/>
+      <stop offset="100%" stop-color="#bfe9ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flareStreak" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#cfeeff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#eaf7ff" stop-opacity=".85"/>
+      <stop offset="100%" stop-color="#cfeeff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe6b0"/>
+      <stop offset="60%" stop-color="#ffb863" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#ffb863" stop-opacity="0"/>
+    </radialGradient>
+
     <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3a2f55"/><stop offset="100%" stop-color="#241a3a"/>
+      <stop offset="0%" stop-color="#3e3258"/><stop offset="100%" stop-color="#251b3c"/>
     </linearGradient>
     <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1d1730"/><stop offset="100%" stop-color="#0c0a1a"/>
+      <stop offset="0%" stop-color="#201a34"/><stop offset="100%" stop-color="#0c0a1c"/>
     </linearGradient>
 
     <linearGradient id="grade" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ff7828" stop-opacity=".28"/>
-      <stop offset="100%" stop-color="#142878" stop-opacity=".34"/>
+      <stop offset="0%" stop-color="#ff7828" stop-opacity=".3"/>
+      <stop offset="100%" stop-color="#142878" stop-opacity=".35"/>
     </linearGradient>
-    <radialGradient id="vig" cx="50%" cy="50%" r="62%">
+    <radialGradient id="vig" cx="50%" cy="46%" r="65%">
       <stop offset="45%" stop-color="#000" stop-opacity="0"/>
-      <stop offset="80%" stop-color="#000" stop-opacity=".35"/>
-      <stop offset="100%" stop-color="#000" stop-opacity=".82"/>
+      <stop offset="82%" stop-color="#000" stop-opacity=".4"/>
+      <stop offset="100%" stop-color="#000" stop-opacity=".85"/>
     </radialGradient>
-
     <radialGradient id="leak" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffdca8" stop-opacity=".55"/>
+      <stop offset="0%" stop-color="#ffdca8" stop-opacity=".5"/>
       <stop offset="100%" stop-color="#ffdca8" stop-opacity="0"/>
     </radialGradient>
 
@@ -57,6 +76,9 @@
     <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="7" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
     </filter>
     <filter id="rip" x="-20%" y="-20%" width="140%" height="140%">
       <feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="t">
@@ -72,12 +94,14 @@
   <g clip-path="url(#screen)">
     <rect x="0" y="0" width="960" height="540" fill="#000"/>
 
+    <!-- camera dolly -->
     <g>
-      <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="24s" repeatCount="indefinite" additive="sum"/>
-      <animateTransform attributeName="transform" type="translate" values="0 0;-26 -10;0 0" dur="24s" repeatCount="indefinite" additive="sum"/>
+      <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="26s" repeatCount="indefinite" additive="sum"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0;-24 -9;0 0" dur="26s" repeatCount="indefinite" additive="sum"/>
 
       <rect x="-80" y="-40" width="1120" height="460" fill="url(#sky)"/>
 
+      <!-- stars -->
       <g fill="#fff">
         <circle cx="120" cy="70" r="1.3"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle>
         <circle cx="240" cy="120" r="1"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" repeatCount="indefinite"/></circle>
@@ -86,39 +110,71 @@
         <circle cx="760" cy="140" r="1.3"><animate attributeName="opacity" values=".2;1;.2" dur="3.2s" repeatCount="indefinite"/></circle>
         <circle cx="850" cy="64" r="1"><animate attributeName="opacity" values=".5;1;.5" dur="2.2s" repeatCount="indefinite"/></circle>
         <circle cx="500" cy="50" r="1.1"><animate attributeName="opacity" values="1;.3;1" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="180" cy="150" r="0.9"><animate attributeName="opacity" values=".4;1;.4" dur="2.6s" repeatCount="indefinite"/></circle>
+        <circle cx="690" cy="44" r="1.1"><animate attributeName="opacity" values="1;.4;1" dur="3.4s" repeatCount="indefinite"/></circle>
       </g>
 
+      <!-- drifting clouds -->
+      <g filter="url(#soft)" style="mix-blend-mode:screen">
+        <ellipse cx="220" cy="150" rx="150" ry="26" fill="url(#cloud)" opacity=".55">
+          <animateTransform attributeName="transform" type="translate" values="-40 0;120 0;-40 0" dur="40s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="680" cy="120" rx="190" ry="30" fill="url(#cloud)" opacity=".45">
+          <animateTransform attributeName="transform" type="translate" values="60 0;-110 0;60 0" dur="52s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse cx="470" cy="190" rx="170" ry="24" fill="url(#cloud)" opacity=".4">
+          <animateTransform attributeName="transform" type="translate" values="-30 0;90 0;-30 0" dur="46s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+
+      <!-- shooting star -->
       <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0">
         <line x1="0" y1="0" x2="46" y2="20"/>
         <animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/>
-        <animateTransform attributeName="transform" type="translate" values="760 40;560 130" keyTimes="0;1" dur="9s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="760 40;560 130;560 130" keyTimes="0;.12;1" dur="9s" repeatCount="indefinite"/>
       </g>
 
-      <circle cx="480" cy="300" r="150" fill="url(#sun)">
+      <!-- sun -->
+      <circle cx="480" cy="300" r="155" fill="url(#sun)">
         <animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="480" cy="300" r="46" fill="#fff4d6" filter="url(#glow)">
+      <circle cx="480" cy="300" r="48" fill="#fff4d6" filter="url(#glow)">
         <animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/>
       </circle>
 
-      <g opacity=".45" style="mix-blend-mode:screen">
-        <polygon points="480,300 360,420 600,420" fill="url(#ray)">
-          <animateTransform attributeName="transform" type="rotate" values="-6 480 300;6 480 300;-6 480 300" dur="14s" repeatCount="indefinite"/>
+      <!-- god rays -->
+      <g opacity=".4" filter="url(#soft)" style="mix-blend-mode:screen">
+        <polygon points="480,300 350,440 610,440" fill="url(#ray)">
+          <animateTransform attributeName="transform" type="rotate" values="-6 480 300;6 480 300;-6 480 300" dur="15s" repeatCount="indefinite"/>
         </polygon>
-        <polygon points="480,300 420,420 540,420" fill="url(#ray)">
+        <polygon points="480,300 430,440 530,440" fill="url(#ray)">
           <animateTransform attributeName="transform" type="rotate" values="5 480 300;-5 480 300;5 480 300" dur="11s" repeatCount="indefinite"/>
         </polygon>
       </g>
 
+      <!-- anamorphic lens flare -->
+      <g style="mix-blend-mode:screen">
+        <rect x="120" y="296" width="720" height="6" rx="3" fill="url(#flareStreak)" filter="url(#soft)">
+          <animate attributeName="opacity" values=".5;.9;.5" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="y" values="284;302;284" dur="22s" repeatCount="indefinite"/>
+        </rect>
+        <circle cx="600" cy="240" r="26" fill="url(#flareOrb)" opacity=".6"/>
+        <circle cx="660" cy="200" r="16" fill="url(#flareOrb)" opacity=".5"/>
+        <circle cx="380" cy="360" r="20" fill="url(#flareOrb)" opacity=".45"/>
+        <circle cx="320" cy="408" r="12" fill="url(#flareOrb)" opacity=".4"/>
+      </g>
+
+      <!-- far mountains -->
       <g>
         <path d="M-80 360 L120 300 L280 350 L460 285 L640 345 L820 295 L1040 350 L1040 380 L-80 380 Z" fill="url(#m1)"/>
-        <animateTransform attributeName="transform" type="translate" values="0 0;18 0;0 0" dur="24s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="0 0;16 0;0 0" dur="26s" repeatCount="indefinite"/>
       </g>
       <g>
         <path d="M-80 372 L160 320 L380 372 L560 318 L760 372 L980 326 L1040 372 L-80 372 Z" fill="url(#m2)"/>
-        <animateTransform attributeName="transform" type="translate" values="0 0;40 0;0 0" dur="24s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="0 0;36 0;0 0" dur="26s" repeatCount="indefinite"/>
       </g>
 
+      <!-- water + reflection -->
       <rect x="-80" y="372" width="1120" height="220" fill="url(#water)"/>
       <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen">
         <circle cx="480" cy="430" r="120" fill="url(#sun)">
@@ -127,6 +183,55 @@
         <rect x="430" y="372" width="100" height="200" fill="#ffd08a" opacity=".5"/>
       </g>
 
+      <!-- foreground reeds -->
+      <g fill="none" stroke="#05050e" stroke-width="3" stroke-linecap="round">
+        <g transform="translate(905 540)">
+          <animateTransform attributeName="transform" type="rotate" values="-2 0 0;3 0 0;-2 0 0" dur="7s" repeatCount="indefinite" additive="sum"/>
+          <path d="M0 0 C-4 -60 -2 -110 6 -150"/>
+          <path d="M14 0 C12 -50 18 -100 30 -134"/>
+          <path d="M-12 0 C-16 -44 -14 -88 -8 -120"/>
+          <ellipse cx="6" cy="-150" rx="3.5" ry="11" fill="#0a0a16" stroke="none"/>
+          <ellipse cx="30" cy="-134" rx="3.5" ry="10" fill="#0a0a16" stroke="none"/>
+        </g>
+        <g transform="translate(70 540)">
+          <animateTransform attributeName="transform" type="rotate" values="2 0 0;-3 0 0;2 0 0" dur="8s" repeatCount="indefinite" additive="sum"/>
+          <path d="M0 0 C5 -56 2 -104 -8 -140"/>
+          <path d="M-16 0 C-14 -48 -22 -92 -32 -124"/>
+          <ellipse cx="-8" cy="-140" rx="3.5" ry="11" fill="#0a0a16" stroke="none"/>
+          <ellipse cx="-32" cy="-124" rx="3.5" ry="10" fill="#0a0a16" stroke="none"/>
+        </g>
+      </g>
+
+      <!-- floating embers -->
+      <g style="mix-blend-mode:screen">
+        <circle cx="300" cy="520" r="2.4" fill="url(#ember)">
+          <animate attributeName="cy" values="520;180" dur="11s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="11s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="300;320;300" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="640" cy="520" r="2" fill="url(#ember)">
+          <animate attributeName="cy" values="520;220" dur="13s" begin="-4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="13s" begin="-4s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="640;620;640" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="470" cy="520" r="2.6" fill="url(#ember)">
+          <animate attributeName="cy" values="520;160" dur="14s" begin="-8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="14s" begin="-8s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="470;490;470" dur="5.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="800" cy="520" r="1.8" fill="url(#ember)">
+          <animate attributeName="cy" values="520;240" dur="12s" begin="-6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="12s" begin="-6s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="800;784;800" dur="6.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="180" cy="520" r="2.1" fill="url(#ember)">
+          <animate attributeName="cy" values="520;210" dur="13.5s" begin="-2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="13.5s" begin="-2s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="180;198;180" dur="5.2s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- birds -->
       <g fill="none" stroke="#0d0a1a" stroke-width="3" stroke-linecap="round" opacity=".8">
         <g><path d="M0 0 q8 -8 16 0 q8 -8 16 0"/>
           <animateTransform attributeName="transform" type="translate" values="700 150;-120 120;-120 120" dur="16s" repeatCount="indefinite"/></g>
@@ -135,13 +240,19 @@
       </g>
     </g>
 
+    <!-- light leak sweep -->
     <ellipse cx="0" cy="160" rx="320" ry="200" fill="url(#leak)" style="mix-blend-mode:screen">
-      <animate attributeName="cx" values="-200;1160;-200" dur="13s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="-200;1160;-200" dur="15s" repeatCount="indefinite"/>
     </ellipse>
 
+    <!-- grade + vignette + flicker -->
     <rect x="0" y="0" width="960" height="540" fill="url(#grade)" style="mix-blend-mode:soft-light"/>
     <rect x="0" y="0" width="960" height="540" fill="url(#vig)"/>
+    <rect x="0" y="0" width="960" height="540" fill="#ffdca0" style="mix-blend-mode:overlay">
+      <animate attributeName="opacity" values="0;.05;0;.03;0" dur="4s" repeatCount="indefinite"/>
+    </rect>
 
+    <!-- title -->
     <g text-anchor="middle" fill="#fff" filter="url(#glow)" font-weight="700">
       <text x="480" y="266" font-size="58" letter-spacing="2">
         <tspan>an</tspan><tspan fill="#ffd9a0">xiang</tspan><tspan>sir</tspan>
@@ -155,6 +266,7 @@
       </text>
     </g>
 
+    <!-- grain -->
     <rect x="0" y="0" width="960" height="540" filter="url(#grain)" opacity=".5" style="mix-blend-mode:overlay"/>
   </g>
 </svg>

@@ -1,4 +1,14 @@
 <p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-dark-mobile.svg">
+    <source media="(prefers-color-scheme: light) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-light-mobile.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github-dashboard-cinematic-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/github-dashboard-cinematic-light.svg">
+    <img src="assets/github-dashboard-cinematic-light.svg" alt="Xiang An's GitHub stats, trophies, and top languages">
+  </picture>
+</p>
+
+<p align="center">
   <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/Portfolio-Visit_Website-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"></a>
   <a href="https://scholar.google.com.hk/citations?hl=en&user=1ckaPgwAAAAJ&view_op=list_works&sortby=pubdate"><img src="https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Google Scholar"></a>
   <a href="https://anxiangsir.github.io/pages/chat/"><img src="https://img.shields.io/badge/AI_Agent-Chat-10B981?style=for-the-badge&logo=openai&logoColor=white" alt="Chat with AI Agent"></a>
@@ -24,14 +34,4 @@
   <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV">
   <img src="https://img.shields.io/badge/Weights_&_Biases-FFBE00?style=for-the-badge&logo=weightsandbiases&logoColor=111827" alt="Weights & Biases">
   <img src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white" alt="LaTeX">
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-dark-mobile.svg">
-    <source media="(prefers-color-scheme: light) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-light-mobile.svg">
-    <source media="(prefers-color-scheme: dark)" srcset="assets/github-dashboard-cinematic-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/github-dashboard-cinematic-light.svg">
-    <img src="assets/github-dashboard-cinematic-light.svg" alt="Xiang An's GitHub stats, trophies, and top languages">
-  </picture>
 </p>

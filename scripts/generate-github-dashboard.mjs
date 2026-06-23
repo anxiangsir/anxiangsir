@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const STATS_URL =
   "https://github-readme-stats-psi-plum-61.vercel.app/api?username=anxiangsir&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true";
@@ -15,7 +15,12 @@ const STAR_SAMPLE_PAGES = 30; // evenly-spaced page samples per repo
 const STAR_GRID_POINTS = 60; // resampled timeline resolution for smooth curves
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
 
+const USERNAME = "anxiangsir";
+const COMMIT_START_YEAR = 2018; // first year of the commit-history line chart
+const SCHOLAR_USER = "1ckaPgwAAAAJ"; // Google Scholar profile id
+
 const assetsDir = new URL("../assets/", import.meta.url);
+const scholarCacheFile = new URL("../data/scholar-history.json", import.meta.url);
 
 const THEMES = {
   dark: {
@@ -201,6 +206,86 @@ const buildStackedSeries = (seriesList) => {
   );
 
   return { grid, minT, maxT, layers, totals };
+};
+
+// --- Commit history (yearly public commit contributions) --------------------
+
+const ghGraphQL = async (query) => {
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      "Content-Type": "application/json",
+      "User-Agent": "anxiangsir-dashboard",
+    },
+    body: JSON.stringify({ query }),
+  });
+  if (!response.ok) throw new Error(`GraphQL HTTP ${response.status}`);
+  const json = await response.json();
+  if (json.errors) throw new Error(`GraphQL: ${JSON.stringify(json.errors)}`);
+  return json;
+};
+
+// Returns [{ label:"2018", value:<commits> }] from COMMIT_START_YEAR to now.
+const fetchCommitHistory = async () => {
+  const now = new Date();
+  const endYear = now.getUTCFullYear();
+  const years = [];
+  for (let y = COMMIT_START_YEAR; y <= endYear; y += 1) years.push(y);
+
+  const rows = await Promise.all(
+    years.map(async (y) => {
+      const to = y === endYear ? now.toISOString() : `${y}-12-31T23:59:59Z`;
+      const query = `{ user(login:"${USERNAME}"){ contributionsCollection(from:"${y}-01-01T00:00:00Z", to:"${to}"){ totalCommitContributions } } }`;
+      const json = await ghGraphQL(query);
+      return {
+        label: String(y),
+        value: json.data.user.contributionsCollection.totalCommitContributions,
+      };
+    }),
+  );
+  return rows;
+};
+
+// --- Google Scholar citation history ----------------------------------------
+
+// Scrapes the "Cited by year" histogram from the public Scholar profile and
+// builds a cumulative series. Falls back to the last committed cache when the
+// scrape fails (Scholar frequently blocks datacenter / CI traffic).
+const fetchScholarHistory = async () => {
+  try {
+    const html = await fetchText(
+      `https://scholar.google.com/citations?hl=en&user=${SCHOLAR_USER}`,
+    );
+    const years = [...html.matchAll(/gsc_g_t[^>]*>(\d{4})</g)].map((m) =>
+      Number(m[1]),
+    );
+    const values = [...html.matchAll(/gsc_g_al[^>]*>(\d+)</g)].map((m) =>
+      Number(m[1]),
+    );
+    const total = Number(html.match(/gsc_rsb_std">(\d+)/)?.[1] || 0);
+    if (!years.length || years.length !== values.length) {
+      throw new Error("Scholar histogram not found");
+    }
+    const perYear = years.map((year, i) => [year, values[i]]);
+    const payload = { fetchedAt: new Date().toISOString(), total, perYear };
+    await mkdir(new URL("../data/", import.meta.url), { recursive: true });
+    await writeFile(scholarCacheFile, `${JSON.stringify(payload, null, 2)}\n`);
+    return payload;
+  } catch (error) {
+    console.warn(`Scholar fetch failed, using cache: ${error.message}`);
+    const cached = JSON.parse(await readFile(scholarCacheFile, "utf8"));
+    return cached;
+  }
+};
+
+// Cumulative citations: [{ label:"2020", value:<cumulative> }].
+const scholarCumulative = (perYear) => {
+  let running = 0;
+  return perYear.map(([year, val]) => {
+    running += val;
+    return { label: String(year), value: running };
+  });
 };
 
 const typingLines = [
@@ -428,6 +513,89 @@ const renderStarChart = ({ stacked, theme, x, y, width, height, compact = false 
   </g>`;
 };
 
+const niceCeil = (v) => {
+  if (v <= 0) return 1;
+  const pow = 10 ** Math.floor(Math.log10(v));
+  const n = v / pow;
+  const step = n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10;
+  return step * pow;
+};
+
+// Straight-segment line chart (折线图) with dots, area fill and a value badge.
+const renderLineChart = ({
+  points,
+  theme,
+  x,
+  y,
+  width,
+  height,
+  color,
+  title,
+  compact = false,
+}) => {
+  const padL = compact ? 34 : 40;
+  const titleH = compact ? 30 : 34;
+  const xLabH = 18;
+  const plotTop = titleH;
+  const plotBottom = height - xLabH;
+  const plotH = plotBottom - plotTop;
+  const plotW = width - padL;
+  const n = points.length;
+  const niceMax = niceCeil(Math.max(...points.map((p) => p.value), 1));
+  const xAt = (i) => padL + (n === 1 ? plotW / 2 : (i / (n - 1)) * plotW);
+  const yAt = (v) => plotBottom - (v / niceMax) * plotH;
+
+  let grids = "";
+  for (const v of [0, niceMax / 2, niceMax]) {
+    const gy = f(yAt(v));
+    grids += `
+    <line x1="${padL}" y1="${gy}" x2="${width}" y2="${gy}" stroke="${theme.track}" stroke-width="1" opacity=".6"/>
+    <text x="${padL - 8}" y="${gy + 3}" class="tiny" text-anchor="end">${fmtAxis(Math.round(v))}</text>`;
+  }
+
+  const labelStep = n > 8 ? 2 : 1;
+  let xticks = "";
+  points.forEach((p, i) => {
+    if (i % labelStep !== 0 && i !== n - 1) return;
+    xticks += `<text x="${f(xAt(i))}" y="${plotBottom + 14}" class="tiny" text-anchor="middle">${escapeXml(p.label)}</text>`;
+  });
+
+  const pts = points.map((p, i) => ({ x: xAt(i), y: yAt(p.value) }));
+  const linePath = pts
+    .map((pt, i) => `${i === 0 ? "M" : "L"} ${f(pt.x)} ${f(pt.y)}`)
+    .join(" ");
+
+  const areaD =
+    `M ${f(pts[0].x)} ${f(plotBottom)} ` +
+    pts.map((pt) => `L ${f(pt.x)} ${f(pt.y)}`).join(" ") +
+    ` L ${f(pts[n - 1].x)} ${f(plotBottom)} Z`;
+  const areaPath = `<path d="${areaD}" fill="${color}" fill-opacity="0" stroke="none"><animate attributeName="fill-opacity" from="0" to=".14" dur="1s" begin=".3s" fill="freeze"/></path>`;
+
+  let len = 0;
+  for (let i = 1; i < pts.length; i += 1) {
+    len += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+  }
+  len = Math.round(len);
+  const line = `<path d="${linePath}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"><animate attributeName="stroke-dashoffset" from="${len}" to="0" dur="1.3s" begin=".25s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1" values="${len};0"/></path>`;
+
+  const dots = pts
+    .map((pt, i) => {
+      const isLast = i === n - 1;
+      return `<circle cx="${f(pt.x)}" cy="${f(pt.y)}" r="${isLast ? 3.5 : 2.4}" fill="${isLast ? "#fff" : color}" stroke="${color}" stroke-width="${isLast ? 2 : 1}" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="${(0.4 + i * 0.04).toFixed(2)}s" fill="freeze"/></circle>`;
+    })
+    .join("");
+
+  const last = pts[n - 1];
+  const labelAnchor = last.x > width - 40 ? "end" : "middle";
+  const lastVal = `<text x="${f(last.x)}" y="${f(last.y) - 9}" class="lang" text-anchor="${labelAnchor}" fill="${color}">${fmtInt(points[n - 1].value)}</text>`;
+
+  return `
+  <g transform="translate(${x} ${y})">
+    <text x="0" y="16" class="sectionTitle">${escapeXml(title)}</text>
+    ${grids}${xticks}${areaPath}${line}${dots}${lastVal}
+  </g>`;
+};
+
 const defs = (theme, width, height) => `
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="${width}" y2="0" gradientUnits="userSpaceOnUse">
@@ -466,7 +634,7 @@ const shell = ({ width, height, theme, body, desc }) => `<svg width="${width}" h
   ${body}
 </svg>`;
 
-const renderDesktop = ({ stats, languages, stacked, theme }) => {
+const renderDesktop = ({ stats, languages, stacked, commits, citations, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
     ${renderHero({ width: 900, height: DESKTOP_HERO_HEIGHT })}
@@ -487,19 +655,21 @@ const renderDesktop = ({ stats, languages, stacked, theme }) => {
       ${languageRows({ languages, theme, x: 558, y: 80, width: 302, rowGap: 26 })}
 
       ${renderStarChart({ stacked, theme, x: 34, y: 332, width: 832, height: 162 })}
+      ${renderLineChart({ points: commits, theme, x: 34, y: 516, width: 400, height: 150, color: "#a78bfa", title: "Commits per year" })}
+      ${renderLineChart({ points: citations, theme, x: 466, y: 516, width: 400, height: 150, color: "#fbbf24", title: "Scholar citations" })}
     </g>
   `;
 
   return shell({
     width: 900,
-    height: 650,
+    height: 824,
     theme,
     body,
     desc: `Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}. Combined star history of ${STAR_REPOS.map((r) => r.name).join(", ")}.`,
   });
 };
 
-const renderMobile = ({ stats, languages, stacked, theme }) => {
+const renderMobile = ({ stats, languages, stacked, commits, citations, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
     ${renderHero({ width: 370, height: MOBILE_HERO_HEIGHT, compact: true })}
@@ -519,12 +689,14 @@ const renderMobile = ({ stats, languages, stacked, theme }) => {
       ${languageRows({ languages, theme, x: 28, y: 514, width: 314, rowGap: 27 })}
 
       ${renderStarChart({ stacked, theme, x: 28, y: 760, width: 314, height: 220, compact: true })}
+      ${renderLineChart({ points: commits, theme, x: 28, y: 1000, width: 314, height: 185, color: "#a78bfa", title: "Commits per year", compact: true })}
+      ${renderLineChart({ points: citations, theme, x: 28, y: 1205, width: 314, height: 185, color: "#fbbf24", title: "Scholar citations", compact: true })}
     </g>
   `;
 
   return shell({
     width: 370,
-    height: 1150,
+    height: 1560,
     theme,
     body,
     desc: `Mobile GitHub dashboard. Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}.`,
@@ -532,28 +704,33 @@ const renderMobile = ({ stats, languages, stacked, theme }) => {
 };
 
 const main = async () => {
-  const [statsSvg, langsSvg, starSeries] = await Promise.all([
+  const [statsSvg, langsSvg, starSeries, commits, scholar] = await Promise.all([
     fetchText(STATS_URL),
     fetchText(LANGS_URL),
     Promise.all(STAR_REPOS.map(fetchStarSeries)),
+    fetchCommitHistory(),
+    fetchScholarHistory(),
   ]);
   const stats = parseStats(statsSvg);
   const languages = parseLanguages(langsSvg);
   const stacked = buildStackedSeries(starSeries);
+  const citations = scholarCumulative(scholar.perYear);
   if (!languages.length) throw new Error("Could not parse languages");
   if (!stacked.layers.length) throw new Error("Could not build star series");
+  if (!commits.length) throw new Error("Could not build commit history");
+  if (!citations.length) throw new Error("Could not build citation history");
 
   await mkdir(assetsDir, { recursive: true });
   const outputs = [
-    [FILES.dark, renderDesktop({ stats, languages, stacked, theme: THEMES.dark })],
-    [FILES.light, renderDesktop({ stats, languages, stacked, theme: THEMES.light })],
+    [FILES.dark, renderDesktop({ stats, languages, stacked, commits, citations, theme: THEMES.dark })],
+    [FILES.light, renderDesktop({ stats, languages, stacked, commits, citations, theme: THEMES.light })],
     [
       FILES.darkMobile,
-      renderMobile({ stats, languages, stacked, theme: THEMES.dark }),
+      renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.dark }),
     ],
     [
       FILES.lightMobile,
-      renderMobile({ stats, languages, stacked, theme: THEMES.light }),
+      renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.light }),
     ],
   ];
 

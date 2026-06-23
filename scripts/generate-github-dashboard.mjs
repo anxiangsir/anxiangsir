@@ -42,10 +42,17 @@ const FILES = {
   light: "github-dashboard-light.svg",
   darkMobile: "github-dashboard-dark-mobile.svg",
   lightMobile: "github-dashboard-light-mobile.svg",
+  darkCinematic: "github-dashboard-cinematic-dark.svg",
+  lightCinematic: "github-dashboard-cinematic-light.svg",
+  darkMobileCinematic: "github-dashboard-cinematic-dark-mobile.svg",
+  lightMobileCinematic: "github-dashboard-cinematic-light-mobile.svg",
 };
 
 const DESKTOP_HERO_HEIGHT = 150;
 const MOBILE_HERO_HEIGHT = 154;
+const DESKTOP_HEIGHT = 1010;
+const MOBILE_HEIGHT = 1560;
+const filmFile = new URL("../svg-cinematic.svg", import.meta.url);
 
 const htmlDecode = (value) =>
   value
@@ -279,13 +286,26 @@ const fetchScholarHistory = async () => {
   }
 };
 
-// Cumulative citations: [{ label:"2020", value:<cumulative> }].
-const scholarCumulative = (perYear) => {
-  let running = 0;
-  return perYear.map(([year, val]) => {
-    running += val;
-    return { label: String(year), value: running };
-  });
+// Cumulative citations interpolated to monthly resolution (approximation:
+// each year's increment is spread evenly across that year's months; the
+// current, partial year only spans the elapsed months). Yields
+// [{ label, value }] with year labels on January and "" elsewhere.
+const scholarMonthly = (perYear, fetchedAt) => {
+  const now = fetchedAt ? new Date(fetchedAt) : new Date();
+  const curYear = now.getUTCFullYear();
+  const points = [];
+  let cum = 0;
+  for (const [year, val] of perYear) {
+    const months = year >= curYear ? Math.max(1, now.getUTCMonth() + 1) : 12;
+    for (let m = 1; m <= months; m += 1) {
+      points.push({
+        label: m === 1 ? String(year) : "",
+        value: cum + (val * m) / months,
+      });
+    }
+    cum += val;
+  }
+  return points;
 };
 
 const typingLines = [
@@ -632,10 +652,17 @@ const renderLineChart = ({
     <text x="${padL - 8}" y="${gy + 3}" class="tiny" text-anchor="end">${fmtAxis(Math.round(v))}</text>`;
   }
 
+  // Monthly series carry blank labels between Januaries; render only the
+  // year markers and a single end dot so the dense curve stays clean.
+  const sparse = points.some((p) => p.label === "");
   const labelStep = n > 8 ? 2 : 1;
   let xticks = "";
   points.forEach((p, i) => {
-    if (i % labelStep !== 0 && i !== n - 1) return;
+    if (sparse) {
+      if (!p.label) return;
+    } else if (i % labelStep !== 0 && i !== n - 1) {
+      return;
+    }
     xticks += `<text x="${f(xAt(i))}" y="${plotBottom + 14}" class="tiny" text-anchor="middle">${escapeXml(p.label)}</text>`;
   });
 
@@ -660,6 +687,7 @@ const renderLineChart = ({
   const dots = pts
     .map((pt, i) => {
       const isLast = i === n - 1;
+      if (sparse && !isLast) return "";
       return `<circle cx="${f(pt.x)}" cy="${f(pt.y)}" r="${isLast ? 3.5 : 2.4}" fill="${isLast ? "#fff" : color}" stroke="${color}" stroke-width="${isLast ? 2 : 1}" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="${(delay + 0.4 + i * 0.04).toFixed(2)}s" fill="freeze"/></circle>`;
     })
     .join("");
@@ -768,6 +796,29 @@ const shell = ({ width, height, theme, body, desc }) => `<svg width="${width}" h
   ${body}
 </svg>`;
 
+const FILM_FONT = "-apple-system, 'PingFang SC', system-ui, sans-serif";
+
+const stripSvgWrapper = (svg) =>
+  svg.replace(/^\s*<svg\b[^>]*>/, "").replace(/<\/svg>\s*$/, "");
+
+// Stacks the cinematic film banner above a dashboard into one self-contained
+// SVG. The dashboard's own hero strip is dropped (its viewBox starts below the
+// hero) so only a single cinematic banner shows. Both halves keep their own
+// coordinate systems and defs via nested <svg> elements.
+const combineWithFilm = ({ dashboard, filmInner, width, height, heroHeight }) => {
+  const filmH = +(width * (540 / 960)).toFixed(2);
+  const bodyH = height - heroHeight;
+  const total = +(filmH + bodyH).toFixed(2);
+  const dashInner = stripSvgWrapper(dashboard);
+  return `<svg width="${width}" height="${total}" viewBox="0 0 ${width} ${total}" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ctitle cdesc">
+  <title id="ctitle">Xiang An — cinematic GitHub dashboard</title>
+  <desc id="cdesc">A pure-SVG cinematic sunset banner above Xiang An's animated GitHub dashboard.</desc>
+  <svg x="0" y="0" width="${width}" height="${filmH}" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" font-family="${FILM_FONT}">${filmInner}</svg>
+  <svg x="0" y="${filmH}" width="${width}" height="${bodyH}" viewBox="0 ${heroHeight} ${width} ${bodyH}" fill="none">${dashInner}</svg>
+</svg>
+`;
+};
+
 const renderDesktop = ({ stats, languages, stacked, commits, citations, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
@@ -796,7 +847,7 @@ const renderDesktop = ({ stats, languages, stacked, commits, citations, theme })
 
   return shell({
     width: 900,
-    height: 1010,
+    height: DESKTOP_HEIGHT,
     theme,
     body,
     desc: `Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}. Combined star history of ${STAR_REPOS.map((r) => r.name).join(", ")}.`,
@@ -830,7 +881,7 @@ const renderMobile = ({ stats, languages, stacked, commits, citations, theme }) 
 
   return shell({
     width: 370,
-    height: 1560,
+    height: MOBILE_HEIGHT,
     theme,
     body,
     desc: `Mobile GitHub dashboard. Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}.`,
@@ -848,24 +899,33 @@ const main = async () => {
   const stats = parseStats(statsSvg);
   const languages = parseLanguages(langsSvg);
   const stacked = buildStackedSeries(starSeries);
-  const citations = scholarCumulative(scholar.perYear);
+  const citations = scholarMonthly(scholar.perYear, scholar.fetchedAt);
   if (!languages.length) throw new Error("Could not parse languages");
   if (!stacked.layers.length) throw new Error("Could not build star series");
   if (!commits.length) throw new Error("Could not build commit history");
   if (!citations.length) throw new Error("Could not build citation history");
 
   await mkdir(assetsDir, { recursive: true });
+
+  const darkSvg = renderDesktop({ stats, languages, stacked, commits, citations, theme: THEMES.dark });
+  const lightSvg = renderDesktop({ stats, languages, stacked, commits, citations, theme: THEMES.light });
+  const darkMobileSvg = renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.dark });
+  const lightMobileSvg = renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.light });
+
+  // Cinematic variants: stack the film banner over each dashboard.
+  const filmInner = stripSvgWrapper(await readFile(filmFile, "utf8"));
+  const combine = (dashboard, width, height, heroHeight) =>
+    combineWithFilm({ dashboard, filmInner, width, height, heroHeight });
+
   const outputs = [
-    [FILES.dark, renderDesktop({ stats, languages, stacked, commits, citations, theme: THEMES.dark })],
-    [FILES.light, renderDesktop({ stats, languages, stacked, commits, citations, theme: THEMES.light })],
-    [
-      FILES.darkMobile,
-      renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.dark }),
-    ],
-    [
-      FILES.lightMobile,
-      renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.light }),
-    ],
+    [FILES.dark, darkSvg],
+    [FILES.light, lightSvg],
+    [FILES.darkMobile, darkMobileSvg],
+    [FILES.lightMobile, lightMobileSvg],
+    [FILES.darkCinematic, combine(darkSvg, 900, DESKTOP_HEIGHT, DESKTOP_HERO_HEIGHT)],
+    [FILES.lightCinematic, combine(lightSvg, 900, DESKTOP_HEIGHT, DESKTOP_HERO_HEIGHT)],
+    [FILES.darkMobileCinematic, combine(darkMobileSvg, 370, MOBILE_HEIGHT, MOBILE_HERO_HEIGHT)],
+    [FILES.lightMobileCinematic, combine(lightMobileSvg, 370, MOBILE_HEIGHT, MOBILE_HERO_HEIGHT)],
   ];
 
   for (const [file, svg] of outputs) {
@@ -885,4 +945,13 @@ if (invokedDirectly) {
   });
 }
 
-export { renderHero, defs, shell, THEMES };
+export {
+  renderHero,
+  defs,
+  shell,
+  THEMES,
+  renderLineChart,
+  scholarMonthly,
+  combineWithFilm,
+  stripSvgWrapper,
+};

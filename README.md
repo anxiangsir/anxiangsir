@@ -28,10 +28,10 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-dark-mobile.svg">
-    <source media="(prefers-color-scheme: light) and (max-width: 700px)" srcset="assets/github-dashboard-light-mobile.svg">
-    <source media="(prefers-color-scheme: dark)" srcset="assets/github-dashboard-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/github-dashboard-light.svg">
-    <img src="assets/github-dashboard-light.svg" alt="Xiang An's GitHub stats, trophies, and top languages">
+    <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-dark-mobile.svg">
+    <source media="(prefers-color-scheme: light) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-light-mobile.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github-dashboard-cinematic-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/github-dashboard-cinematic-light.svg">
+    <img src="assets/github-dashboard-cinematic-light.svg" alt="Xiang An's GitHub stats, trophies, and top languages">
   </picture>
 </p>

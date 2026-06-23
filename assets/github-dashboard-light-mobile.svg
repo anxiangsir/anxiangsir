@@ -1,6 +1,6 @@
 <svg width="370" height="1560" viewBox="0 0 370 1560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
-  <desc id="desc">Mobile GitHub dashboard. Stars 48,875, commits 16,041, rank A+.</desc>
+  <desc id="desc">Mobile GitHub dashboard. Stars 48,888, commits 16,043, rank A+.</desc>
   
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="370" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
@@ -158,14 +158,14 @@
       
   <g transform="translate(28 148)">
     <text x="0" y="17" class="label">Stars</text>
-    <text x="314" y="20" class="metricSmall" fill="#22d3ee" text-anchor="end">48,875</text>
+    <text x="314" y="20" class="metricSmall" fill="#22d3ee" text-anchor="end">48,888</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#22d3ee" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#22d3ee" opacity=".9"/>
   </g>
       
   <g transform="translate(28 198)">
     <text x="0" y="17" class="label">Commits</text>
-    <text x="314" y="20" class="metricSmall" fill="#a78bfa" text-anchor="end">16,041</text>
+    <text x="314" y="20" class="metricSmall" fill="#a78bfa" text-anchor="end">16,043</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#a78bfa" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#a78bfa" opacity=".9"/>
   </g>
@@ -279,7 +279,7 @@
     
     <circle cx="4" cy="21" r="4" fill="#22d3ee"/>
     <text x="14" y="24" class="lang">InsightFace</text>
-    <text x="314" y="24" class="langPercent" text-anchor="end">29,055</text>
+    <text x="314" y="24" class="langPercent" text-anchor="end">29,056</text>
     <circle cx="4" cy="36" r="4" fill="#a78bfa"/>
     <text x="14" y="39" class="lang">LLaVA-OneVision-2</text>
     <text x="314" y="39" class="langPercent" text-anchor="end">1,104</text>
@@ -332,14 +332,14 @@
     <line x1="34" y1="98.5" x2="314" y2="98.5" stroke="#e2e8f0" stroke-width="1" opacity=".6"/>
     <text x="26" y="101.5" class="tiny" text-anchor="end">1k</text>
     <line x1="34" y1="30" x2="314" y2="30" stroke="#e2e8f0" stroke-width="1" opacity=".6"/>
-    <text x="26" y="33" class="tiny" text-anchor="end">2k</text><text x="34" y="181" class="tiny" text-anchor="middle">2018</text><text x="104" y="181" class="tiny" text-anchor="middle">2020</text><text x="174" y="181" class="tiny" text-anchor="middle">2022</text><text x="244" y="181" class="tiny" text-anchor="middle">2024</text><text x="314" y="181" class="tiny" text-anchor="middle">2026</text><path d="M 34 167 L 34 166.2 L 69 166.1 L 104 156.6 L 139 158.2 L 174 159.7 L 209 162.7 L 244 154.1 L 279 53.5 L 314 153 L 314 167 Z" fill="#a78bfa" fill-opacity="0" stroke="none"><animate attributeName="fill-opacity" from="0" to=".14" dur="1s" begin="0.90s" fill="freeze"/></path><path d="M 34 166.2 L 69 166.1 L 104 156.6 L 139 158.2 L 174 159.7 L 209 162.7 L 244 154.1 L 279 53.5 L 314 153" fill="none" stroke="#a78bfa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="424" stroke-dashoffset="424"><animate attributeName="stroke-dashoffset" from="424" to="0" dur="1.3s" begin="0.85s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1" values="424;0"/></path><circle cx="34" cy="166.2" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.00s" fill="freeze"/></circle><circle cx="69" cy="166.1" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.04s" fill="freeze"/></circle><circle cx="104" cy="156.6" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.08s" fill="freeze"/></circle><circle cx="139" cy="158.2" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.12s" fill="freeze"/></circle><circle cx="174" cy="159.7" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.16s" fill="freeze"/></circle><circle cx="209" cy="162.7" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.20s" fill="freeze"/></circle><circle cx="244" cy="154.1" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.24s" fill="freeze"/></circle><circle cx="279" cy="53.5" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.28s" fill="freeze"/></circle><circle cx="314" cy="153" r="3.5" fill="#fff" stroke="#a78bfa" stroke-width="2" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.32s" fill="freeze"/></circle>
+    <text x="26" y="33" class="tiny" text-anchor="end">2k</text><text x="34" y="181" class="tiny" text-anchor="middle">2018</text><text x="104" y="181" class="tiny" text-anchor="middle">2020</text><text x="174" y="181" class="tiny" text-anchor="middle">2022</text><text x="244" y="181" class="tiny" text-anchor="middle">2024</text><text x="314" y="181" class="tiny" text-anchor="middle">2026</text><path d="M 34 167 L 34 166.2 L 69 166.1 L 104 156.6 L 139 158.2 L 174 159.7 L 209 162.7 L 244 154.1 L 279 53.5 L 314 152.9 L 314 167 Z" fill="#a78bfa" fill-opacity="0" stroke="none"><animate attributeName="fill-opacity" from="0" to=".14" dur="1s" begin="0.90s" fill="freeze"/></path><path d="M 34 166.2 L 69 166.1 L 104 156.6 L 139 158.2 L 174 159.7 L 209 162.7 L 244 154.1 L 279 53.5 L 314 152.9" fill="none" stroke="#a78bfa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="424" stroke-dashoffset="424"><animate attributeName="stroke-dashoffset" from="424" to="0" dur="1.3s" begin="0.85s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1" values="424;0"/></path><circle cx="34" cy="166.2" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.00s" fill="freeze"/></circle><circle cx="69" cy="166.1" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.04s" fill="freeze"/></circle><circle cx="104" cy="156.6" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.08s" fill="freeze"/></circle><circle cx="139" cy="158.2" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.12s" fill="freeze"/></circle><circle cx="174" cy="159.7" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.16s" fill="freeze"/></circle><circle cx="209" cy="162.7" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.20s" fill="freeze"/></circle><circle cx="244" cy="154.1" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.24s" fill="freeze"/></circle><circle cx="279" cy="53.5" r="2.4" fill="#a78bfa" stroke="#a78bfa" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.28s" fill="freeze"/></circle><circle cx="314" cy="152.9" r="3.5" fill="#fff" stroke="#a78bfa" stroke-width="2" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="1.32s" fill="freeze"/></circle>
     <circle r="3" fill="#fff" stroke="#a78bfa" stroke-width="1" opacity="0">
       <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.9;1" dur="4.5s" begin="2.2s" repeatCount="indefinite"/>
-      <animateMotion dur="4.5s" begin="2.2s" repeatCount="indefinite" path="M 34 166.2 L 69 166.1 L 104 156.6 L 139 158.2 L 174 159.7 L 209 162.7 L 244 154.1 L 279 53.5 L 314 153"/>
-    </circle><circle cx="314" cy="153" r="3.5" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0">
+      <animateMotion dur="4.5s" begin="2.2s" repeatCount="indefinite" path="M 34 166.2 L 69 166.1 L 104 156.6 L 139 158.2 L 174 159.7 L 209 162.7 L 244 154.1 L 279 53.5 L 314 152.9"/>
+    </circle><circle cx="314" cy="152.9" r="3.5" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0">
     <animate attributeName="r" values="3.5;11" dur="1.9s" begin="2.20s" repeatCount="indefinite" calcMode="spline" keySplines="0.2 0 0.4 1" keyTimes="0;1"/>
     <animate attributeName="opacity" values=".75;0" dur="1.9s" begin="2.20s" repeatCount="indefinite"/>
-  </circle><text x="314" y="144" class="lang" text-anchor="end" fill="#a78bfa" opacity="0">205<animate attributeName="opacity" from="0" to="1" dur=".4s" begin="2.00s" fill="freeze"/></text>
+  </circle><text x="314" y="143.9" class="lang" text-anchor="end" fill="#a78bfa" opacity="0">206<animate attributeName="opacity" from="0" to="1" dur=".4s" begin="2.00s" fill="freeze"/></text>
   </g>
       
   <g transform="translate(28 1205)">

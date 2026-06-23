@@ -39,7 +39,6 @@
         <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen"><circle cx="480" cy="280" r="120" fill="url(#sun)"><animate attributeName="cy" values="274;258;274" dur="22s" repeatCount="indefinite"/></circle><rect x="430" y="372" width="100" height="200" fill="#dfeaff" opacity=".5"/></g>
         
         
-        
   <g fill="#0a1424">
     <g>
       <animateTransform attributeName="transform" type="translate" values="300 392;640 386;300 392" dur="48s" repeatCount="indefinite"/>

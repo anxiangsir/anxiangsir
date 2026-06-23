@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" preserveAspectRatio="xMidYMid slice" font-family="-apple-system, 'PingFang SC', system-ui, sans-serif" data-style="super-mario-bros">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#58b7ff"/><stop offset="33%" stop-color="#6dccff"/><stop offset="67%" stop-color="#ffe08a"/><stop offset="100%" stop-color="#f49a45"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7bd94c"/><stop offset="50%" stop-color="#3ca43e"/><stop offset="100%" stop-color="#145024"/></linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff9b0"/><stop offset="30%" stop-color="#ffd43b"/><stop offset="100%" stop-color="#ff8c26" stop-opacity="0"/></radialGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffd43b" stop-opacity=".5"/><stop offset="100%" stop-color="#ffd43b" stop-opacity="0"/></linearGradient>
+    <radialGradient id="flareOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffd928" stop-opacity=".7"/><stop offset="100%" stop-color="#ffd928" stop-opacity="0"/></radialGradient>
+    <linearGradient id="flareStreak" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffd928" stop-opacity="0"/><stop offset="50%" stop-color="#eaf7ff" stop-opacity=".85"/><stop offset="100%" stop-color="#ffd928" stop-opacity="0"/></linearGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffe6b0"/><stop offset="60%" stop-color="#ffb863" stop-opacity=".8"/><stop offset="100%" stop-color="#ffb863" stop-opacity="0"/></radialGradient>
+    <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6ccf52"/><stop offset="100%" stop-color="#2c7f3a"/></linearGradient>
+    <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2fa44f"/><stop offset="100%" stop-color="#0b4a2a"/></linearGradient>
+    <linearGradient id="grade" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffce2e" stop-opacity=".3"/><stop offset="100%" stop-color="#1788df" stop-opacity=".35"/></linearGradient>
+    <radialGradient id="vig" cx="50%" cy="46%" r="65%"><stop offset="45%" stop-color="#000" stop-opacity="0"/><stop offset="82%" stop-color="#000" stop-opacity="0.4"/><stop offset="100%" stop-color="#000" stop-opacity="0.85"/></radialGradient>
+    <radialGradient id="leak" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffdca8" stop-opacity=".5"/><stop offset="100%" stop-color="#ffdca8" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n"><animate attributeName="seed" values="1;9;3;7;2;8;4" dur="0.5s" repeatCount="indefinite"/></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0"/><feComposite operator="in" in2="SourceGraphic"/></filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="rip" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="t"><animate attributeName="baseFrequency" values="0.012 0.06;0.016 0.08;0.012 0.06" dur="6s" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="14" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <clipPath id="screen"><rect x="0" y="0" width="960" height="540"/></clipPath>
+    <clipPath id="below"><rect x="0" y="372" width="960" height="168"/></clipPath>
+  </defs>
+  <g clip-path="url(#screen)">
+    <rect x="0" y="0" width="960" height="540" fill="#000"/>
+    <g>
+      <g>
+        <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="26s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="translate" values="0 0;-24 -9;0 0" dur="26s" repeatCount="indefinite" additive="sum"/>
+        <rect x="-80" y="-40" width="1120" height="460" fill="url(#sky)"/>
+        <g fill="#fff"><circle cx="120" cy="70" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle><circle cx="240" cy="120" r="1.3"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="330" cy="60" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3.6s" repeatCount="indefinite"/></circle><circle cx="620" cy="80" r="1.3"><animate attributeName="opacity" values="1;.2;1" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="760" cy="140" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3.2s" repeatCount="indefinite"/></circle><circle cx="850" cy="64" r="1.3"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="500" cy="50" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle><circle cx="180" cy="150" r="1.3"><animate attributeName="opacity" values="1;.2;1" dur="2.6s" repeatCount="indefinite"/></circle><circle cx="690" cy="44" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3.4s" repeatCount="indefinite"/></circle></g>
+        
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0"><line x1="0" y1="0" x2="46" y2="20"/><animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="760 40;560 130;560 130" keyTimes="0;.12;1" dur="9s" repeatCount="indefinite"/></g>
+        <circle cx="480" cy="300" r="155" fill="url(#sun)"><animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/></circle>
+        <circle cx="480" cy="300" r="48" fill="#fff6a8" filter="url(#glow)"><animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/></circle>
+        
+        
+        <g><path d="M-80 360 L120 300 L280 350 L460 285 L640 345 L820 295 L1040 350 L1040 380 L-80 380 Z" fill="url(#m1)"/><animateTransform attributeName="transform" type="translate" values="0 0;16 0;0 0" dur="26s" repeatCount="indefinite"/></g>
+        <g><path d="M-80 372 L160 320 L380 372 L560 318 L760 372 L980 326 L1040 372 L-80 372 Z" fill="url(#m2)"/><animateTransform attributeName="transform" type="translate" values="0 0;36 0;0 0" dur="26s" repeatCount="indefinite"/></g>
+        <rect x="-80" y="372" width="1120" height="220" fill="url(#water)"/>
+        <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen"><circle cx="480" cy="430" r="120" fill="url(#sun)"><animate attributeName="cy" values="424;408;424" dur="22s" repeatCount="indefinite"/></circle><rect x="430" y="372" width="100" height="200" fill="#ffd43b" opacity=".5"/></g>
+        <g style="mix-blend-mode:screen" filter="url(#glow)"><line x1="0" y1="375" x2="960" y2="375" stroke="#ffd928" stroke-width="1" stroke-opacity="0.40"/><line x1="0" y1="386" x2="960" y2="386" stroke="#ffd928" stroke-width="1" stroke-opacity="0.35"/><line x1="0" y1="403" x2="960" y2="403" stroke="#ffd928" stroke-width="1" stroke-opacity="0.30"/><line x1="0" y1="427" x2="960" y2="427" stroke="#ffd928" stroke-width="1" stroke-opacity="0.25"/><line x1="0" y1="458" x2="960" y2="458" stroke="#ffd928" stroke-width="1" stroke-opacity="0.20"/><line x1="0" y1="495" x2="960" y2="495" stroke="#ffd928" stroke-width="1" stroke-opacity="0.15"/><line x1="0" y1="540" x2="960" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity="0.10"/><line x1="480" y1="372" x2="-720" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="-600" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="-480" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="-360" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="-240" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="-120" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="0" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="120" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="240" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="360" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="480" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="600" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="720" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="840" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="960" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="1080" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="1200" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="1320" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="1440" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="1560" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/><line x1="480" y1="372" x2="1680" y2="540" stroke="#ffd928" stroke-width="1" stroke-opacity=".22"/></g>
+        
+  <g><g transform="translate(110 312)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#c56d2c" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g><g transform="translate(158 312)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#ffd928" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g><g transform="translate(206 312)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#c56d2c" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g><g transform="translate(640 262)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#c56d2c" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g><g transform="translate(688 262)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#ffd928" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g><g transform="translate(736 262)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#c56d2c" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g><g transform="translate(784 262)"><rect x="0" y="0" width="42" height="42" rx="5" fill="#c56d2c" stroke="#142312" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="#142312" opacity=".45"/><circle cx="30" cy="30" r="3" fill="#142312" opacity=".45"/></g></g>
+  <g transform="translate(496 332)" fill="#142312" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" values="496 332;496 292;496 332" dur="3.8s" repeatCount="indefinite"/>
+    <circle cx="0" cy="0" r="20" fill="#ffd928"/>
+    <circle cx="-7" cy="-5" r="5" fill="#fff" opacity=".8"/>
+    <circle cx="7" cy="-5" r="5" fill="#fff" opacity=".8"/>
+  </g>
+  <g fill="#142312">
+    <rect x="90" y="390" width="92" height="120" rx="6"/>
+    <rect x="108" y="350" width="56" height="50" rx="8"/>
+    <rect x="778" y="372" width="86" height="142" rx="6"/>
+    <rect x="792" y="330" width="58" height="52" rx="8"/>
+  </g>
+        
+        
+        
+        
+  <g fill="none" stroke="#102b1c" stroke-width="2" stroke-linecap="round" opacity=".85">
+    <g><path transform="translate(0 0) scale(0.95)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(-15 7) scale(0.92)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(15 7) scale(0.89)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(-30 14) scale(0.86)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(30 14) scale(0.83)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(-45 21) scale(0.80)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(45 21) scale(0.77)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/>
+      <animateTransform attributeName="transform" type="translate" values="1000 96;-160 150;-160 150" keyTimes="0;.85;1" dur="26s" repeatCount="indefinite"/>
+    </g>
+  </g>
+      </g>
+    </g>
+    
+    <rect x="0" y="0" width="960" height="540" fill="url(#grade)" style="mix-blend-mode:soft-light"/>
+    <rect x="0" y="0" width="960" height="540" fill="url(#vig)"/>
+    
+    
+    <g text-anchor="middle" fill="#fff" filter="url(#glow)" font-weight="700">
+      <text x="480" y="266" font-size="58" letter-spacing="2"><tspan>an</tspan><tspan fill="#ffd928">xiang</tspan><tspan>sir</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.08;.2;.5;.62;1" dur="13s" repeatCount="indefinite"/></text>
+    </g>
+    <g text-anchor="middle" fill="#ffd928"><text x="480" y="304" font-size="14" letter-spacing="7" opacity=".9">P L A T F O R M   W O R L D   ·   P U R E   S V G<animate attributeName="opacity" values="0;0;.9;.9;0;0" keyTimes="0;.12;.24;.5;.62;1" dur="13s" repeatCount="indefinite"/></text></g>
+    <rect x="0" y="0" width="960" height="540" filter="url(#grain)" opacity="0.5" style="mix-blend-mode:overlay"/>
+  </g>
+</svg>

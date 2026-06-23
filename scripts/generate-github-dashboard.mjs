@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { appendFile, mkdir, readFile, writeFile } from "node:fs/promises";
 
 const STATS_URL =
   "https://github-readme-stats-psi-plum-61.vercel.app/api?username=anxiangsir&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true";
@@ -53,6 +53,11 @@ const MOBILE_HERO_HEIGHT = 154;
 const DESKTOP_HEIGHT = 1010;
 const MOBILE_HEIGHT = 1560;
 const filmFile = new URL("../svg-cinematic.svg", import.meta.url);
+
+const setActionOutput = async (name, value) => {
+  if (!process.env.GITHUB_OUTPUT) return;
+  await appendFile(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
+};
 
 const htmlDecode = (value) =>
   value
@@ -800,7 +805,18 @@ const FILM_FONT = "-apple-system, 'PingFang SC', system-ui, sans-serif";
 
 // --- Cinematic film banner (randomized style per run) ------------------------
 
-const FILM_STYLES = ["sunset", "cyberpunk", "startrail", "silent"];
+const FILM_STYLES = [
+  "sunset",
+  "cyberpunk",
+  "startrail",
+  "silent",
+  "zelda",
+  "caribbean-pirates",
+  "dwarf-rabbit",
+  "super-mario-bros",
+  "lanzhou-noodles",
+  "red-dead-2",
+];
 
 const FILM_PALETTES = {
   sunset: {
@@ -834,6 +850,54 @@ const FILM_PALETTES = {
     orb: ["#ffffff", "#dcdcdc", "#9a9a9a"], core: "#ffffff",
     accent: "#f0f0f0", fg: "#000000", bird: "#0a0a0a",
     grade: ["#888888", "#222222"], sub: "SILENT FILM · PURE SVG",
+  },
+  zelda: {
+    sky: ["#05150d", "#0b2d1a", "#1d5733", "#6c8f3a", "#e3c46b"],
+    m1: ["#2f6338", "#15311f"], m2: ["#173c22", "#06150d"],
+    water: ["#2f7b4d", "#0e3a27", "#04100b"],
+    orb: ["#fff7c8", "#ffd66c", "#70d66a"], core: "#fff4bc",
+    accent: "#ffd45a", fg: "#06130b", bird: "#082114",
+    grade: ["#f0c94e", "#0d6b48"], sub: "HYRULE FOREST · PURE SVG",
+  },
+  "caribbean-pirates": {
+    sky: ["#03101c", "#062a43", "#0b5a78", "#cf6c3e", "#f0b15f"],
+    m1: ["#17516a", "#092b3b"], m2: ["#092f3f", "#031018"],
+    water: ["#11a5a5", "#06606d", "#02131d"],
+    orb: ["#fff0ce", "#ffc56e", "#ff8a3c"], core: "#fff5d8",
+    accent: "#ffd37a", fg: "#02080c", bird: "#031018",
+    grade: ["#ff9d4d", "#034d68"], sub: "CARIBBEAN PIRATES · PURE SVG",
+  },
+  "dwarf-rabbit": {
+    sky: ["#101b2f", "#243d5b", "#5b7fa6", "#d8b2c5", "#ffe0b2"],
+    m1: ["#8ebf85", "#4f8553"], m2: ["#4d7c45", "#17351f"],
+    water: ["#8dcf7e", "#4f9b56", "#15391f"],
+    orb: ["#ffffff", "#ffe8f1", "#d7e8ff"], core: "#fff8fb",
+    accent: "#ffb7d5", fg: "#112016", bird: "#16261c",
+    grade: ["#ffbfd6", "#4ea96a"], sub: "DWARF RABBIT MEADOW · PURE SVG",
+  },
+  "super-mario-bros": {
+    sky: ["#58b7ff", "#6dccff", "#ffe08a", "#f49a45"],
+    m1: ["#6ccf52", "#2c7f3a"], m2: ["#2fa44f", "#0b4a2a"],
+    water: ["#7bd94c", "#3ca43e", "#145024"],
+    orb: ["#fff9b0", "#ffd43b", "#ff8c26"], core: "#fff6a8",
+    accent: "#ffd928", fg: "#142312", bird: "#102b1c",
+    grade: ["#ffce2e", "#1788df"], sub: "PLATFORM WORLD · PURE SVG",
+  },
+  "lanzhou-noodles": {
+    sky: ["#2b0f08", "#5d1f0e", "#a64018", "#e39036", "#f8d69a"],
+    m1: ["#8b3d1b", "#4a1a0c"], m2: ["#54200e", "#170704"],
+    water: ["#f2c36b", "#b95a24", "#240a04"],
+    orb: ["#fff6dc", "#ffd27d", "#ff7b2e"], core: "#fff4d2",
+    accent: "#facc15", fg: "#170704", bird: "#241008",
+    grade: ["#ffb84a", "#9c1d0b"], sub: "LANZHOU NOODLES · PURE SVG",
+  },
+  "red-dead-2": {
+    sky: ["#120807", "#4a1512", "#8b2e1d", "#cb6a2b", "#f6b763"],
+    m1: ["#9a4c25", "#54200f"], m2: ["#5b2110", "#160706"],
+    water: ["#a74421", "#5d1f10", "#120604"],
+    orb: ["#fff0c2", "#ffbd5a", "#b92d18"], core: "#ffe9b5",
+    accent: "#ffcf6a", fg: "#100504", bird: "#180806",
+    grade: ["#ff6a2a", "#3f0c0a"], sub: "WESTERN FRONTIER · PURE SVG",
   },
 };
 
@@ -935,31 +999,143 @@ const filmScratches = () =>
     .join("") +
   `</g>`;
 
+const filmRunes = (accent) => `
+  <g fill="none" stroke="${accent}" stroke-linejoin="round" stroke-linecap="round" opacity=".76" filter="url(#glow)" style="mix-blend-mode:screen">
+    <g transform="translate(744 162)">
+      <path d="M0 -52 L45 26 L-45 26 Z"/>
+      <path d="M0 -26 L22 13 L-22 13 Z"/>
+      <path d="M-45 26 H45 M-22 13 H22"/>
+      <animateTransform attributeName="transform" type="rotate" values="-3 0 0;3 0 0;-3 0 0" dur="9s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <circle cx="196" cy="178" r="20"/>
+    <path d="M196 150 V206 M168 178 H224 M182 164 L210 192 M210 164 L182 192"/>
+  </g>`;
+
+const filmPirateShip = (fg, accent) => `
+  <g transform="translate(650 350)" fill="${fg}" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">
+    <animateTransform attributeName="transform" type="translate" values="650 350;618 344;650 350" dur="18s" repeatCount="indefinite"/>
+    <path d="M-98 22 C-68 48 52 50 98 22 L72 58 C25 72 -40 70 -80 56 Z"/>
+    <path d="M-78 22 C-30 34 30 34 80 22" fill="none" stroke-width="4"/>
+    <rect x="-4" y="-122" width="8" height="148"/>
+    <rect x="-62" y="-76" width="5" height="92"/>
+    <path d="M4 -118 C54 -98 76 -58 8 -48 Z" fill="${accent}" opacity=".7"/>
+    <path d="M-8 -92 C-50 -78 -70 -44 -10 -38 Z" fill="${accent}" opacity=".55"/>
+    <path d="M4 -42 C48 -34 68 -8 8 4 Z" fill="${accent}" opacity=".38"/>
+    <path d="M-92 30 L-124 42" stroke-width="5"/>
+    <circle cx="-28" cy="42" r="4" fill="#000" opacity=".55"/>
+    <circle cx="20" cy="44" r="4" fill="#000" opacity=".55"/>
+  </g>`;
+
+const filmRabbit = (fg, accent) => `
+  <g transform="translate(732 402)" fill="${fg}" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">
+    <animateTransform attributeName="transform" type="translate" values="732 402;744 392;732 402" dur="6s" repeatCount="indefinite"/>
+    <ellipse cx="0" cy="34" rx="62" ry="35"/>
+    <circle cx="52" cy="12" r="26"/>
+    <ellipse cx="48" cy="-34" rx="10" ry="42" transform="rotate(-8 48 -34)"/>
+    <ellipse cx="70" cy="-30" rx="9" ry="38" transform="rotate(18 70 -30)"/>
+    <circle cx="78" cy="8" r="3" fill="${accent}"/>
+    <circle cx="-54" cy="24" r="12" fill="#fff" opacity=".72"/>
+    <path d="M42 22 C28 31 10 32 -5 27" fill="none" stroke-width="5"/>
+  </g>
+  <g fill="${accent}" opacity=".8" style="mix-blend-mode:screen">
+    ${[130, 180, 235, 806, 852, 894]
+      .map((x, i) => `<path d="M${x} 414 C${x - 8} 388 ${x + 8} 388 ${x} 414 C${x + 14} 394 ${x + 30} 406 ${x} 414 Z"><animateTransform attributeName="transform" type="translate" values="0 0;0 -6;0 0" dur="${4 + i * 0.4}s" repeatCount="indefinite"/></path>`)
+      .join("")}
+  </g>`;
+
+const filmPlatformWorld = (fg, accent) => {
+  const blocks = [[110, 312], [158, 312], [206, 312], [640, 262], [688, 262], [736, 262], [784, 262]]
+    .map(([x, y], i) => `<g transform="translate(${x} ${y})"><rect x="0" y="0" width="42" height="42" rx="5" fill="${i % 3 === 1 ? accent : "#c56d2c"}" stroke="${fg}" stroke-width="3"/><circle cx="12" cy="12" r="3" fill="${fg}" opacity=".45"/><circle cx="30" cy="30" r="3" fill="${fg}" opacity=".45"/></g>`)
+    .join("");
+  return `
+  <g>${blocks}</g>
+  <g transform="translate(496 332)" fill="${fg}" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" values="496 332;496 292;496 332" dur="3.8s" repeatCount="indefinite"/>
+    <circle cx="0" cy="0" r="20" fill="${accent}"/>
+    <circle cx="-7" cy="-5" r="5" fill="#fff" opacity=".8"/>
+    <circle cx="7" cy="-5" r="5" fill="#fff" opacity=".8"/>
+  </g>
+  <g fill="${fg}">
+    <rect x="90" y="390" width="92" height="120" rx="6"/>
+    <rect x="108" y="350" width="56" height="50" rx="8"/>
+    <rect x="778" y="372" width="86" height="142" rx="6"/>
+    <rect x="792" y="330" width="58" height="52" rx="8"/>
+  </g>`;
+};
+
+const filmNoodleBowl = (fg, accent) => `
+  <g transform="translate(484 382)">
+    <g stroke="${accent}" stroke-width="5" stroke-linecap="round" opacity=".75" filter="url(#glow)" style="mix-blend-mode:screen">
+      ${[-46, -16, 16, 46].map((x, i) => `<path d="M${x} -82 C${x - 22} -118 ${x + 22} -134 ${x} -174"><animate attributeName="d" values="M${x} -82 C${x - 22} -118 ${x + 22} -134 ${x} -174;M${x} -82 C${x + 20} -118 ${x - 20} -134 ${x} -174;M${x} -82 C${x - 22} -118 ${x + 22} -134 ${x} -174" dur="${5 + i}s" repeatCount="indefinite"/></path>`).join("")}
+    </g>
+    <g fill="${fg}">
+      <ellipse cx="0" cy="4" rx="180" ry="46"/>
+      <path d="M-160 0 C-130 96 130 96 160 0 Z"/>
+      <ellipse cx="0" cy="-5" rx="150" ry="30" fill="${accent}" opacity=".86"/>
+      <path d="M-96 -12 C-58 12 -20 -34 20 -6 C58 20 90 -18 126 2" fill="none" stroke="#fff2c7" stroke-width="9" stroke-linecap="round" opacity=".8"/>
+      <circle cx="-62" cy="-18" r="12" fill="#3aa657"/>
+      <circle cx="82" cy="-8" r="10" fill="#e24d2b"/>
+      <path d="M-146 -96 L152 -30" stroke="${fg}" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-120 -110 L172 -46" stroke="${fg}" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </g>`;
+
+const filmWesternRider = (fg, accent) => `
+  <g transform="translate(680 364)" fill="${fg}" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">
+    <animateTransform attributeName="transform" type="translate" values="680 364;632 360;680 364" dur="16s" repeatCount="indefinite"/>
+    <ellipse cx="-8" cy="38" rx="78" ry="24"/>
+    <path d="M54 22 C82 16 112 28 120 48 C95 45 72 42 52 40 Z"/>
+    <circle cx="116" cy="28" r="13"/>
+    <path d="M-62 54 L-90 92 M-26 58 L-36 98 M28 58 L18 98 M62 52 L88 90" stroke-width="9"/>
+    <path d="M-20 8 L8 -42 L32 8 Z"/>
+    <circle cx="9" cy="-60" r="14"/>
+    <path d="M-22 -68 H42 M-12 -82 C6 -74 24 -74 40 -82" fill="none" stroke-width="7"/>
+    <path d="M18 -38 L52 -12" fill="none" stroke-width="8"/>
+    <path d="M-92 92 C-40 78 46 78 104 92" fill="none" stroke="${accent}" stroke-width="3" opacity=".7"/>
+  </g>
+  <g fill="${fg}" opacity=".85">
+    <path d="M178 365 c22 -58 40 -58 62 0 c-18 -8 -44 -8 -62 0 Z"/>
+    <rect x="205" y="310" width="8" height="76" rx="4"/>
+    <path d="M122 388 c18 -42 31 -42 48 0 c-14 -6 -34 -6 -48 0 Z"/>
+    <rect x="142" y="334" width="7" height="64" rx="4"/>
+  </g>`;
+
 const renderFilm = (style) => {
   const p = FILM_PALETTES[style] || FILM_PALETTES.sunset;
   const warm = style === "sunset";
   const neon = style === "cyberpunk";
   const trails = style === "startrail";
   const silent = style === "silent";
-  // Celestial body sits at the horizon for sunset/cyberpunk/silent, higher for star trails (a moon).
-  const orbY = trails ? 150 : 300;
-  const reflectY = trails ? 280 : 430;
+  const zelda = style === "zelda";
+  const pirates = style === "caribbean-pirates";
+  const rabbit = style === "dwarf-rabbit";
+  const mario = style === "super-mario-bros";
+  const noodles = style === "lanzhou-noodles";
+  const western = style === "red-dead-2";
+  const highOrb = trails || zelda || pirates;
+  // Celestial body sits at the horizon for most styles, higher for moon/forest scenes.
+  const orbY = highOrb ? 150 : 300;
+  const reflectY = highOrb ? 280 : 430;
 
-  const back = trails ? filmStarTrails(p.accent) : "";
+  const back = trails ? filmStarTrails(p.accent) : zelda ? filmRunes(p.accent) : "";
   const frontParticles = warm
     ? filmEmbers()
     : neon
       ? filmRain(p.accent)
       : trails
         ? filmSnow()
-        : "";
-  const rays = warm || neon
+        : rabbit
+          ? filmSnow()
+          : noodles || western
+            ? filmEmbers()
+            : "";
+  const rays = warm || neon || zelda || noodles || western
     ? `<g opacity=".4" filter="url(#soft)" style="mix-blend-mode:screen">
         <polygon points="480,${orbY} 350,${orbY + 140} 610,${orbY + 140}" fill="url(#ray)"><animateTransform attributeName="transform" type="rotate" values="-6 480 ${orbY};6 480 ${orbY};-6 480 ${orbY}" dur="15s" repeatCount="indefinite"/></polygon>
         <polygon points="480,${orbY} 430,${orbY + 140} 530,${orbY + 140}" fill="url(#ray)"><animateTransform attributeName="transform" type="rotate" values="5 480 ${orbY};-5 480 ${orbY};5 480 ${orbY}" dur="11s" repeatCount="indefinite"/></polygon>
       </g>`
     : "";
-  const flare = warm || neon
+  const flare = warm || neon || western
     ? `<g style="mix-blend-mode:screen">
         <rect x="120" y="${orbY - 4}" width="720" height="6" rx="3" fill="url(#flareStreak)" filter="url(#soft)"><animate attributeName="opacity" values=".5;.9;.5" dur="6s" repeatCount="indefinite"/></rect>
         <circle cx="600" cy="${orbY - 60}" r="24" fill="url(#flareOrb)" opacity=".55"/>
@@ -969,11 +1145,24 @@ const renderFilm = (style) => {
   const neonRim = neon
     ? `<path d="M-80 372 L160 320 L380 372 L560 318 L760 372 L980 326 L1040 372" fill="none" stroke="${p.accent}" stroke-width="1.6" stroke-opacity=".9" filter="url(#glow)"/>`
     : "";
-  const grid = neon ? filmGrid(p.accent) : "";
-  const leak = warm || neon
+  const grid = neon || mario ? filmGrid(p.accent) : "";
+  const leak = warm || neon || noodles
     ? `<ellipse cx="0" cy="160" rx="320" ry="200" fill="url(#leak)" style="mix-blend-mode:screen"><animate attributeName="cx" values="-200;1160;-200" dur="15s" repeatCount="indefinite"/></ellipse>`
     : "";
-  const flicker = warm || silent
+  const themeProp = pirates
+    ? filmPirateShip(p.fg, p.accent)
+    : rabbit
+      ? filmRabbit(p.fg, p.accent)
+      : mario
+        ? filmPlatformWorld(p.fg, p.accent)
+        : noodles
+          ? filmNoodleBowl(p.fg, p.accent)
+          : western
+            ? filmWesternRider(p.fg, p.accent)
+            : "";
+  const defaultBoat = pirates || mario || noodles || western ? "" : filmBoat(p.fg);
+  const defaultTree = mario || noodles || rabbit ? "" : filmTree(p.fg);
+  const flicker = warm || silent || western
     ? `<rect x="0" y="0" width="960" height="540" fill="${silent ? "#ffffff" : "#ffdca0"}" style="mix-blend-mode:overlay"><animate attributeName="opacity" values="0;${silent ? ".09" : ".05"};0;.03;0" dur="${silent ? 3 : 4}s" repeatCount="indefinite"/></rect>`
     : "";
   const scratches = silent ? filmScratches() : "";
@@ -1013,8 +1202,8 @@ const renderFilm = (style) => {
         <g fill="#fff">${filmStars()}</g>
         ${back}
         <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0"><line x1="0" y1="0" x2="46" y2="20"/><animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="760 40;560 130;560 130" keyTimes="0;.12;1" dur="9s" repeatCount="indefinite"/></g>
-        <circle cx="480" cy="${orbY}" r="${trails ? 70 : 155}" fill="url(#sun)"><animate attributeName="cy" values="${orbY - 12};${orbY + 6};${orbY - 12}" dur="22s" repeatCount="indefinite"/></circle>
-        <circle cx="480" cy="${orbY}" r="${trails ? 30 : 48}" fill="${p.core}" filter="url(#glow)"><animate attributeName="cy" values="${orbY - 12};${orbY + 6};${orbY - 12}" dur="22s" repeatCount="indefinite"/></circle>
+        <circle cx="480" cy="${orbY}" r="${highOrb ? 70 : 155}" fill="url(#sun)"><animate attributeName="cy" values="${orbY - 12};${orbY + 6};${orbY - 12}" dur="22s" repeatCount="indefinite"/></circle>
+        <circle cx="480" cy="${orbY}" r="${highOrb ? 30 : 48}" fill="${p.core}" filter="url(#glow)"><animate attributeName="cy" values="${orbY - 12};${orbY + 6};${orbY - 12}" dur="22s" repeatCount="indefinite"/></circle>
         ${rays}
         ${flare}
         <g><path d="M-80 360 L120 300 L280 350 L460 285 L640 345 L820 295 L1040 350 L1040 380 L-80 380 Z" fill="url(#m1)"/><animateTransform attributeName="transform" type="translate" values="0 0;16 0;0 0" dur="26s" repeatCount="indefinite"/></g>
@@ -1022,8 +1211,9 @@ const renderFilm = (style) => {
         <rect x="-80" y="372" width="1120" height="220" fill="url(#water)"/>
         <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen"><circle cx="480" cy="${reflectY}" r="120" fill="url(#sun)"><animate attributeName="cy" values="${reflectY - 6};${reflectY - 22};${reflectY - 6}" dur="22s" repeatCount="indefinite"/></circle><rect x="430" y="372" width="100" height="200" fill="${p.orb[1]}" opacity=".5"/></g>
         ${grid}
-        ${filmBoat(p.fg)}
-        ${filmTree(p.fg)}
+        ${themeProp}
+        ${defaultBoat}
+        ${defaultTree}
         ${frontParticles}
         ${filmFlock(p.bird)}
       </g>
@@ -1166,12 +1356,14 @@ const main = async () => {
       : FILM_STYLES[Math.floor(Math.random() * FILM_STYLES.length)];
   const filmSvg = renderFilm(filmStyle);
   await writeFile(filmFile, filmSvg);
+  await setActionOutput("film_style", filmStyle);
   console.log(`Film style: ${filmStyle}`);
   const filmInner = stripSvgWrapper(filmSvg);
   const combine = (dashboard, width, height, heroHeight) =>
     combineWithFilm({ dashboard, filmInner, width, height, heroHeight });
 
   const outputs = [
+    ...FILM_STYLES.map((style) => [`film-${style}.svg`, renderFilm(style)]),
     [FILES.dark, darkSvg],
     [FILES.light, lightSvg],
     [FILES.darkMobile, darkMobileSvg],

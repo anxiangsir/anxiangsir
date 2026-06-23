@@ -320,7 +320,7 @@ const renderTyping = ({ x, y, lines = typingLines }) => {
     .map((line, index) => {
       const values = index === 0 ? "1;1;1;0;0" : "0;1;1;0;0";
       return `
-  <text x="${x}" y="${y}" class="typing" opacity="${index === 0 ? 1 : 0}">${escapeXml(line)}
+  <text x="${x}" y="${y}" class="typing" opacity="${index === 0 ? 1 : 0}">${escapeXml(line)}<tspan dx="2">▌<animate attributeName="fill-opacity" values="1;1;0;0" keyTimes="0;0.49;0.5;1" dur="1.06s" repeatCount="indefinite" calcMode="discrete"/></tspan>
     <animate attributeName="opacity" values="${values}" keyTimes="0;${fade};${Math.max(fade, visibleUntil - fade)};${visibleUntil};1" dur="${cycleSeconds}s" begin="${(index * slotSeconds).toFixed(1)}s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;${fade};${Math.max(fade, visibleUntil - fade)};${visibleUntil};1" dur="${cycleSeconds}s" begin="${(index * slotSeconds).toFixed(1)}s" repeatCount="indefinite"/>
   </text>`;
@@ -381,6 +381,13 @@ const languageRows = ({ languages, theme, x, y, width, rowGap = 28 }) =>
 const f = (n) => Number(n.toFixed(1));
 const fmtInt = (n) => Math.round(n).toLocaleString("en-US");
 const fmtAxis = (n) => (n >= 1000 ? `${Math.round(n / 1000)}k` : `${n}`);
+
+// A glowing dot that travels along a path on a loop.
+const motionDot = (pathD, color, dur, begin) => `
+    <circle r="3" fill="#fff" stroke="${color}" stroke-width="1" opacity="0">
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.9;1" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/>
+      <animateMotion dur="${dur}s" begin="${begin}s" repeatCount="indefinite" path="${pathD}"/>
+    </circle>`;
 
 // Catmull-Rom -> cubic bezier command chain (assumes current point == pts[0]).
 const curveCmds = (pts) => {
@@ -480,7 +487,7 @@ const renderStarChart = ({ stacked, theme, x, y, width, height, compact = false 
     <circle cx="${f(totalPts[totalPts.length - 1].x)}" cy="${f(totalPts[totalPts.length - 1].y)}" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0">
       <animate attributeName="r" values="3.5;12" dur="2s" begin="1.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.2 0 0.4 1" keyTimes="0;1"/>
       <animate attributeName="opacity" values=".7;0" dur="2s" begin="1.7s" repeatCount="indefinite"/>
-    </circle>`;
+    </circle>${motionDot(totalPath, "#22c55e", 5, 1.8)}`;
 
   // Legend.
   const grandTotal = layers.reduce((s, l) => s + l.total, 0);
@@ -604,21 +611,25 @@ const renderLineChart = ({
   return `
   <g transform="translate(${x} ${y})">
     <text x="0" y="16" class="sectionTitle">${escapeXml(title)}</text>
-    ${grids}${xticks}${areaPath}${line}${dots}${pulse}${lastVal}
+    ${grids}${xticks}${areaPath}${line}${dots}${motionDot(linePath, color, 4.5, delay + 1.6)}${pulse}${lastVal}
   </g>`;
 };
 
 const defs = (theme, width, height) => `
   <defs>
-    <linearGradient id="heroGradient" x1="0" y1="0" x2="${width}" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#06b6d4"/>
-      <stop offset=".46" stop-color="#8b5cf6"/>
-      <stop offset="1" stop-color="#22c55e"/>
+    <linearGradient id="heroGradient" x1="0" y1="0" x2="${width}" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset=".33" stop-color="#8b5cf6"/>
+      <stop offset=".66" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="0 0;${width} 0" dur="9s" repeatCount="indefinite"/>
     </linearGradient>
-    <linearGradient id="accentTitle" x1="0" y1="0" x2="${width}" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#06b6d4"/>
-      <stop offset=".52" stop-color="#8b5cf6"/>
-      <stop offset="1" stop-color="#22c55e"/>
+    <linearGradient id="accentTitle" x1="0" y1="0" x2="${width}" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset=".33" stop-color="#8b5cf6"/>
+      <stop offset=".66" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="0 0;${width} 0" dur="7s" repeatCount="indefinite"/>
     </linearGradient>
     <style>
       .heroTitle{font:900 47px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}

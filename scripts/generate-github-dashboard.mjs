@@ -476,6 +476,10 @@ const renderStarChart = ({ stacked, theme, x, y, width, height, compact = false 
     </path>
     <circle cx="${f(totalPts[totalPts.length - 1].x)}" cy="${f(totalPts[totalPts.length - 1].y)}" r="3.5" fill="#fff" stroke="url(#accentTitle)" stroke-width="2" opacity="0">
       <animate attributeName="opacity" from="0" to="1" dur=".4s" begin="1.5s" fill="freeze"/>
+    </circle>
+    <circle cx="${f(totalPts[totalPts.length - 1].x)}" cy="${f(totalPts[totalPts.length - 1].y)}" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0">
+      <animate attributeName="r" values="3.5;12" dur="2s" begin="1.7s" repeatCount="indefinite" calcMode="spline" keySplines="0.2 0 0.4 1" keyTimes="0;1"/>
+      <animate attributeName="opacity" values=".7;0" dur="2s" begin="1.7s" repeatCount="indefinite"/>
     </circle>`;
 
   // Legend.
@@ -532,6 +536,7 @@ const renderLineChart = ({
   color,
   title,
   compact = false,
+  delay = 0,
 }) => {
   const padL = compact ? 34 : 40;
   const titleH = compact ? 30 : 34;
@@ -569,30 +574,37 @@ const renderLineChart = ({
     `M ${f(pts[0].x)} ${f(plotBottom)} ` +
     pts.map((pt) => `L ${f(pt.x)} ${f(pt.y)}`).join(" ") +
     ` L ${f(pts[n - 1].x)} ${f(plotBottom)} Z`;
-  const areaPath = `<path d="${areaD}" fill="${color}" fill-opacity="0" stroke="none"><animate attributeName="fill-opacity" from="0" to=".14" dur="1s" begin=".3s" fill="freeze"/></path>`;
+  const areaPath = `<path d="${areaD}" fill="${color}" fill-opacity="0" stroke="none"><animate attributeName="fill-opacity" from="0" to=".14" dur="1s" begin="${(delay + 0.3).toFixed(2)}s" fill="freeze"/></path>`;
 
   let len = 0;
   for (let i = 1; i < pts.length; i += 1) {
     len += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
   }
   len = Math.round(len);
-  const line = `<path d="${linePath}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"><animate attributeName="stroke-dashoffset" from="${len}" to="0" dur="1.3s" begin=".25s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1" values="${len};0"/></path>`;
+  const line = `<path d="${linePath}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}"><animate attributeName="stroke-dashoffset" from="${len}" to="0" dur="1.3s" begin="${(delay + 0.25).toFixed(2)}s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1" values="${len};0"/></path>`;
 
   const dots = pts
     .map((pt, i) => {
       const isLast = i === n - 1;
-      return `<circle cx="${f(pt.x)}" cy="${f(pt.y)}" r="${isLast ? 3.5 : 2.4}" fill="${isLast ? "#fff" : color}" stroke="${color}" stroke-width="${isLast ? 2 : 1}" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="${(0.4 + i * 0.04).toFixed(2)}s" fill="freeze"/></circle>`;
+      return `<circle cx="${f(pt.x)}" cy="${f(pt.y)}" r="${isLast ? 3.5 : 2.4}" fill="${isLast ? "#fff" : color}" stroke="${color}" stroke-width="${isLast ? 2 : 1}" opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".3s" begin="${(delay + 0.4 + i * 0.04).toFixed(2)}s" fill="freeze"/></circle>`;
     })
     .join("");
 
-  const last = pts[n - 1];
-  const labelAnchor = last.x > width - 40 ? "end" : "middle";
-  const lastVal = `<text x="${f(last.x)}" y="${f(last.y) - 9}" class="lang" text-anchor="${labelAnchor}" fill="${color}">${fmtInt(points[n - 1].value)}</text>`;
+  // Radar pulse at the latest data point.
+  const end = pts[n - 1];
+  const pulseBegin = (delay + 1.6).toFixed(2);
+  const pulse = `<circle cx="${f(end.x)}" cy="${f(end.y)}" r="3.5" fill="none" stroke="${color}" stroke-width="1.5" opacity="0">
+    <animate attributeName="r" values="3.5;11" dur="1.9s" begin="${pulseBegin}s" repeatCount="indefinite" calcMode="spline" keySplines="0.2 0 0.4 1" keyTimes="0;1"/>
+    <animate attributeName="opacity" values=".75;0" dur="1.9s" begin="${pulseBegin}s" repeatCount="indefinite"/>
+  </circle>`;
+
+  const labelAnchor = end.x > width - 40 ? "end" : "middle";
+  const lastVal = `<text x="${f(end.x)}" y="${f(end.y) - 9}" class="lang" text-anchor="${labelAnchor}" fill="${color}" opacity="0">${fmtInt(points[n - 1].value)}<animate attributeName="opacity" from="0" to="1" dur=".4s" begin="${(delay + 1.4).toFixed(2)}s" fill="freeze"/></text>`;
 
   return `
   <g transform="translate(${x} ${y})">
     <text x="0" y="16" class="sectionTitle">${escapeXml(title)}</text>
-    ${grids}${xticks}${areaPath}${line}${dots}${lastVal}
+    ${grids}${xticks}${areaPath}${line}${dots}${pulse}${lastVal}
   </g>`;
 };
 
@@ -655,14 +667,14 @@ const renderDesktop = ({ stats, languages, stacked, commits, citations, theme })
       ${languageRows({ languages, theme, x: 558, y: 80, width: 302, rowGap: 26 })}
 
       ${renderStarChart({ stacked, theme, x: 34, y: 332, width: 832, height: 162 })}
-      ${renderLineChart({ points: commits, theme, x: 34, y: 516, width: 400, height: 150, color: "#a78bfa", title: "Commits per year" })}
-      ${renderLineChart({ points: citations, theme, x: 466, y: 516, width: 400, height: 150, color: "#fbbf24", title: "Scholar citations" })}
+      ${renderLineChart({ points: commits, theme, x: 34, y: 514, width: 832, height: 158, color: "#a78bfa", title: "Commits per year", delay: 0.6 })}
+      ${renderLineChart({ points: citations, theme, x: 34, y: 690, width: 832, height: 158, color: "#fbbf24", title: "Scholar citations", delay: 1.1 })}
     </g>
   `;
 
   return shell({
     width: 900,
-    height: 824,
+    height: 1010,
     theme,
     body,
     desc: `Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}. Combined star history of ${STAR_REPOS.map((r) => r.name).join(", ")}.`,
@@ -689,8 +701,8 @@ const renderMobile = ({ stats, languages, stacked, commits, citations, theme }) 
       ${languageRows({ languages, theme, x: 28, y: 514, width: 314, rowGap: 27 })}
 
       ${renderStarChart({ stacked, theme, x: 28, y: 760, width: 314, height: 220, compact: true })}
-      ${renderLineChart({ points: commits, theme, x: 28, y: 1000, width: 314, height: 185, color: "#a78bfa", title: "Commits per year", compact: true })}
-      ${renderLineChart({ points: citations, theme, x: 28, y: 1205, width: 314, height: 185, color: "#fbbf24", title: "Scholar citations", compact: true })}
+      ${renderLineChart({ points: commits, theme, x: 28, y: 1000, width: 314, height: 185, color: "#a78bfa", title: "Commits per year", compact: true, delay: 0.6 })}
+      ${renderLineChart({ points: citations, theme, x: 28, y: 1205, width: 314, height: 185, color: "#fbbf24", title: "Scholar citations", compact: true, delay: 1.1 })}
     </g>
   `;
 

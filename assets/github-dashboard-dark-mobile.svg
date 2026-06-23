@@ -1,14 +1,23 @@
-<svg width="370" height="1135" viewBox="0 0 370 1135" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<svg width="370" height="1260" viewBox="0 0 370 1260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
   <desc id="desc">Mobile GitHub dashboard. Stars 48,858, commits 16,025, rank A+.</desc>
   
   <defs>
+    <linearGradient id="heroGradient" x1="0" y1="0" x2="370" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06b6d4"/>
+      <stop offset=".46" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
     <linearGradient id="accentTitle" x1="0" y1="0" x2="370" y2="0" gradientUnits="userSpaceOnUse">
       <stop stop-color="#06b6d4"/>
       <stop offset=".52" stop-color="#8b5cf6"/>
       <stop offset="1" stop-color="#22c55e"/>
     </linearGradient>
     <style>
+      .heroTitle{font:900 47px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
+      .heroTitleCompact{font:900 36px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
+      .heroDesc{font:800 15px Inter,Segoe UI,Arial,sans-serif;fill:#f8fbff;letter-spacing:0}
+      .heroMeta{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#eef6ff;letter-spacing:.08em;text-transform:uppercase}
       .title{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
       .titleAccent{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:url(#accentTitle);letter-spacing:0}
       .subtitle{font:500 13px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
@@ -26,89 +35,97 @@
     </style>
   </defs>
   
-    <text x="28" y="48" class="title">Xiang An</text>
-    <text x="28" y="84" class="titleAccent">GitHub stats</text>
     
-  <text x="28" y="122" class="typing" opacity="1">AI Researcher
+  <g>
+    <path d="M0 0H370V109C281 158 178 118 93 140C44 154 19 130 0 146Z" fill="url(#heroGradient)"/>
+    <path d="M0 92C104 130 215 96 370 120V148C229 114 96 156 0 124Z" fill="#ffffff" opacity=".18"/>
+    <text x="185" y="56" class="heroTitleCompact" text-anchor="middle">Xiang An</text>
+    <text x="185" y="86" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
+    <text x="185" y="111" class="heroMeta" text-anchor="middle">GitHub telemetry, trophies, and languages</text>
+  </g>
+    <g transform="translate(0 154)">
+      <text x="28" y="48" class="titleAccent">GitHub stats</text>
+      
+  <text x="28" y="86" class="typing" opacity="1">AI Researcher
     <animate attributeName="opacity" values="1;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="0.0s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="0.0s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">AI 研究者
+  <text x="28" y="86" class="typing" opacity="0">AI 研究者
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="2.2s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="2.2s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">Open-source Builder
+  <text x="28" y="86" class="typing" opacity="0">Open-source Builder
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="4.4s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="4.4s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">开源构建者
+  <text x="28" y="86" class="typing" opacity="0">开源构建者
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="6.6s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="6.6s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">Multimodal AI
+  <text x="28" y="86" class="typing" opacity="0">Multimodal AI
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="8.8s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="8.8s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">多模态 AI
+  <text x="28" y="86" class="typing" opacity="0">多模态 AI
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="11.0s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="11.0s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">Models that see + act
+  <text x="28" y="86" class="typing" opacity="0">Models that see + act
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="13.2s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="13.2s" repeatCount="indefinite"/>
   </text>
-  <text x="28" y="122" class="typing" opacity="0">看见、推理、行动
+  <text x="28" y="86" class="typing" opacity="0">看见、推理、行动
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
   </text>
-    <text x="28" y="152" class="tiny">Generated 2026-06-23</text>
+      <text x="28" y="116" class="tiny">Generated 2026-06-23</text>
 
-    
-  <g transform="translate(28 184)">
+      
+  <g transform="translate(28 148)">
     <text x="0" y="17" class="label">Stars</text>
     <text x="314" y="20" class="metricSmall" fill="#22d3ee" text-anchor="end">48,858</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#22d3ee" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#22d3ee" opacity=".9"/>
   </g>
-    
-  <g transform="translate(28 234)">
+      
+  <g transform="translate(28 198)">
     <text x="0" y="17" class="label">Commits</text>
     <text x="314" y="20" class="metricSmall" fill="#a78bfa" text-anchor="end">16,025</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#a78bfa" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#a78bfa" opacity=".9"/>
   </g>
-    
-  <g transform="translate(28 284)">
+      
+  <g transform="translate(28 248)">
     <text x="0" y="17" class="label">Pull requests</text>
     <text x="314" y="20" class="metricSmall" fill="#34d399" text-anchor="end">479</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#34d399" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#34d399" opacity=".9"/>
   </g>
-    
-  <g transform="translate(28 334)">
+      
+  <g transform="translate(28 298)">
     <text x="0" y="17" class="label">Issues</text>
     <text x="314" y="20" class="metricSmall" fill="#fbbf24" text-anchor="end">23</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#fbbf24" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#fbbf24" opacity=".9"/>
   </g>
-    
-  <g transform="translate(28 384)">
+      
+  <g transform="translate(28 348)">
     <text x="0" y="17" class="label">Contributed</text>
     <text x="314" y="20" class="metricSmall" fill="#fb7185" text-anchor="end">18</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#fb7185" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#fb7185" opacity=".9"/>
   </g>
-    
-  <g transform="translate(28 434)">
+      
+  <g transform="translate(28 398)">
     <text x="0" y="17" class="label">Rank</text>
     <text x="314" y="20" class="metricSmall" fill="#38bdf8" text-anchor="end">A+</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#38bdf8" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#38bdf8" opacity=".9"/>
   </g>
 
-    <text x="28" y="524" class="sectionTitle">Top languages</text>
-    
-        <g transform="translate(28 550)">
+      <text x="28" y="488" class="sectionTitle">Top languages</text>
+      
+        <g transform="translate(28 514)">
           <circle cx="7" cy="7" r="5" fill="#3572A5"/>
           <text x="20" y="11" class="lang">Python</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">81.12%</text>
@@ -117,7 +134,7 @@
             <animate attributeName="width" from="0" to="254.7" dur="1.1s" begin="0s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 577)">
+        <g transform="translate(28 541)">
           <circle cx="7" cy="7" r="5" fill="#e34c26"/>
           <text x="20" y="11" class="lang">HTML</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">12.21%</text>
@@ -126,7 +143,7 @@
             <animate attributeName="width" from="0" to="38.3" dur="1.1s" begin="0.08s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 604)">
+        <g transform="translate(28 568)">
           <circle cx="7" cy="7" r="5" fill="#89e051"/>
           <text x="20" y="11" class="lang">Shell</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">2.94%</text>
@@ -135,7 +152,7 @@
             <animate attributeName="width" from="0" to="9.2" dur="1.1s" begin="0.16s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 631)">
+        <g transform="translate(28 595)">
           <circle cx="7" cy="7" r="5" fill="#DA5B0B"/>
           <text x="20" y="11" class="lang">Jupyter Notebook</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">1.77%</text>
@@ -144,7 +161,7 @@
             <animate attributeName="width" from="0" to="8.0" dur="1.1s" begin="0.24s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 658)">
+        <g transform="translate(28 622)">
           <circle cx="7" cy="7" r="5" fill="#3A4E3A"/>
           <text x="20" y="11" class="lang">Cuda</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">0.66%</text>
@@ -153,7 +170,7 @@
             <animate attributeName="width" from="0" to="8.0" dur="1.1s" begin="0.32s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 685)">
+        <g transform="translate(28 649)">
           <circle cx="7" cy="7" r="5" fill="#f1e05a"/>
           <text x="20" y="11" class="lang">JavaScript</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">0.46%</text>
@@ -162,7 +179,7 @@
             <animate attributeName="width" from="0" to="8.0" dur="1.1s" begin="0.4s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 712)">
+        <g transform="translate(28 676)">
           <circle cx="7" cy="7" r="5" fill="#f34b7d"/>
           <text x="20" y="11" class="lang">C++</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">0.43%</text>
@@ -171,7 +188,7 @@
             <animate attributeName="width" from="0" to="8.0" dur="1.1s" begin="0.48s" fill="freeze"/>
           </rect>
         </g>
-        <g transform="translate(28 739)">
+        <g transform="translate(28 703)">
           <circle cx="7" cy="7" r="5" fill="#663399"/>
           <text x="20" y="11" class="lang">CSS</text>
           <text x="314" y="11" class="langPercent" text-anchor="end">0.41%</text>
@@ -181,43 +198,44 @@
           </rect>
         </g>
 
-    <text x="28" y="806" class="sectionTitle">GitHub trophies</text>
-    
-        <g transform="translate(28 834)">
+      <text x="28" y="770" class="sectionTitle">GitHub trophies</text>
+      
+        <g transform="translate(28 798)">
           <circle cx="16" cy="18" r="15" fill="#f59e0b" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
           <text x="42" y="16" class="trophyTitle">Commits</text>
           <text x="42" y="33" class="trophyScore">3.5kpt</text>
         </g>
-        <g transform="translate(28 882)">
+        <g transform="translate(28 846)">
           <circle cx="16" cy="18" r="15" fill="#f59e0b" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
           <text x="42" y="16" class="trophyTitle">Stars</text>
           <text x="42" y="33" class="trophyScore">524pt</text>
         </g>
-        <g transform="translate(28 930)">
+        <g transform="translate(28 894)">
           <circle cx="16" cy="18" r="15" fill="#f59e0b" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
           <text x="42" y="16" class="trophyTitle">Followers</text>
           <text x="42" y="33" class="trophyScore">289pt</text>
         </g>
-        <g transform="translate(28 978)">
+        <g transform="translate(28 942)">
           <circle cx="16" cy="18" r="15" fill="#f59e0b" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
           <text x="42" y="16" class="trophyTitle">PullRequest</text>
           <text x="42" y="33" class="trophyScore">223pt</text>
         </g>
-        <g transform="translate(28 1026)">
+        <g transform="translate(28 990)">
           <circle cx="16" cy="18" r="15" fill="#38bdf8" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#38bdf8">A</text>
           <text x="42" y="16" class="trophyTitle">Repositories</text>
           <text x="42" y="33" class="trophyScore">36pt</text>
         </g>
-        <g transform="translate(28 1074)">
+        <g transform="translate(28 1038)">
           <circle cx="16" cy="18" r="15" fill="#38bdf8" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#38bdf8">A</text>
           <text x="42" y="16" class="trophyTitle">Experience</text>
           <text x="42" y="33" class="trophyScore">32pt</text>
         </g>
+    </g>
   
 </svg>

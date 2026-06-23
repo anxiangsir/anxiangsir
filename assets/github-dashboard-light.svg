@@ -1,14 +1,23 @@
-<svg width="900" height="500" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<svg width="900" height="650" viewBox="0 0 900 650" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
   <desc id="desc">Stars 48,858, commits 16,025, rank A+.</desc>
   
   <defs>
+    <linearGradient id="heroGradient" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06b6d4"/>
+      <stop offset=".46" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
     <linearGradient id="accentTitle" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
       <stop stop-color="#06b6d4"/>
       <stop offset=".52" stop-color="#8b5cf6"/>
       <stop offset="1" stop-color="#22c55e"/>
     </linearGradient>
     <style>
+      .heroTitle{font:900 47px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
+      .heroTitleCompact{font:900 36px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
+      .heroDesc{font:800 15px Inter,Segoe UI,Arial,sans-serif;fill:#f8fbff;letter-spacing:0}
+      .heroMeta{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#eef6ff;letter-spacing:.08em;text-transform:uppercase}
       .title{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:#0f172a;letter-spacing:0}
       .titleAccent{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:url(#accentTitle);letter-spacing:0}
       .subtitle{font:500 13px Inter,Segoe UI,Arial,sans-serif;fill:#64748b;letter-spacing:0}
@@ -26,10 +35,18 @@
     </style>
   </defs>
   
-    <text x="34" y="52" class="title">Xiang An's</text>
-    <text x="224" y="52" class="titleAccent">GitHub stats</text>
-    <text x="34" y="80" class="subtitle">Private-instance telemetry from GitHub Readme Stats APIs</text>
     
+  <g>
+    <path d="M0 0H900V100C684 154 432 114 225 136C108 150 45 126 0 142Z" fill="url(#heroGradient)"/>
+    <path d="M0 88C252 126 522 92 900 116V144C558 110 234 152 0 120Z" fill="#ffffff" opacity=".18"/>
+    <text x="450" y="64" class="heroTitle" text-anchor="middle">Xiang An</text>
+    <text x="450" y="96" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
+    <text x="450" y="122" class="heroMeta" text-anchor="middle">GitHub telemetry, trophies, and languages</text>
+  </g>
+    <g transform="translate(0 150)">
+      <text x="34" y="52" class="titleAccent">GitHub stats</text>
+      <text x="34" y="80" class="subtitle">Private-instance telemetry from GitHub Readme Stats APIs</text>
+      
   <text x="34" y="115" class="typing" opacity="1">AI Researcher
     <animate attributeName="opacity" values="1;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="0.0s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="0.0s" repeatCount="indefinite"/>
@@ -62,47 +79,47 @@
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
   </text>
-    <text x="34" y="146" class="tiny">Generated 2026-06-23</text>
+      <text x="34" y="146" class="tiny">Generated 2026-06-23</text>
 
-    
+      
   <g transform="translate(34 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#22d3ee" opacity=".9"/>
     <text x="0" y="19" class="label">Stars</text>
     <text x="0" y="52" class="metric" fill="#22d3ee">48,858</text>
   </g>
-    
+      
   <g transform="translate(194 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#a78bfa" opacity=".9"/>
     <text x="0" y="19" class="label">Commits</text>
     <text x="0" y="52" class="metric" fill="#a78bfa">16,025</text>
   </g>
-    
+      
   <g transform="translate(354 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#34d399" opacity=".9"/>
     <text x="0" y="19" class="label">Pull requests</text>
     <text x="0" y="52" class="metric" fill="#34d399">479</text>
   </g>
-    
+      
   <g transform="translate(34 250)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#fbbf24" opacity=".9"/>
     <text x="0" y="19" class="label">Issues</text>
     <text x="0" y="52" class="metric" fill="#fbbf24">23</text>
   </g>
-    
+      
   <g transform="translate(194 250)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#fb7185" opacity=".9"/>
     <text x="0" y="19" class="label">Contributed</text>
     <text x="0" y="52" class="metric" fill="#fb7185">18</text>
   </g>
-    
+      
   <g transform="translate(354 250)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#38bdf8" opacity=".9"/>
     <text x="0" y="19" class="label">Rank</text>
     <text x="0" y="52" class="metric" fill="#38bdf8">A+</text>
   </g>
 
-    <text x="558" y="52" class="sectionTitle">Top languages</text>
-    
+      <text x="558" y="52" class="sectionTitle">Top languages</text>
+      
         <g transform="translate(558 80)">
           <circle cx="7" cy="7" r="5" fill="#3572A5"/>
           <text x="20" y="11" class="lang">Python</text>
@@ -176,8 +193,8 @@
           </rect>
         </g>
 
-    <text x="34" y="355" class="sectionTitle">Xiang An's GitHub trophies</text>
-    
+      <text x="34" y="355" class="sectionTitle">Xiang An's GitHub trophies</text>
+      
         <g transform="translate(34 380)">
           <circle cx="16" cy="18" r="15" fill="#f59e0b" fill-opacity=".16"/>
           <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
@@ -214,5 +231,6 @@
           <text x="42" y="16" class="trophyTitle">Experience</text>
           <text x="42" y="33" class="trophyScore">32pt</text>
         </g>
+    </g>
   
 </svg>

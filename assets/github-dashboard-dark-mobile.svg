@@ -17,11 +17,55 @@
       <stop offset="1" stop-color="#06b6d4"/>
       <animateTransform attributeName="gradientTransform" type="translate" values="0 0;370 0" dur="7s" repeatCount="indefinite"/>
     </linearGradient>
+    <linearGradient id="cineSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1230"/>
+      <stop offset="40%" stop-color="#3a2a5c"/>
+      <stop offset="70%" stop-color="#9c3f5e"/>
+      <stop offset="90%" stop-color="#e0683f"/>
+      <stop offset="100%" stop-color="#f7b15c"/>
+    </linearGradient>
+    <radialGradient id="cineSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e6"/>
+      <stop offset="34%" stop-color="#ffd98a"/>
+      <stop offset="100%" stop-color="#ffb24d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cineRay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe7b0" stop-opacity=".4"/>
+      <stop offset="100%" stop-color="#ffe7b0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cineM1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2f55"/><stop offset="100%" stop-color="#241a3a"/>
+    </linearGradient>
+    <linearGradient id="cineM2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d1730"/><stop offset="100%" stop-color="#0c0a1a"/>
+    </linearGradient>
+    <linearGradient id="cineGrade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff7828" stop-opacity=".22"/>
+      <stop offset="100%" stop-color="#142878" stop-opacity=".30"/>
+    </linearGradient>
+    <radialGradient id="cineVig" cx="50%" cy="42%" r="75%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity=".55"/>
+    </radialGradient>
+    <filter id="cineGrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n">
+        <animate attributeName="seed" values="1;9;3;7;2;8;4" dur="0.5s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="cineGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="cineText" x="-30%" y="-80%" width="160%" height="260%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="#1a0a26" flood-opacity="0.85"/>
+    </filter>
     <style>
       .heroTitle{font:900 47px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
       .heroTitleCompact{font:900 36px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
-      .heroDesc{font:800 15px Inter,Segoe UI,Arial,sans-serif;fill:#f8fbff;letter-spacing:0}
-      .heroMeta{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#eef6ff;letter-spacing:.08em;text-transform:uppercase}
+      .heroDesc{font:800 15px Inter,Segoe UI,Arial,sans-serif;fill:#fde7d6;letter-spacing:0}
+      .heroMeta{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#ffe6c4;letter-spacing:.08em;text-transform:uppercase}
       .title{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
       .titleAccent{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:url(#accentTitle);letter-spacing:0}
       .subtitle{font:500 13px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
@@ -35,15 +79,43 @@
       .tiny{font:600 10px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
     </style>
   </defs>
-  
-    
-  <g>
-    <path d="M0 0H370V109C281 158 178 118 93 140C44 154 19 130 0 146Z" fill="url(#heroGradient)"/>
-    <path d="M0 92C104 130 215 96 370 120V148C229 114 96 156 0 124Z" fill="#ffffff" opacity=".18"/>
-    <text x="185" y="56" class="heroTitleCompact" text-anchor="middle">Xiang An</text>
-    <text x="185" y="86" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
-    <text x="185" y="111" class="heroMeta" text-anchor="middle">GitHub telemetry, languages, and star growth</text>
-  </g>
+  <svg x="0" y="0" width="370" height="154" viewBox="0 0 370 154">
+    <rect x="0" y="0" width="370" height="154" fill="#0b1230"/>
+    <rect x="0" y="0" width="370" height="154" fill="url(#cineSky)"/>
+    <g fill="#fff"><circle cx="48" cy="26" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle><circle cx="104" cy="45" r="1.2"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="148" cy="20" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3.6s" repeatCount="indefinite"/></circle><circle cx="263" cy="31" r="1.2"><animate attributeName="opacity" values="1;.2;1" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="318" cy="51" r="1"><animate attributeName="opacity" values=".2;1;.2" dur="3.2s" repeatCount="indefinite"/></circle><circle cx="344" cy="25" r="1.2"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" repeatCount="indefinite"/></circle></g>
+    <g stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity="0">
+      <line x1="0" y1="0" x2="34" y2="13"/>
+      <animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="289 15;229 65" keyTimes="0;1" dur="9s" repeatCount="indefinite"/>
+    </g>
+    <circle cx="185" cy="154" r="126" fill="url(#cineSun)">
+      <animate attributeName="r" values="118;126;118" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="185" cy="154" r="34" fill="#fff4d6" filter="url(#cineGlow)"/>
+    <g opacity=".3" style="mix-blend-mode:screen">
+      <polygon points="185,154 155,31 215,31" fill="url(#cineRay)">
+        <animateTransform attributeName="transform" type="rotate" values="-5 185 154;5 185 154;-5 185 154" dur="14s" repeatCount="indefinite"/>
+      </polygon>
+    </g>
+    <path d="M-7 136 L48 111 L107 131 L174 106 L229 129 L296 109 L377 131 L377 185 L-7 185 Z" fill="url(#cineM1)"><animateTransform attributeName="transform" type="translate" values="0 0;10 0;0 0" dur="24s" repeatCount="indefinite"/></path>
+    <path d="M-7 143 L67 122 L148 143 L215 119 L296 143 L370 123 L377 143 L377 185 L-7 185 Z" fill="url(#cineM2)"><animateTransform attributeName="transform" type="translate" values="0 0;22 0;0 0" dur="24s" repeatCount="indefinite"/></path>
+    <g fill="none" stroke="#0d0a1a" stroke-width="2" stroke-linecap="round" opacity=".8">
+      <g><path d="M0 0 q6 -6 12 0 q6 -6 12 0"/>
+        <animateTransform attributeName="transform" type="translate" values="259 57;-37 40;-37 40" dur="16s" repeatCount="indefinite"/></g>
+      <g><path d="M0 0 q6 -6 12 0 q6 -6 12 0" transform="scale(.7)"/>
+        <animateTransform attributeName="transform" type="translate" values="333 80;67 62;67 62" dur="16s" begin="-3s" repeatCount="indefinite"/></g>
+    </g>
+    <rect x="0" y="0" width="370" height="154" fill="url(#cineGrade)" style="mix-blend-mode:soft-light"/>
+    <rect x="0" y="0" width="370" height="154" fill="url(#cineVig)"/>
+    <g filter="url(#cineText)">
+      <text x="185" y="56" class="heroTitleCompact" text-anchor="middle">Xiang An</text>
+      <text x="185" y="86" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
+      <text x="185" y="111" class="heroMeta" text-anchor="middle">GitHub telemetry, languages, and star growth</text>
+    </g>
+    <rect x="0" y="0" width="370" height="154" filter="url(#cineGrain)" opacity=".45" style="mix-blend-mode:overlay"/>
+    <rect x="0" y="0" width="370" height="4" fill="#000" opacity=".85"/>
+    <rect x="0" y="150" width="370" height="4" fill="#000" opacity=".85"/>
+  </svg>
     <g transform="translate(0 154)">
       <text x="28" y="48" class="titleAccent">GitHub stats</text>
       

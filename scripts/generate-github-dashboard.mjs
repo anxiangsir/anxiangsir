@@ -328,20 +328,87 @@ const renderTyping = ({ x, y, lines = typingLines }) => {
     .join("");
 };
 
-const renderHero = ({ width, height, compact = false }) => {
-  const waveStart = compact ? height - 45 : height - 50;
+// Layered mountain silhouette path closed off the bottom of the hero strip.
+const cineRidge = ({ width: W, height: H, anchors, fill, drift, dur }) => {
+  const pts = anchors
+    .map(([xf, yf], i) => `${i === 0 ? "M" : "L"}${(xf * W).toFixed(0)} ${(yf * H).toFixed(0)}`)
+    .join(" ");
+  const d = `${pts} L${(1.02 * W).toFixed(0)} ${(1.2 * H).toFixed(0)} L${(-0.02 * W).toFixed(0)} ${(1.2 * H).toFixed(0)} Z`;
+  return `<path d="${d}" fill="${fill}"><animateTransform attributeName="transform" type="translate" values="0 0;${drift} 0;0 0" dur="${dur}s" repeatCount="indefinite"/></path>`;
+};
+
+// Cinematic sunset hero: sky gradient, sun rising behind layered mountains,
+// twinkling stars, a shooting star, drifting birds, light rays, film grain,
+// vignette and thin letterbox bars. Replaces the old gradient-wave banner.
+// Rendered inside a nested <svg> so overflow is clipped to the strip.
+const renderHero = ({ width: W, height: H, compact = false }) => {
   const titleY = compact ? 56 : 64;
   const descY = compact ? 86 : 96;
-  const subY = compact ? 111 : 122;
+  const subY = compact ? 111 : 120;
+  const cx = (W / 2).toFixed(0);
+
+  const sunR = (H * 0.82).toFixed(0);
+  const coreR = (H * 0.22).toFixed(0);
+
+  const stars = [
+    [0.13, 0.17, 3], [0.28, 0.29, 2.4], [0.4, 0.13, 3.6],
+    [0.71, 0.2, 2.8], [0.86, 0.33, 3.2], [0.93, 0.16, 2.2],
+  ]
+    .map(
+      ([xf, yf, dur], i) =>
+        `<circle cx="${(xf * W).toFixed(0)}" cy="${(yf * H).toFixed(0)}" r="${1 + (i % 2) * 0.2}"><animate attributeName="opacity" values="${i % 2 ? "1;.2;1" : ".2;1;.2"}" dur="${dur}s" repeatCount="indefinite"/></circle>`,
+    )
+    .join("");
+
+  const farAnchors = [
+    [-0.02, 0.88], [0.13, 0.72], [0.29, 0.85], [0.47, 0.69],
+    [0.62, 0.84], [0.8, 0.71], [1.02, 0.85],
+  ];
+  const nearAnchors = [
+    [-0.02, 0.93], [0.18, 0.79], [0.4, 0.93], [0.58, 0.77],
+    [0.8, 0.93], [1.0, 0.8], [1.02, 0.93],
+  ];
+
+  const birdSpan = (frac) => (frac * W).toFixed(0);
 
   return `
-  <g>
-    <path d="M0 0H${width}V${waveStart}C${(width * 0.76).toFixed(0)} ${height + 4} ${(width * 0.48).toFixed(0)} ${height - 36} ${(width * 0.25).toFixed(0)} ${height - 14}C${(width * 0.12).toFixed(0)} ${height} ${(width * 0.05).toFixed(0)} ${height - 24} 0 ${height - 8}Z" fill="url(#heroGradient)"/>
-    <path d="M0 ${height - 62}C${(width * 0.28).toFixed(0)} ${height - 24} ${(width * 0.58).toFixed(0)} ${height - 58} ${width} ${height - 34}V${height - 6}C${(width * 0.62).toFixed(0)} ${height - 40} ${(width * 0.26).toFixed(0)} ${height + 2} 0 ${height - 30}Z" fill="#ffffff" opacity=".18"/>
-    <text x="${width / 2}" y="${titleY}" class="${compact ? "heroTitleCompact" : "heroTitle"}" text-anchor="middle">Xiang An</text>
-    <text x="${width / 2}" y="${descY}" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
-    <text x="${width / 2}" y="${subY}" class="heroMeta" text-anchor="middle">GitHub telemetry, languages, and star growth</text>
-  </g>`;
+  <svg x="0" y="0" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+    <rect x="0" y="0" width="${W}" height="${H}" fill="#0b1230"/>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#cineSky)"/>
+    <g fill="#fff">${stars}</g>
+    <g stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity="0">
+      <line x1="0" y1="0" x2="34" y2="13"/>
+      <animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="${birdSpan(0.78)} ${(0.1 * H).toFixed(0)};${birdSpan(0.62)} ${(0.42 * H).toFixed(0)}" keyTimes="0;1" dur="9s" repeatCount="indefinite"/>
+    </g>
+    <circle cx="${cx}" cy="${H}" r="${sunR}" fill="url(#cineSun)">
+      <animate attributeName="r" values="${(sunR * 0.94).toFixed(0)};${sunR};${(sunR * 0.94).toFixed(0)}" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="${cx}" cy="${H}" r="${coreR}" fill="#fff4d6" filter="url(#cineGlow)"/>
+    <g opacity=".3" style="mix-blend-mode:screen">
+      <polygon points="${cx},${H} ${(W * 0.42).toFixed(0)},${(H * 0.2).toFixed(0)} ${(W * 0.58).toFixed(0)},${(H * 0.2).toFixed(0)}" fill="url(#cineRay)">
+        <animateTransform attributeName="transform" type="rotate" values="-5 ${cx} ${H};5 ${cx} ${H};-5 ${cx} ${H}" dur="14s" repeatCount="indefinite"/>
+      </polygon>
+    </g>
+    ${cineRidge({ width: W, height: H, anchors: farAnchors, fill: "url(#cineM1)", drift: 10, dur: 24 })}
+    ${cineRidge({ width: W, height: H, anchors: nearAnchors, fill: "url(#cineM2)", drift: 22, dur: 24 })}
+    <g fill="none" stroke="#0d0a1a" stroke-width="2" stroke-linecap="round" opacity=".8">
+      <g><path d="M0 0 q6 -6 12 0 q6 -6 12 0"/>
+        <animateTransform attributeName="transform" type="translate" values="${birdSpan(0.7)} ${(0.37 * H).toFixed(0)};${birdSpan(-0.1)} ${(0.26 * H).toFixed(0)};${birdSpan(-0.1)} ${(0.26 * H).toFixed(0)}" dur="16s" repeatCount="indefinite"/></g>
+      <g><path d="M0 0 q6 -6 12 0 q6 -6 12 0" transform="scale(.7)"/>
+        <animateTransform attributeName="transform" type="translate" values="${birdSpan(0.9)} ${(0.52 * H).toFixed(0)};${birdSpan(0.18)} ${(0.4 * H).toFixed(0)};${birdSpan(0.18)} ${(0.4 * H).toFixed(0)}" dur="16s" begin="-3s" repeatCount="indefinite"/></g>
+    </g>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#cineGrade)" style="mix-blend-mode:soft-light"/>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#cineVig)"/>
+    <g filter="url(#cineText)">
+      <text x="${cx}" y="${titleY}" class="${compact ? "heroTitleCompact" : "heroTitle"}" text-anchor="middle">Xiang An</text>
+      <text x="${cx}" y="${descY}" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
+      <text x="${cx}" y="${subY}" class="heroMeta" text-anchor="middle">GitHub telemetry, languages, and star growth</text>
+    </g>
+    <rect x="0" y="0" width="${W}" height="${H}" filter="url(#cineGrain)" opacity=".45" style="mix-blend-mode:overlay"/>
+    <rect x="0" y="0" width="${W}" height="4" fill="#000" opacity=".85"/>
+    <rect x="0" y="${H - 4}" width="${W}" height="4" fill="#000" opacity=".85"/>
+  </svg>`;
 };
 
 const metricTile = ({ x, y, label, value, accent }) => `
@@ -631,11 +698,55 @@ const defs = (theme, width, height) => `
       <stop offset="1" stop-color="#06b6d4"/>
       <animateTransform attributeName="gradientTransform" type="translate" values="0 0;${width} 0" dur="7s" repeatCount="indefinite"/>
     </linearGradient>
+    <linearGradient id="cineSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1230"/>
+      <stop offset="40%" stop-color="#3a2a5c"/>
+      <stop offset="70%" stop-color="#9c3f5e"/>
+      <stop offset="90%" stop-color="#e0683f"/>
+      <stop offset="100%" stop-color="#f7b15c"/>
+    </linearGradient>
+    <radialGradient id="cineSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e6"/>
+      <stop offset="34%" stop-color="#ffd98a"/>
+      <stop offset="100%" stop-color="#ffb24d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cineRay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe7b0" stop-opacity=".4"/>
+      <stop offset="100%" stop-color="#ffe7b0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cineM1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2f55"/><stop offset="100%" stop-color="#241a3a"/>
+    </linearGradient>
+    <linearGradient id="cineM2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d1730"/><stop offset="100%" stop-color="#0c0a1a"/>
+    </linearGradient>
+    <linearGradient id="cineGrade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff7828" stop-opacity=".22"/>
+      <stop offset="100%" stop-color="#142878" stop-opacity=".30"/>
+    </linearGradient>
+    <radialGradient id="cineVig" cx="50%" cy="42%" r="75%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity=".55"/>
+    </radialGradient>
+    <filter id="cineGrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n">
+        <animate attributeName="seed" values="1;9;3;7;2;8;4" dur="0.5s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="cineGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="cineText" x="-30%" y="-80%" width="160%" height="260%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="#1a0a26" flood-opacity="0.85"/>
+    </filter>
     <style>
       .heroTitle{font:900 47px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
       .heroTitleCompact{font:900 36px Inter,Segoe UI,Arial,sans-serif;fill:#ffffff;letter-spacing:0}
-      .heroDesc{font:800 15px Inter,Segoe UI,Arial,sans-serif;fill:#f8fbff;letter-spacing:0}
-      .heroMeta{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#eef6ff;letter-spacing:.08em;text-transform:uppercase}
+      .heroDesc{font:800 15px Inter,Segoe UI,Arial,sans-serif;fill:#fde7d6;letter-spacing:0}
+      .heroMeta{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#ffe6c4;letter-spacing:.08em;text-transform:uppercase}
       .title{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:${theme.title};letter-spacing:0}
       .titleAccent{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:url(#accentTitle);letter-spacing:0}
       .subtitle{font:500 13px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
@@ -764,7 +875,14 @@ const main = async () => {
   }
 };
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+const invokedDirectly =
+  process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href;
+
+if (invokedDirectly) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
+
+export { renderHero, defs, shell, THEMES };

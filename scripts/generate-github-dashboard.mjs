@@ -4,8 +4,16 @@ const STATS_URL =
   "https://github-readme-stats-psi-plum-61.vercel.app/api?username=anxiangsir&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true";
 const LANGS_URL =
   "https://github-readme-stats-psi-plum-61.vercel.app/api/top-langs/?username=anxiangsir&layout=compact&hide_border=true&langs_count=8";
-const TROPHY_URL =
-  "https://gh-trophy.cdnsoft.net/?username=anxiangsir&theme=flat&no-frame=true&no-bg=true&margin-w=8&rank=SSS,SS,S,AAA,AA,A,B";
+// Flagship repositories whose star history is charted together (stacked).
+// Colors follow the hero gradient: cyan -> purple -> green.
+const STAR_REPOS = [
+  { name: "InsightFace", repo: "deepinsight/insightface", color: "#22d3ee" },
+  { name: "LLaVA-OneVision-2", repo: "EvolvingLMMs-Lab/LLaVA-OneVision-2", color: "#a78bfa" },
+  { name: "OneVision-Encoder", repo: "EvolvingLMMs-Lab/OneVision-Encoder", color: "#34d399" },
+];
+const STAR_SAMPLE_PAGES = 30; // evenly-spaced page samples per repo
+const STAR_GRID_POINTS = 60; // resampled timeline resolution for smooth curves
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
 
 const assetsDir = new URL("../assets/", import.meta.url);
 
@@ -103,29 +111,96 @@ const parseLanguages = (svg) => {
   });
 };
 
-const parseTrophies = (svg) => {
-  const texts = [
-    ...svg.matchAll(/<text[^>]*>\s*([^<]+?)\s*<\/text>/g),
-  ].map((match) => htmlDecode(match[1].trim()));
-  const rankPattern = /^(SSS|SS|S|AAA|AA|A|B|C)$/;
-  const trophies = [];
+// --- Star history -----------------------------------------------------------
 
-  for (let index = 0; index < texts.length; index += 1) {
-    if (!rankPattern.test(texts[index])) continue;
-    const title = texts[index + 1];
-    const subtitle = texts[index + 2];
-    const score = texts[index + 3];
-    if (!title || !subtitle || !score || rankPattern.test(title)) continue;
-
-    trophies.push({
-      rank: texts[index],
-      title,
-      score,
-    });
-    index += 3;
+const ghFetch = async (path) => {
+  const headers = {
+    Accept: "application/vnd.github.star+json",
+    "User-Agent": "anxiangsir-dashboard",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+  if (GITHUB_TOKEN) headers.Authorization = `Bearer ${GITHUB_TOKEN}`;
+  const response = await fetch(`https://api.github.com${path}`, { headers });
+  if (!response.ok) {
+    throw new Error(`GitHub API ${path} -> ${response.status}`);
   }
+  return response.json();
+};
 
-  return trophies.slice(0, 6);
+// Evenly-spaced page numbers across [1, totalPages], always including the last.
+const samplePages = (totalPages, count) => {
+  if (totalPages <= count) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  const pages = new Set([1, totalPages]);
+  for (let i = 1; i < count - 1; i += 1) {
+    pages.add(Math.round(1 + (i * (totalPages - 1)) / (count - 1)));
+  }
+  return [...pages].sort((a, b) => a - b);
+};
+
+// Returns { name, color, total, points:[{t,c}] } where t=ms, c=cumulative stars.
+const fetchStarSeries = async ({ name, repo, color }) => {
+  const meta = await ghFetch(`/repos/${repo}`);
+  const total = meta.stargazers_count;
+  const perPage = 100;
+  const totalPages = Math.min(Math.ceil(total / perPage), 400); // API caps at 400
+  const pages = samplePages(totalPages, STAR_SAMPLE_PAGES);
+
+  const pageData = await Promise.all(
+    pages.map(async (page) => {
+      const list = await ghFetch(
+        `/repos/${repo}/stargazers?per_page=${perPage}&page=${page}`,
+      );
+      const first = Array.isArray(list) ? list[0] : null;
+      if (!first?.starred_at) return null;
+      // Cumulative count at the first star of this page.
+      return { t: Date.parse(first.starred_at), c: (page - 1) * perPage + 1 };
+    }),
+  );
+
+  const points = pageData.filter(Boolean).sort((a, b) => a.t - b.t);
+  // Anchor the final point at the live total / now so the curve ends accurately.
+  points.push({ t: Date.now(), c: total });
+  return { name, color, total, points };
+};
+
+// Cumulative value of one series at time t (linear interpolation, 0 before start).
+const valueAt = (points, t) => {
+  if (!points.length || t < points[0].t) return 0;
+  if (t >= points[points.length - 1].t) return points[points.length - 1].c;
+  for (let i = 1; i < points.length; i += 1) {
+    if (t <= points[i].t) {
+      const a = points[i - 1];
+      const b = points[i];
+      const ratio = b.t === a.t ? 1 : (t - a.t) / (b.t - a.t);
+      return a.c + (b.c - a.c) * ratio;
+    }
+  }
+  return points[points.length - 1].c;
+};
+
+// Resample every series onto a shared timeline so the areas can be stacked.
+const buildStackedSeries = (seriesList) => {
+  const starts = seriesList.map((s) => s.points[0]?.t).filter(Boolean);
+  const minT = Math.min(...starts);
+  const maxT = Date.now();
+  const grid = Array.from({ length: STAR_GRID_POINTS }, (_, i) =>
+    Math.round(minT + ((maxT - minT) * i) / (STAR_GRID_POINTS - 1)),
+  );
+
+  const layers = seriesList.map((s) => ({
+    name: s.name,
+    color: s.color,
+    total: s.total,
+    values: grid.map((t) => valueAt(s.points, t)),
+  }));
+
+  const totals = grid.map((_, gi) =>
+    layers.reduce((sum, layer) => sum + layer.values[gi], 0),
+  );
+
+  return { grid, minT, maxT, layers, totals };
 };
 
 const typingLines = [
@@ -180,7 +255,7 @@ const renderHero = ({ width, height, compact = false }) => {
     <path d="M0 ${height - 62}C${(width * 0.28).toFixed(0)} ${height - 24} ${(width * 0.58).toFixed(0)} ${height - 58} ${width} ${height - 34}V${height - 6}C${(width * 0.62).toFixed(0)} ${height - 40} ${(width * 0.26).toFixed(0)} ${height + 2} 0 ${height - 30}Z" fill="#ffffff" opacity=".18"/>
     <text x="${width / 2}" y="${titleY}" class="${compact ? "heroTitleCompact" : "heroTitle"}" text-anchor="middle">Xiang An</text>
     <text x="${width / 2}" y="${descY}" class="heroDesc" text-anchor="middle">AI Research / Open Source / Multimodal Systems</text>
-    <text x="${width / 2}" y="${subY}" class="heroMeta" text-anchor="middle">GitHub telemetry, trophies, and languages</text>
+    <text x="${width / 2}" y="${subY}" class="heroMeta" text-anchor="middle">GitHub telemetry, languages, and star growth</text>
   </g>`;
 };
 
@@ -218,24 +293,140 @@ const languageRows = ({ languages, theme, x, y, width, rowGap = 28 }) =>
     })
     .join("");
 
-const trophyPills = ({ trophies, x, y, columns, gapX, gapY, w, theme }) =>
-  trophies
-    .map((trophy, index) => {
-      const rankColor =
-        trophy.rank === "S" || trophy.rank === "SS" || trophy.rank === "SSS"
-          ? "#f59e0b"
-          : "#38bdf8";
-      const itemX = x + (index % columns) * gapX;
-      const itemY = y + Math.floor(index / columns) * gapY;
-      return `
-        <g transform="translate(${itemX} ${itemY})">
-          <circle cx="16" cy="18" r="15" fill="${rankColor}" fill-opacity=".16"/>
-          <text x="16" y="23" class="trophyRank" text-anchor="middle" fill="${rankColor}">${escapeXml(trophy.rank)}</text>
-          <text x="42" y="16" class="trophyTitle">${escapeXml(trophy.title)}</text>
-          <text x="42" y="33" class="trophyScore">${escapeXml(trophy.score)}</text>
-        </g>`;
-    })
-    .join("");
+const f = (n) => Number(n.toFixed(1));
+const fmtInt = (n) => Math.round(n).toLocaleString("en-US");
+const fmtAxis = (n) => (n >= 1000 ? `${Math.round(n / 1000)}k` : `${n}`);
+
+// Catmull-Rom -> cubic bezier command chain (assumes current point == pts[0]).
+const curveCmds = (pts) => {
+  let d = "";
+  for (let i = 0; i < pts.length - 1; i += 1) {
+    const p0 = pts[i - 1] || pts[i];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[i + 2] || p2;
+    const c1x = p1.x + (p2.x - p0.x) / 6;
+    const c1y = p1.y + (p2.y - p0.y) / 6;
+    const c2x = p2.x - (p3.x - p1.x) / 6;
+    const c2y = p2.y - (p3.y - p1.y) / 6;
+    d += ` C ${f(c1x)} ${f(c1y)}, ${f(c2x)} ${f(c2y)}, ${f(p2.x)} ${f(p2.y)}`;
+  }
+  return d;
+};
+
+// Stacked-area chart of cumulative stars across the flagship repos.
+const renderStarChart = ({ stacked, theme, x, y, width, height, compact = false }) => {
+  const { grid, minT, maxT, layers, totals } = stacked;
+  const padL = compact ? 38 : 46;
+  const titleH = compact ? 56 : 34;
+  const xLabH = 20;
+  const plotTop = titleH;
+  const plotBottom = height - xLabH;
+  const plotH = plotBottom - plotTop;
+  const plotW = width - padL;
+
+  const peak = Math.max(...totals, 1);
+  const niceMax = Math.max(10000, Math.ceil(peak / 10000) * 10000);
+  const tickStep = niceMax > 60000 ? 20000 : 10000;
+
+  const xScale = (t) => padL + ((t - minT) / (maxT - minT || 1)) * plotW;
+  const yScale = (v) => plotBottom - (v / niceMax) * plotH;
+  const toPts = (vals) => vals.map((v, gi) => ({ x: xScale(grid[gi]), y: yScale(v) }));
+
+  // Horizontal gridlines + y labels.
+  let grids = "";
+  for (let v = 0; v <= niceMax; v += tickStep) {
+    const gy = f(yScale(v));
+    grids += `
+    <line x1="${padL}" y1="${gy}" x2="${width}" y2="${gy}" stroke="${theme.track}" stroke-width="1" opacity=".6"/>
+    <text x="${padL - 8}" y="${gy + 3}" class="tiny" text-anchor="end">${fmtAxis(v)}</text>`;
+  }
+
+  // Year ticks every 2 years.
+  let xticks = "";
+  const startYear = new Date(minT).getUTCFullYear();
+  const endYear = new Date(maxT).getUTCFullYear();
+  const yearStep = endYear - startYear > 10 ? 3 : 2;
+  for (let yr = Math.ceil(startYear / yearStep) * yearStep; yr <= endYear; yr += yearStep) {
+    const t = Date.UTC(yr, 0, 1);
+    if (t < minT || t > maxT) continue;
+    xticks += `<text x="${f(xScale(t))}" y="${plotBottom + 15}" class="tiny" text-anchor="middle">${yr}</text>`;
+  }
+
+  // Cumulative stacked tops: stackTops[k] = sum of layers[0..k] at each grid point.
+  const stackTops = [];
+  const running = grid.map(() => 0);
+  for (const layer of layers) {
+    for (let gi = 0; gi < grid.length; gi += 1) running[gi] += layer.values[gi];
+    stackTops.push(running.slice());
+  }
+
+  // Bands painted bottom -> top (disjoint, no overlap).
+  let bands = "";
+  for (let k = 0; k < layers.length; k += 1) {
+    const topPts = toPts(stackTops[k]);
+    const botVals = k === 0 ? grid.map(() => 0) : stackTops[k - 1];
+    const botPts = toPts(botVals);
+    const botRev = [...botPts].reverse();
+    const d =
+      `M ${f(topPts[0].x)} ${f(topPts[0].y)}` +
+      curveCmds(topPts) +
+      ` L ${f(botRev[0].x)} ${f(botRev[0].y)}` +
+      curveCmds(botRev) +
+      " Z";
+    bands += `
+    <path d="${d}" fill="${layers[k].color}" fill-opacity="${0.32 - k * 0.04}" stroke="none">
+      <animate attributeName="fill-opacity" from="0" to="${0.32 - k * 0.04}" dur="1s" begin="${0.15 * k}s" fill="freeze"/>
+    </path>
+    <path d="M ${f(topPts[0].x)} ${f(topPts[0].y)}${curveCmds(topPts)}" fill="none" stroke="${layers[k].color}" stroke-width="1.6" stroke-linecap="round" stroke-opacity=".95"/>`;
+  }
+
+  // Total line (top of the highest band) with a draw-in animation.
+  const totalPts = toPts(stackTops[stackTops.length - 1]);
+  const totalPath = `M ${f(totalPts[0].x)} ${f(totalPts[0].y)}${curveCmds(totalPts)}`;
+  const len = Math.round(plotW * 1.6);
+  const totalLine = `
+    <path d="${totalPath}" fill="none" stroke="url(#accentTitle)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="${len}" stroke-dashoffset="${len}">
+      <animate attributeName="stroke-dashoffset" from="${len}" to="0" dur="1.4s" begin="0.2s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1" values="${len};0"/>
+    </path>
+    <circle cx="${f(totalPts[totalPts.length - 1].x)}" cy="${f(totalPts[totalPts.length - 1].y)}" r="3.5" fill="#fff" stroke="url(#accentTitle)" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur=".4s" begin="1.5s" fill="freeze"/>
+    </circle>`;
+
+  // Legend.
+  const grandTotal = layers.reduce((s, l) => s + l.total, 0);
+  let legend = "";
+  if (compact) {
+    legend = layers
+      .map((l, i) => {
+        const ly = 24 + i * 15;
+        return `
+    <circle cx="4" cy="${ly - 3}" r="4" fill="${l.color}"/>
+    <text x="14" y="${ly}" class="lang">${escapeXml(l.name)}</text>
+    <text x="${width}" y="${ly}" class="langPercent" text-anchor="end">${fmtInt(l.total)}</text>`;
+      })
+      .join("");
+  } else {
+    let cursor = 150;
+    legend = layers
+      .map((l) => {
+        const label = `${l.name}  ${fmtInt(l.total)}`;
+        const seg = `
+    <circle cx="${cursor}" cy="11" r="4" fill="${l.color}"/>
+    <text x="${cursor + 11}" y="15" class="lang">${escapeXml(l.name)}</text>
+    <text x="${cursor + 13 + l.name.length * 6.6}" y="15" class="langPercent">${fmtInt(l.total)}</text>`;
+        cursor += 24 + (label.length) * 6.5;
+        return seg;
+      })
+      .join("");
+  }
+
+  return `
+  <g transform="translate(${x} ${y})">
+    <text x="0" y="16" class="sectionTitle">Star growth</text>
+    ${legend}${grids}${xticks}${bands}${totalLine}
+  </g>`;
+};
 
 const defs = (theme, width, height) => `
   <defs>
@@ -265,9 +456,6 @@ const defs = (theme, width, height) => `
       .lang{font:700 12px Inter,Segoe UI,Arial,sans-serif;fill:${theme.text};letter-spacing:0}
       .langPercent{font:700 12px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
       .tiny{font:600 10px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
-      .trophyRank{font:900 11px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
-      .trophyTitle{font:800 12px Inter,Segoe UI,Arial,sans-serif;fill:${theme.text};letter-spacing:0}
-      .trophyScore{font:700 10px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
     </style>
   </defs>`;
 
@@ -278,7 +466,7 @@ const shell = ({ width, height, theme, body, desc }) => `<svg width="${width}" h
   ${body}
 </svg>`;
 
-const renderDesktop = ({ stats, languages, trophies, theme }) => {
+const renderDesktop = ({ stats, languages, stacked, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
     ${renderHero({ width: 900, height: DESKTOP_HERO_HEIGHT })}
@@ -298,8 +486,7 @@ const renderDesktop = ({ stats, languages, trophies, theme }) => {
       <text x="558" y="52" class="sectionTitle">Top languages</text>
       ${languageRows({ languages, theme, x: 558, y: 80, width: 302, rowGap: 26 })}
 
-      <text x="34" y="355" class="sectionTitle">Xiang An's GitHub trophies</text>
-      ${trophyPills({ trophies, theme, x: 34, y: 380, columns: 3, gapX: 174, gapY: 47, w: 150 })}
+      ${renderStarChart({ stacked, theme, x: 34, y: 332, width: 832, height: 162 })}
     </g>
   `;
 
@@ -308,11 +495,11 @@ const renderDesktop = ({ stats, languages, trophies, theme }) => {
     height: 650,
     theme,
     body,
-    desc: `Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}.`,
+    desc: `Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}. Combined star history of ${STAR_REPOS.map((r) => r.name).join(", ")}.`,
   });
 };
 
-const renderMobile = ({ stats, languages, trophies, theme }) => {
+const renderMobile = ({ stats, languages, stacked, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
     ${renderHero({ width: 370, height: MOBILE_HERO_HEIGHT, compact: true })}
@@ -331,14 +518,13 @@ const renderMobile = ({ stats, languages, trophies, theme }) => {
       <text x="28" y="488" class="sectionTitle">Top languages</text>
       ${languageRows({ languages, theme, x: 28, y: 514, width: 314, rowGap: 27 })}
 
-      <text x="28" y="770" class="sectionTitle">GitHub trophies</text>
-      ${trophyPills({ trophies, theme, x: 28, y: 798, columns: 1, gapX: 0, gapY: 48, w: 314 })}
+      ${renderStarChart({ stacked, theme, x: 28, y: 760, width: 314, height: 220, compact: true })}
     </g>
   `;
 
   return shell({
     width: 370,
-    height: 1260,
+    height: 1150,
     theme,
     body,
     desc: `Mobile GitHub dashboard. Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}.`,
@@ -346,28 +532,28 @@ const renderMobile = ({ stats, languages, trophies, theme }) => {
 };
 
 const main = async () => {
-  const [statsSvg, langsSvg, trophySvg] = await Promise.all([
+  const [statsSvg, langsSvg, starSeries] = await Promise.all([
     fetchText(STATS_URL),
     fetchText(LANGS_URL),
-    fetchText(TROPHY_URL),
+    Promise.all(STAR_REPOS.map(fetchStarSeries)),
   ]);
   const stats = parseStats(statsSvg);
   const languages = parseLanguages(langsSvg);
-  const trophies = parseTrophies(trophySvg);
+  const stacked = buildStackedSeries(starSeries);
   if (!languages.length) throw new Error("Could not parse languages");
-  if (!trophies.length) throw new Error("Could not parse trophies");
+  if (!stacked.layers.length) throw new Error("Could not build star series");
 
   await mkdir(assetsDir, { recursive: true });
   const outputs = [
-    [FILES.dark, renderDesktop({ stats, languages, trophies, theme: THEMES.dark })],
-    [FILES.light, renderDesktop({ stats, languages, trophies, theme: THEMES.light })],
+    [FILES.dark, renderDesktop({ stats, languages, stacked, theme: THEMES.dark })],
+    [FILES.light, renderDesktop({ stats, languages, stacked, theme: THEMES.light })],
     [
       FILES.darkMobile,
-      renderMobile({ stats, languages, trophies, theme: THEMES.dark }),
+      renderMobile({ stats, languages, stacked, theme: THEMES.dark }),
     ],
     [
       FILES.lightMobile,
-      renderMobile({ stats, languages, trophies, theme: THEMES.light }),
+      renderMobile({ stats, languages, stacked, theme: THEMES.light }),
     ],
   ];
 

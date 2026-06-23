@@ -17,6 +17,8 @@ jobs:
 
       - name: Generate dashboard
         run: node scripts/generate-github-dashboard.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit dashboard
         run: |

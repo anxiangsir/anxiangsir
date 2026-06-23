@@ -1,6 +1,6 @@
 <svg width="370" height="1260" viewBox="0 0 370 1260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
-  <desc id="desc">Mobile GitHub dashboard. Stars 48,858, commits 16,025, rank A+.</desc>
+  <desc id="desc">Mobile GitHub dashboard. Stars 48,860, commits 16,028, rank A+.</desc>
   
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="370" y2="0" gradientUnits="userSpaceOnUse">
@@ -83,14 +83,14 @@
       
   <g transform="translate(28 148)">
     <text x="0" y="17" class="label">Stars</text>
-    <text x="314" y="20" class="metricSmall" fill="#22d3ee" text-anchor="end">48,858</text>
+    <text x="314" y="20" class="metricSmall" fill="#22d3ee" text-anchor="end">48,860</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#22d3ee" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#22d3ee" opacity=".9"/>
   </g>
       
   <g transform="translate(28 198)">
     <text x="0" y="17" class="label">Commits</text>
-    <text x="314" y="20" class="metricSmall" fill="#a78bfa" text-anchor="end">16,025</text>
+    <text x="314" y="20" class="metricSmall" fill="#a78bfa" text-anchor="end">16,028</text>
     <rect x="0" y="31" width="314" height="4" rx="2" fill="#a78bfa" opacity=".14"/>
     <rect x="0" y="31" width="44" height="4" rx="2" fill="#a78bfa" opacity=".9"/>
   </g>
@@ -128,16 +128,16 @@
         <g transform="translate(28 514)">
           <circle cx="7" cy="7" r="5" fill="#3572A5"/>
           <text x="20" y="11" class="lang">Python</text>
-          <text x="314" y="11" class="langPercent" text-anchor="end">81.12%</text>
+          <text x="314" y="11" class="langPercent" text-anchor="end">81.09%</text>
           <rect x="0" y="17" width="314" height="6" rx="3" fill="#e2e8f0"/>
-          <rect x="0" y="17" width="254.7" height="6" rx="3" fill="#3572A5">
-            <animate attributeName="width" from="0" to="254.7" dur="1.1s" begin="0s" fill="freeze"/>
+          <rect x="0" y="17" width="254.6" height="6" rx="3" fill="#3572A5">
+            <animate attributeName="width" from="0" to="254.6" dur="1.1s" begin="0s" fill="freeze"/>
           </rect>
         </g>
         <g transform="translate(28 541)">
           <circle cx="7" cy="7" r="5" fill="#e34c26"/>
           <text x="20" y="11" class="lang">HTML</text>
-          <text x="314" y="11" class="langPercent" text-anchor="end">12.21%</text>
+          <text x="314" y="11" class="langPercent" text-anchor="end">12.20%</text>
           <rect x="0" y="17" width="314" height="6" rx="3" fill="#e2e8f0"/>
           <rect x="0" y="17" width="38.3" height="6" rx="3" fill="#e34c26">
             <animate attributeName="width" from="0" to="38.3" dur="1.1s" begin="0.08s" fill="freeze"/>
@@ -173,7 +173,7 @@
         <g transform="translate(28 649)">
           <circle cx="7" cy="7" r="5" fill="#f1e05a"/>
           <text x="20" y="11" class="lang">JavaScript</text>
-          <text x="314" y="11" class="langPercent" text-anchor="end">0.46%</text>
+          <text x="314" y="11" class="langPercent" text-anchor="end">0.49%</text>
           <rect x="0" y="17" width="314" height="6" rx="3" fill="#e2e8f0"/>
           <rect x="0" y="17" width="8.0" height="6" rx="3" fill="#f1e05a">
             <animate attributeName="width" from="0" to="8.0" dur="1.1s" begin="0.4s" fill="freeze"/>

@@ -6,19 +6,9 @@
   <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/Portfolio-Visit_Website-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"></a>
   <a href="https://scholar.google.com.hk/citations?hl=en&user=1ckaPgwAAAAJ&view_op=list_works&sortby=pubdate"><img src="https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Google Scholar"></a>
   <a href="https://anxiangsir.github.io/pages/chat/"><img src="https://img.shields.io/badge/AI_Agent-Chat-10B981?style=for-the-badge&logo=openai&logoColor=white" alt="Chat with AI Agent"></a>
-</p>
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&pause=1000&color=0E75B6&center=true&width=760&lines=AI+Researcher;Open-source+Builder;Multimodal+Systems;Making+models+see%2C+reason%2C+and+act" alt="Typing SVG">
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=anxiangsir&style=flat-square&color=0e75b6" alt="Profile views">
-  <a href="https://github.com/anxiangsir?tab=followers"><img src="https://img.shields.io/github/followers/anxiangsir?label=Followers&style=flat-square&color=0e75b6" alt="GitHub followers"></a>
-  <a href="https://github.com/anxiangsir?tab=repositories"><img src="https://img.shields.io/github/stars/anxiangsir?affiliations=OWNER%2CCOLLABORATOR&style=flat-square&color=0e75b6" alt="GitHub stars"></a>
-</p>
-
-<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=anxiangsir&style=for-the-badge&color=0e75b6" alt="Profile views">
+  <a href="https://github.com/anxiangsir?tab=followers"><img src="https://img.shields.io/github/followers/anxiangsir?label=Followers&style=for-the-badge&color=0e75b6&logo=github" alt="GitHub followers"></a>
+  <a href="https://github.com/anxiangsir?tab=repositories"><img src="https://img.shields.io/github/stars/anxiangsir?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&color=0e75b6&logo=github" alt="GitHub stars"></a>
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
   <img src="https://img.shields.io/badge/Multimodal_AI-111827?style=for-the-badge&logo=githubcopilot&logoColor=white" alt="Multimodal AI">
@@ -27,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img data-showcase src="megatron.gif" alt="Showcase" width="420">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&pause=1000&color=0E75B6&center=true&width=760&lines=AI+Researcher;Open-source+Builder;Multimodal+Systems;Making+models+see%2C+reason%2C+and+act" alt="Typing SVG">
 </p>
 
 <p align="center">
@@ -44,52 +34,12 @@
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=anxiangsir&theme=github" alt="GitHub profile summary">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake.svg">
+    <img src="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake.svg" alt="Contribution snake">
+  </picture>
 </p>
-
-<p align="center">
-  <a href="https://github.com/anxiangsir/torchfaiss"><img src="https://github-readme-stats-psi-plum-61.vercel.app/api/pin/?username=anxiangsir&repo=torchfaiss&show_owner=true&hide_border=true" alt="torchfaiss"></a>
-  <a href="https://github.com/anxiangsir/llava_onevision1_5"><img src="https://github-readme-stats-psi-plum-61.vercel.app/api/pin/?username=anxiangsir&repo=llava_onevision1_5&show_owner=true&hide_border=true" alt="llava_onevision1_5"></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/anxiangsir/anxiangsir.github.io"><img src="https://github-readme-stats-psi-plum-61.vercel.app/api/pin/?username=anxiangsir&repo=anxiangsir.github.io&show_owner=true&hide_border=true" alt="anxiangsir.github.io"></a>
-  <a href="https://github.com/anxiangsir/opencode_feishu"><img src="https://github-readme-stats-psi-plum-61.vercel.app/api/pin/?username=anxiangsir&repo=opencode_feishu&show_owner=true&hide_border=true" alt="opencode_feishu"></a>
-</p>
-
-<details>
-  <summary>More GitHub Signals</summary>
-
-  <p align="center">
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=anxiangsir&theme=github" alt="Repos per language">
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=anxiangsir&theme=github" alt="Most commit language">
-  </p>
-
-  <p align="center">
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=anxiangsir&theme=github" alt="GitHub summary stats">
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=anxiangsir&theme=github&utcOffset=8" alt="Productive time">
-  </p>
-
-  <p align="center">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=anxiangsir&theme=github-compact&hide_border=true&area=true" alt="GitHub activity graph">
-  </p>
-</details>
-
-<details open>
-  <summary>Contribution Art</summary>
-
-  <p align="center">
-    <img src="https://raw.githubusercontent.com/anxiangsir/anxiangsir/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D contribution profile">
-  </p>
-
-  <p align="center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake.svg">
-      <img src="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake.svg" alt="Contribution snake">
-    </picture>
-  </p>
-</details>
 
 <p align="center">
   <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=light" alt="Random developer quote">

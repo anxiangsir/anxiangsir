@@ -1,4 +1,4 @@
-<svg width="900" height="450" viewBox="0 0 900 450" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<svg width="900" height="500" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
   <desc id="desc">Stars 48,858, commits 16,025, rank A+.</desc>
   
@@ -12,7 +12,7 @@
       .title{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:#0f172a;letter-spacing:0}
       .titleAccent{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:url(#accentTitle);letter-spacing:0}
       .subtitle{font:500 13px Inter,Segoe UI,Arial,sans-serif;fill:#64748b;letter-spacing:0}
-      .typing{font:700 18px Fira Code,Consolas,monospace;fill:#0ea5e9;letter-spacing:0}
+      .typing{font:800 18px Inter,"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#0ea5e9;letter-spacing:0}
       .label{font:800 10px Inter,Segoe UI,Arial,sans-serif;fill:#64748b;text-transform:uppercase;letter-spacing:.08em}
       .metric{font:800 29px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
       .metricSmall{font:800 22px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
@@ -27,22 +27,42 @@
   </defs>
   
     <text x="34" y="52" class="title">Xiang An's</text>
-    <text x="196" y="52" class="titleAccent">GitHub stats</text>
+    <text x="224" y="52" class="titleAccent">GitHub stats</text>
     <text x="34" y="80" class="subtitle">Private-instance telemetry from GitHub Readme Stats APIs</text>
     
-  <text x="34" y="111" class="typing" opacity="1">AI Researcher
-    <animate attributeName="opacity" values="1;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+  <text x="34" y="115" class="typing" opacity="1">AI Researcher
+    <animate attributeName="opacity" values="1;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="0.0s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="0.0s" repeatCount="indefinite"/>
   </text>
-  <text x="34" y="111" class="typing" opacity="0">Open-source Builder
-    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+  <text x="34" y="115" class="typing" opacity="0">AI 研究者
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="2.2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="2.2s" repeatCount="indefinite"/>
   </text>
-  <text x="34" y="111" class="typing" opacity="0">Multimodal Systems
-    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="6s" repeatCount="indefinite"/>
+  <text x="34" y="115" class="typing" opacity="0">Open-source Builder
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="4.4s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="4.4s" repeatCount="indefinite"/>
   </text>
-  <text x="34" y="111" class="typing" opacity="0">Making models see, reason, and act
-    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="9s" repeatCount="indefinite"/>
+  <text x="34" y="115" class="typing" opacity="0">开源构建者
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="6.6s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="6.6s" repeatCount="indefinite"/>
   </text>
-    <text x="34" y="136" class="tiny">Generated 2026-06-23</text>
+  <text x="34" y="115" class="typing" opacity="0">Multimodal Systems
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="8.8s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="8.8s" repeatCount="indefinite"/>
+  </text>
+  <text x="34" y="115" class="typing" opacity="0">多模态系统
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="11.0s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="11.0s" repeatCount="indefinite"/>
+  </text>
+  <text x="34" y="115" class="typing" opacity="0">Models that see, reason, and act
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="13.2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="13.2s" repeatCount="indefinite"/>
+  </text>
+  <text x="34" y="115" class="typing" opacity="0">让模型看见、推理、行动
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
+  </text>
+    <text x="34" y="146" class="tiny">Generated 2026-06-23</text>
 
     
   <g transform="translate(34 166)">

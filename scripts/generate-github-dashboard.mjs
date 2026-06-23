@@ -127,27 +127,43 @@ const parseTrophies = (svg) => {
 
 const typingLines = [
   "AI Researcher",
+  "AI 研究者",
   "Open-source Builder",
+  "开源构建者",
   "Multimodal Systems",
-  "Making models see, reason, and act",
+  "多模态系统",
+  "Models that see, reason, and act",
+  "让模型看见、推理、行动",
 ];
 
 const mobileTypingLines = [
   "AI Researcher",
+  "AI 研究者",
   "Open-source Builder",
+  "开源构建者",
   "Multimodal AI",
+  "多模态 AI",
   "Models that see + act",
+  "看见、推理、行动",
 ];
 
-const renderTyping = ({ x, y, lines = typingLines }) =>
-  lines
-    .map(
-      (line, index) => `
+const renderTyping = ({ x, y, lines = typingLines }) => {
+  const slotSeconds = 2.2;
+  const cycleSeconds = lines.length * slotSeconds;
+  const visibleUntil = 1 / lines.length;
+  const fade = Math.min(0.035, visibleUntil / 3);
+
+  return lines
+    .map((line, index) => {
+      const values = index === 0 ? "1;1;1;0;0" : "0;1;1;0;0";
+      return `
   <text x="${x}" y="${y}" class="typing" opacity="${index === 0 ? 1 : 0}">${escapeXml(line)}
-    <animate attributeName="opacity" values="${index === 0 ? "1;1;1;0;0" : "0;1;1;0;0"}" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="${index * 3}s" repeatCount="indefinite"/>
-  </text>`,
-    )
+    <animate attributeName="opacity" values="${values}" keyTimes="0;${fade};${Math.max(fade, visibleUntil - fade)};${visibleUntil};1" dur="${cycleSeconds}s" begin="${(index * slotSeconds).toFixed(1)}s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;${fade};${Math.max(fade, visibleUntil - fade)};${visibleUntil};1" dur="${cycleSeconds}s" begin="${(index * slotSeconds).toFixed(1)}s" repeatCount="indefinite"/>
+  </text>`;
+    })
     .join("");
+};
 
 const metricTile = ({ x, y, label, value, accent }) => `
   <g transform="translate(${x} ${y})">
@@ -213,7 +229,7 @@ const defs = (theme, width, height) => `
       .title{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:${theme.title};letter-spacing:0}
       .titleAccent{font:800 31px Inter,Segoe UI,Arial,sans-serif;fill:url(#accentTitle);letter-spacing:0}
       .subtitle{font:500 13px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
-      .typing{font:700 18px Fira Code,Consolas,monospace;fill:#0ea5e9;letter-spacing:0}
+      .typing{font:800 18px Inter,"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#0ea5e9;letter-spacing:0}
       .label{font:800 10px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};text-transform:uppercase;letter-spacing:.08em}
       .metric{font:800 29px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
       .metricSmall{font:800 22px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
@@ -238,10 +254,10 @@ const renderDesktop = ({ stats, languages, trophies, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
     <text x="34" y="52" class="title">Xiang An's</text>
-    <text x="196" y="52" class="titleAccent">GitHub stats</text>
+    <text x="224" y="52" class="titleAccent">GitHub stats</text>
     <text x="34" y="80" class="subtitle">Private-instance telemetry from GitHub Readme Stats APIs</text>
-    ${renderTyping({ x: 34, y: 111 })}
-    <text x="34" y="136" class="tiny">Generated ${generatedAt}</text>
+    ${renderTyping({ x: 34, y: 115 })}
+    <text x="34" y="146" class="tiny">Generated ${generatedAt}</text>
 
     ${metricTile({ x: 34, y: 166, label: "Stars", value: stats.stars, accent: "#22d3ee" })}
     ${metricTile({ x: 194, y: 166, label: "Commits", value: stats.commits, accent: "#a78bfa" })}
@@ -259,7 +275,7 @@ const renderDesktop = ({ stats, languages, trophies, theme }) => {
 
   return shell({
     width: 900,
-    height: 450,
+    height: 500,
     theme,
     body,
     desc: `Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}.`,
@@ -270,27 +286,27 @@ const renderMobile = ({ stats, languages, trophies, theme }) => {
   const generatedAt = new Date().toISOString().slice(0, 10);
   const body = `
     <text x="28" y="48" class="title">Xiang An</text>
-    <text x="28" y="76" class="titleAccent">GitHub stats</text>
-    ${renderTyping({ x: 28, y: 108, lines: mobileTypingLines })}
-    <text x="28" y="132" class="tiny">Generated ${generatedAt}</text>
+    <text x="28" y="84" class="titleAccent">GitHub stats</text>
+    ${renderTyping({ x: 28, y: 122, lines: mobileTypingLines })}
+    <text x="28" y="152" class="tiny">Generated ${generatedAt}</text>
 
-    ${metricLine({ x: 28, y: 166, width: 314, label: "Stars", value: stats.stars, accent: "#22d3ee" })}
-    ${metricLine({ x: 28, y: 216, width: 314, label: "Commits", value: stats.commits, accent: "#a78bfa" })}
-    ${metricLine({ x: 28, y: 266, width: 314, label: "Pull requests", value: stats.prs, accent: "#34d399" })}
-    ${metricLine({ x: 28, y: 316, width: 314, label: "Issues", value: stats.issues, accent: "#fbbf24" })}
-    ${metricLine({ x: 28, y: 366, width: 314, label: "Contributed", value: stats.contribs, accent: "#fb7185" })}
-    ${metricLine({ x: 28, y: 416, width: 314, label: "Rank", value: stats.rank, accent: "#38bdf8" })}
+    ${metricLine({ x: 28, y: 184, width: 314, label: "Stars", value: stats.stars, accent: "#22d3ee" })}
+    ${metricLine({ x: 28, y: 234, width: 314, label: "Commits", value: stats.commits, accent: "#a78bfa" })}
+    ${metricLine({ x: 28, y: 284, width: 314, label: "Pull requests", value: stats.prs, accent: "#34d399" })}
+    ${metricLine({ x: 28, y: 334, width: 314, label: "Issues", value: stats.issues, accent: "#fbbf24" })}
+    ${metricLine({ x: 28, y: 384, width: 314, label: "Contributed", value: stats.contribs, accent: "#fb7185" })}
+    ${metricLine({ x: 28, y: 434, width: 314, label: "Rank", value: stats.rank, accent: "#38bdf8" })}
 
-    <text x="28" y="506" class="sectionTitle">Top languages</text>
-    ${languageRows({ languages, theme, x: 28, y: 532, width: 314, rowGap: 27 })}
+    <text x="28" y="524" class="sectionTitle">Top languages</text>
+    ${languageRows({ languages, theme, x: 28, y: 550, width: 314, rowGap: 27 })}
 
-    <text x="28" y="788" class="sectionTitle">GitHub trophies</text>
-    ${trophyPills({ trophies, theme, x: 28, y: 816, columns: 1, gapX: 0, gapY: 48, w: 314 })}
+    <text x="28" y="806" class="sectionTitle">GitHub trophies</text>
+    ${trophyPills({ trophies, theme, x: 28, y: 834, columns: 1, gapX: 0, gapY: 48, w: 314 })}
   `;
 
   return shell({
     width: 370,
-    height: 1080,
+    height: 1135,
     theme,
     body,
     desc: `Mobile GitHub dashboard. Stars ${stats.stars}, commits ${stats.commits}, rank ${stats.rank}.`,

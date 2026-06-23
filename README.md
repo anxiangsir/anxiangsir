@@ -25,8 +25,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats-psi-plum-61.vercel.app/api?username=anxiangsir&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true" alt="Xiang An's GitHub stats">
-  <img src="https://github-readme-stats-psi-plum-61.vercel.app/api/top-langs/?username=anxiangsir&layout=compact&hide_border=true&langs_count=8" alt="Top languages">
+  <img src="assets/github-dashboard.svg" alt="Xiang An's GitHub stats and top languages">
 </p>
 
 <p align="center">

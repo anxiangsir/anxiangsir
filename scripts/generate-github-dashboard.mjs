@@ -798,6 +798,252 @@ const shell = ({ width, height, theme, body, desc }) => `<svg width="${width}" h
 
 const FILM_FONT = "-apple-system, 'PingFang SC', system-ui, sans-serif";
 
+// --- Cinematic film banner (randomized style per run) ------------------------
+
+const FILM_STYLES = ["sunset", "cyberpunk", "startrail", "silent"];
+
+const FILM_PALETTES = {
+  sunset: {
+    sky: ["#0a1130", "#2c2154", "#7a3a64", "#c2593f", "#ec8a47", "#f9c06a"],
+    m1: ["#3e3258", "#251b3c"], m2: ["#201a34", "#0c0a1c"],
+    water: ["#eda165", "#824064", "#080814"],
+    orb: ["#fff9ea", "#ffdc8e", "#ffb24d"], core: "#fff4d6",
+    accent: "#ffd9a0", fg: "#05050e", bird: "#0d0a1a",
+    grade: ["#ff7828", "#142878"], sub: "SUNSET · PURE SVG",
+  },
+  cyberpunk: {
+    sky: ["#05021a", "#11013a", "#3a0a5e", "#7a1466", "#c81e7a"],
+    m1: ["#240a44", "#100428"], m2: ["#15052e", "#070214"],
+    water: ["#c81e7a", "#3a0a5e", "#03010d"],
+    orb: ["#ffe9fb", "#ff5ce0", "#00eaff"], core: "#ff8cf0",
+    accent: "#00eaff", fg: "#02010a", bird: "#00141d",
+    grade: ["#ff14c6", "#00b3ff"], sub: "CYBERPUNK · PURE SVG",
+  },
+  startrail: {
+    sky: ["#02040f", "#04102e", "#0a2a4e", "#16456e"],
+    m1: ["#cfe0f0", "#8fa6c4"], m2: ["#86a0c0", "#42597c"],
+    water: ["#16456e", "#0a2238", "#02060f"],
+    orb: ["#ffffff", "#dfeaff", "#9fc0e8"], core: "#eef4ff",
+    accent: "#cfe6ff", fg: "#0a1424", bird: "#0a1424",
+    grade: ["#3a6ea5", "#0a1a3a"], sub: "STAR TRAILS · PURE SVG",
+  },
+  silent: {
+    sky: ["#161616", "#333333", "#555555", "#777777", "#999999"],
+    m1: ["#2a2a2a", "#141414"], m2: ["#181818", "#070707"],
+    water: ["#8a8a8a", "#3a3a3a", "#050505"],
+    orb: ["#ffffff", "#dcdcdc", "#9a9a9a"], core: "#ffffff",
+    accent: "#f0f0f0", fg: "#000000", bird: "#0a0a0a",
+    grade: ["#888888", "#222222"], sub: "SILENT FILM · PURE SVG",
+  },
+};
+
+const filmStops = (colors) =>
+  colors
+    .map((c, i) => `<stop offset="${Math.round((i / (colors.length - 1)) * 100)}%" stop-color="${c}"/>`)
+    .join("");
+
+const filmStars = () =>
+  [[120, 70, 3], [240, 120, 2.4], [330, 60, 3.6], [620, 80, 2.8], [760, 140, 3.2], [850, 64, 2.2], [500, 50, 3], [180, 150, 2.6], [690, 44, 3.4]]
+    .map(([x, y, d], i) => `<circle cx="${x}" cy="${y}" r="${1 + (i % 2) * 0.3}"><animate attributeName="opacity" values="${i % 2 ? "1;.2;1" : ".2;1;.2"}" dur="${d}s" repeatCount="indefinite"/></circle>`)
+    .join("");
+
+// Lone bare tree silhouette framing the left edge; sways gently in the wind.
+const filmTree = (fg) => `
+  <g fill="none" stroke="${fg}" stroke-linecap="round">
+    <animateTransform attributeName="transform" type="rotate" values="-1 96 540;1.4 96 540;-1 96 540" dur="9s" repeatCount="indefinite"/>
+    <path stroke-width="11" d="M96 542 C94 472 90 420 98 372"/>
+    <path stroke-width="6" d="M98 372 C86 352 70 344 52 340 M98 372 C112 350 130 342 150 340 M96 396 C82 386 68 384 54 384 M98 416 C114 408 130 408 146 406"/>
+    <path stroke-width="3" d="M52 340 C44 332 38 324 32 312 M150 340 C160 332 166 322 172 310 M54 384 C46 380 40 374 36 364 M146 406 C156 402 164 396 170 386 M98 352 C100 340 104 330 110 320"/>
+  </g>`;
+
+// Distant sailboat drifting across the water with a faint reflection.
+const filmBoat = (fg) => `
+  <g fill="${fg}">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="300 392;640 386;300 392" dur="48s" repeatCount="indefinite"/>
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0;0 1.5;0 0" dur="4s" repeatCount="indefinite"/>
+        <path d="M-16 0 L16 0 L11 7 L-11 7 Z"/>
+        <rect x="-0.8" y="-21" width="1.6" height="21"/>
+        <path d="M1 -21 L1 -2 L15 -4 Z"/>
+        <path d="M-1 -17 L-1 -3 L-11 -4 Z"/>
+        <path d="M-14 11 L14 11 L9 15 L-9 15 Z" opacity=".22"/>
+      </g>
+    </g>
+  </g>`;
+
+// A V-formation flock crossing the sky.
+const filmFlock = (bird) => {
+  const wing = `M0 0 q5 -5 10 0 q5 -5 10 0`;
+  const members = [[0, 0], [-15, 7], [15, 7], [-30, 14], [30, 14], [-45, 21], [45, 21]]
+    .map(([dx, dy], i) => `<path transform="translate(${dx} ${dy}) scale(${(0.95 - i * 0.03).toFixed(2)})" d="${wing}"/>`)
+    .join("");
+  return `
+  <g fill="none" stroke="${bird}" stroke-width="2" stroke-linecap="round" opacity=".85">
+    <g>${members}
+      <animateTransform attributeName="transform" type="translate" values="1000 96;-160 150;-160 150" keyTimes="0;.85;1" dur="26s" repeatCount="indefinite"/>
+    </g>
+  </g>`;
+};
+
+const filmStarTrails = (color) => {
+  let arcs = "";
+  for (let r = 48; r <= 320; r += 24) {
+    const circ = 2 * Math.PI * r;
+    arcs += `<circle cx="740" cy="108" r="${r}" fill="none" stroke="${color}" stroke-width="1.1" stroke-opacity="${(0.5 - r / 820).toFixed(2)}" stroke-dasharray="${(circ * 0.16).toFixed(0)} ${(circ * 0.84).toFixed(0)}" stroke-dashoffset="${Math.round(r * 4) % Math.round(circ)}"/>`;
+  }
+  return `<g style="mix-blend-mode:screen"><g>${arcs}<animateTransform attributeName="transform" type="rotate" values="0 740 108;9 740 108" dur="70s" repeatCount="indefinite"/></g></g>`;
+};
+
+const filmGrid = (color) => {
+  let s = "";
+  for (let i = 1; i <= 7; i += 1) {
+    const y = (372 + (i / 7) ** 2 * 168).toFixed(0);
+    s += `<line x1="0" y1="${y}" x2="960" y2="${y}" stroke="${color}" stroke-width="1" stroke-opacity="${(0.45 * (1 - i / 9)).toFixed(2)}"/>`;
+  }
+  for (let x = -720; x <= 1680; x += 120) {
+    s += `<line x1="480" y1="372" x2="${x}" y2="540" stroke="${color}" stroke-width="1" stroke-opacity=".22"/>`;
+  }
+  return `<g style="mix-blend-mode:screen" filter="url(#glow)">${s}</g>`;
+};
+
+const filmRain = (color) =>
+  `<g style="mix-blend-mode:screen">` +
+  [60, 150, 230, 320, 410, 520, 610, 700, 790, 880]
+    .map((x, i) => `<line x1="${x}" y1="0" x2="${x - 16}" y2="46" stroke="${color}" stroke-width="1.4" stroke-linecap="round" opacity=".5"><animateTransform attributeName="transform" type="translate" values="0 -60;0 600" dur="${(1.1 + (i % 4) * 0.3).toFixed(1)}s" begin="-${(i * 0.27).toFixed(2)}s" repeatCount="indefinite"/></line>`)
+    .join("") +
+  `</g>`;
+
+const filmSnow = () =>
+  `<g fill="#ffffff" style="mix-blend-mode:screen">` +
+  [80, 200, 300, 420, 540, 640, 760, 860, 160, 700]
+    .map((x, i) => `<circle cx="${x}" cy="0" r="${(1.4 + (i % 3) * 0.5).toFixed(1)}" opacity=".7"><animate attributeName="cy" values="-20;560" dur="${(8 + (i % 4) * 2)}s" begin="-${(i * 0.9).toFixed(1)}s" repeatCount="indefinite"/><animate attributeName="cx" values="${x};${x + 18};${x}" dur="${5 + (i % 3)}s" repeatCount="indefinite"/></circle>`)
+    .join("") +
+  `</g>`;
+
+const filmEmbers = () =>
+  `<g style="mix-blend-mode:screen">` +
+  [[300, 11, 0], [640, 13, -4], [470, 14, -8], [800, 12, -6], [180, 13.5, -2]]
+    .map(([x, dur, begin], i) => `<circle cx="${x}" cy="520" r="${(1.8 + (i % 3) * 0.3).toFixed(1)}" fill="url(#ember)"><animate attributeName="cy" values="520;${180 + i * 12}" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/><animate attributeName="cx" values="${x};${x + 18};${x}" dur="${5 + (i % 3)}s" repeatCount="indefinite"/></circle>`)
+    .join("") +
+  `</g>`;
+
+const filmScratches = () =>
+  `<g stroke="#fff" style="mix-blend-mode:overlay">` +
+  [[210, 0.6, 2.3], [620, 0.5, 3.1], [810, 0.7, 1.9]]
+    .map(([x, op, dur]) => `<line x1="${x}" y1="0" x2="${x}" y2="540" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;${op};0;0" keyTimes="0;.04;.1;1" dur="${dur}s" repeatCount="indefinite"/><animate attributeName="x1" values="${x};${x + 6};${x - 4}" dur="${dur}s" repeatCount="indefinite"/><animate attributeName="x2" values="${x};${x + 6};${x - 4}" dur="${dur}s" repeatCount="indefinite"/></line>`)
+    .join("") +
+  `</g>`;
+
+const renderFilm = (style) => {
+  const p = FILM_PALETTES[style] || FILM_PALETTES.sunset;
+  const warm = style === "sunset";
+  const neon = style === "cyberpunk";
+  const trails = style === "startrail";
+  const silent = style === "silent";
+  // Celestial body sits at the horizon for sunset/cyberpunk/silent, higher for star trails (a moon).
+  const orbY = trails ? 150 : 300;
+  const reflectY = trails ? 280 : 430;
+
+  const back = trails ? filmStarTrails(p.accent) : "";
+  const frontParticles = warm
+    ? filmEmbers()
+    : neon
+      ? filmRain(p.accent)
+      : trails
+        ? filmSnow()
+        : "";
+  const rays = warm || neon
+    ? `<g opacity=".4" filter="url(#soft)" style="mix-blend-mode:screen">
+        <polygon points="480,${orbY} 350,${orbY + 140} 610,${orbY + 140}" fill="url(#ray)"><animateTransform attributeName="transform" type="rotate" values="-6 480 ${orbY};6 480 ${orbY};-6 480 ${orbY}" dur="15s" repeatCount="indefinite"/></polygon>
+        <polygon points="480,${orbY} 430,${orbY + 140} 530,${orbY + 140}" fill="url(#ray)"><animateTransform attributeName="transform" type="rotate" values="5 480 ${orbY};-5 480 ${orbY};5 480 ${orbY}" dur="11s" repeatCount="indefinite"/></polygon>
+      </g>`
+    : "";
+  const flare = warm || neon
+    ? `<g style="mix-blend-mode:screen">
+        <rect x="120" y="${orbY - 4}" width="720" height="6" rx="3" fill="url(#flareStreak)" filter="url(#soft)"><animate attributeName="opacity" values=".5;.9;.5" dur="6s" repeatCount="indefinite"/></rect>
+        <circle cx="600" cy="${orbY - 60}" r="24" fill="url(#flareOrb)" opacity=".55"/>
+        <circle cx="380" cy="${orbY + 60}" r="18" fill="url(#flareOrb)" opacity=".4"/>
+      </g>`
+    : "";
+  const neonRim = neon
+    ? `<path d="M-80 372 L160 320 L380 372 L560 318 L760 372 L980 326 L1040 372" fill="none" stroke="${p.accent}" stroke-width="1.6" stroke-opacity=".9" filter="url(#glow)"/>`
+    : "";
+  const grid = neon ? filmGrid(p.accent) : "";
+  const leak = warm || neon
+    ? `<ellipse cx="0" cy="160" rx="320" ry="200" fill="url(#leak)" style="mix-blend-mode:screen"><animate attributeName="cx" values="-200;1160;-200" dur="15s" repeatCount="indefinite"/></ellipse>`
+    : "";
+  const flicker = warm || silent
+    ? `<rect x="0" y="0" width="960" height="540" fill="${silent ? "#ffffff" : "#ffdca0"}" style="mix-blend-mode:overlay"><animate attributeName="opacity" values="0;${silent ? ".09" : ".05"};0;.03;0" dur="${silent ? 3 : 4}s" repeatCount="indefinite"/></rect>`
+    : "";
+  const scratches = silent ? filmScratches() : "";
+  const grainOpacity = silent ? 0.85 : 0.5;
+  const jitter = silent
+    ? `<animateTransform attributeName="transform" type="translate" values="0 0;0.6 -0.4;-0.5 0.5;0 0" dur="0.32s" repeatCount="indefinite" additive="sum"/>`
+    : "";
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" preserveAspectRatio="xMidYMid slice" font-family="${FILM_FONT}" data-style="${style}">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">${filmStops(p.sky)}</linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">${filmStops(p.water)}</linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="${p.orb[0]}"/><stop offset="30%" stop-color="${p.orb[1]}"/><stop offset="100%" stop-color="${p.orb[2]}" stop-opacity="0"/></radialGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.orb[1]}" stop-opacity=".5"/><stop offset="100%" stop-color="${p.orb[1]}" stop-opacity="0"/></linearGradient>
+    <radialGradient id="flareOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="${p.accent}" stop-opacity=".7"/><stop offset="100%" stop-color="${p.accent}" stop-opacity="0"/></radialGradient>
+    <linearGradient id="flareStreak" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${p.accent}" stop-opacity="0"/><stop offset="50%" stop-color="#eaf7ff" stop-opacity=".85"/><stop offset="100%" stop-color="${p.accent}" stop-opacity="0"/></linearGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffe6b0"/><stop offset="60%" stop-color="#ffb863" stop-opacity=".8"/><stop offset="100%" stop-color="#ffb863" stop-opacity="0"/></radialGradient>
+    <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.m1[0]}"/><stop offset="100%" stop-color="${p.m1[1]}"/></linearGradient>
+    <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.m2[0]}"/><stop offset="100%" stop-color="${p.m2[1]}"/></linearGradient>
+    <linearGradient id="grade" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${p.grade[0]}" stop-opacity=".3"/><stop offset="100%" stop-color="${p.grade[1]}" stop-opacity=".35"/></linearGradient>
+    <radialGradient id="vig" cx="50%" cy="46%" r="65%"><stop offset="45%" stop-color="#000" stop-opacity="0"/><stop offset="82%" stop-color="#000" stop-opacity="${silent ? 0.55 : 0.4}"/><stop offset="100%" stop-color="#000" stop-opacity="${silent ? 0.95 : 0.85}"/></radialGradient>
+    <radialGradient id="leak" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffdca8" stop-opacity=".5"/><stop offset="100%" stop-color="#ffdca8" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n"><animate attributeName="seed" values="1;9;3;7;2;8;4" dur="0.5s" repeatCount="indefinite"/></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0"/><feComposite operator="in" in2="SourceGraphic"/></filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="rip" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="t"><animate attributeName="baseFrequency" values="0.012 0.06;0.016 0.08;0.012 0.06" dur="6s" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="14" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <clipPath id="screen"><rect x="0" y="0" width="960" height="540"/></clipPath>
+    <clipPath id="below"><rect x="0" y="372" width="960" height="168"/></clipPath>
+  </defs>
+  <g clip-path="url(#screen)">
+    <rect x="0" y="0" width="960" height="540" fill="#000"/>
+    <g>${jitter}
+      <g>
+        <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="26s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="translate" values="0 0;-24 -9;0 0" dur="26s" repeatCount="indefinite" additive="sum"/>
+        <rect x="-80" y="-40" width="1120" height="460" fill="url(#sky)"/>
+        <g fill="#fff">${filmStars()}</g>
+        ${back}
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0"><line x1="0" y1="0" x2="46" y2="20"/><animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="760 40;560 130;560 130" keyTimes="0;.12;1" dur="9s" repeatCount="indefinite"/></g>
+        <circle cx="480" cy="${orbY}" r="${trails ? 70 : 155}" fill="url(#sun)"><animate attributeName="cy" values="${orbY - 12};${orbY + 6};${orbY - 12}" dur="22s" repeatCount="indefinite"/></circle>
+        <circle cx="480" cy="${orbY}" r="${trails ? 30 : 48}" fill="${p.core}" filter="url(#glow)"><animate attributeName="cy" values="${orbY - 12};${orbY + 6};${orbY - 12}" dur="22s" repeatCount="indefinite"/></circle>
+        ${rays}
+        ${flare}
+        <g><path d="M-80 360 L120 300 L280 350 L460 285 L640 345 L820 295 L1040 350 L1040 380 L-80 380 Z" fill="url(#m1)"/><animateTransform attributeName="transform" type="translate" values="0 0;16 0;0 0" dur="26s" repeatCount="indefinite"/></g>
+        <g><path d="M-80 372 L160 320 L380 372 L560 318 L760 372 L980 326 L1040 372 L-80 372 Z" fill="url(#m2)"/>${neonRim}<animateTransform attributeName="transform" type="translate" values="0 0;36 0;0 0" dur="26s" repeatCount="indefinite"/></g>
+        <rect x="-80" y="372" width="1120" height="220" fill="url(#water)"/>
+        <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen"><circle cx="480" cy="${reflectY}" r="120" fill="url(#sun)"><animate attributeName="cy" values="${reflectY - 6};${reflectY - 22};${reflectY - 6}" dur="22s" repeatCount="indefinite"/></circle><rect x="430" y="372" width="100" height="200" fill="${p.orb[1]}" opacity=".5"/></g>
+        ${grid}
+        ${filmBoat(p.fg)}
+        ${filmTree(p.fg)}
+        ${frontParticles}
+        ${filmFlock(p.bird)}
+      </g>
+    </g>
+    ${leak}
+    <rect x="0" y="0" width="960" height="540" fill="url(#grade)" style="mix-blend-mode:soft-light"/>
+    <rect x="0" y="0" width="960" height="540" fill="url(#vig)"/>
+    ${flicker}
+    ${scratches}
+    <g text-anchor="middle" fill="#fff" filter="url(#glow)" font-weight="700">
+      <text x="480" y="266" font-size="58" letter-spacing="2"><tspan>an</tspan><tspan fill="${p.accent}">xiang</tspan><tspan>sir</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.08;.2;.5;.62;1" dur="13s" repeatCount="indefinite"/></text>
+    </g>
+    <g text-anchor="middle" fill="${p.accent}"><text x="480" y="304" font-size="14" letter-spacing="7" opacity=".9">${p.sub.split("").join(" ")}<animate attributeName="opacity" values="0;0;.9;.9;0;0" keyTimes="0;.12;.24;.5;.62;1" dur="13s" repeatCount="indefinite"/></text></g>
+    <rect x="0" y="0" width="960" height="540" filter="url(#grain)" opacity="${grainOpacity}" style="mix-blend-mode:overlay"/>
+  </g>
+</svg>
+`;
+};
+
+
 const stripSvgWrapper = (svg) =>
   svg.replace(/^\s*<svg\b[^>]*>/, "").replace(/<\/svg>\s*$/, "");
 
@@ -912,8 +1158,16 @@ const main = async () => {
   const darkMobileSvg = renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.dark });
   const lightMobileSvg = renderMobile({ stats, languages, stacked, commits, citations, theme: THEMES.light });
 
-  // Cinematic variants: stack the film banner over each dashboard.
-  const filmInner = stripSvgWrapper(await readFile(filmFile, "utf8"));
+  // Cinematic variants: generate the film banner in a randomly-picked style
+  // (override with FILM_STYLE=...), persist it, then stack it over each dashboard.
+  const filmStyle =
+    process.env.FILM_STYLE && FILM_STYLES.includes(process.env.FILM_STYLE)
+      ? process.env.FILM_STYLE
+      : FILM_STYLES[Math.floor(Math.random() * FILM_STYLES.length)];
+  const filmSvg = renderFilm(filmStyle);
+  await writeFile(filmFile, filmSvg);
+  console.log(`Film style: ${filmStyle}`);
+  const filmInner = stripSvgWrapper(filmSvg);
   const combine = (dashboard, width, height, heroHeight) =>
     combineWithFilm({ dashboard, filmInner, width, height, heroHeight });
 
@@ -954,4 +1208,6 @@ export {
   scholarMonthly,
   combineWithFilm,
   stripSvgWrapper,
+  renderFilm,
+  FILM_STYLES,
 };

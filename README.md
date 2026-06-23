@@ -18,24 +18,10 @@
 
 <p align="center">
   <picture>
+    <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-dark-mobile.svg">
+    <source media="(prefers-color-scheme: light) and (max-width: 700px)" srcset="assets/github-dashboard-light-mobile.svg">
     <source media="(prefers-color-scheme: dark)" srcset="assets/github-dashboard-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/github-dashboard-light.svg">
     <img src="assets/github-dashboard-light.svg" alt="Xiang An's GitHub stats, trophies, and top languages">
   </picture>
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=anxiangsir&hide_border=true" alt="GitHub streak">
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake.svg">
-    <img src="https://raw.githubusercontent.com/anxiangsir/anxiangsir/output/github-contribution-grid-snake.svg" alt="Contribution snake">
-  </picture>
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=gradient" alt="Footer">
 </p>

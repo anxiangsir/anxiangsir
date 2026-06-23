@@ -17,15 +17,11 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&pause=1000&color=0E75B6&center=true&width=760&lines=AI+Researcher;Open-source+Builder;Multimodal+Systems;Making+models+see%2C+reason%2C+and+act" alt="Typing SVG">
-</p>
-
-<p align="center">
-  <img src="https://gh-trophy.cdnsoft.net/?username=anxiangsir&theme=flat&no-frame=true&no-bg=true&margin-w=8&rank=SSS,SS,S,AAA,AA,A,B" alt="Xiang An's GitHub trophies">
-</p>
-
-<p align="center">
-  <img src="assets/github-dashboard.svg" alt="Xiang An's GitHub stats and top languages">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github-dashboard-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/github-dashboard-light.svg">
+    <img src="assets/github-dashboard-light.svg" alt="Xiang An's GitHub stats, trophies, and top languages">
+  </picture>
 </p>
 
 <p align="center">

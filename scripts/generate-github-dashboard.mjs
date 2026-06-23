@@ -4,8 +4,47 @@ const STATS_URL =
   "https://github-readme-stats-psi-plum-61.vercel.app/api?username=anxiangsir&show_icons=true&include_all_commits=true&rank_icon=github&hide_border=true";
 const LANGS_URL =
   "https://github-readme-stats-psi-plum-61.vercel.app/api/top-langs/?username=anxiangsir&layout=compact&hide_border=true&langs_count=8";
+const TROPHY_URL =
+  "https://gh-trophy.cdnsoft.net/?username=anxiangsir&theme=flat&no-frame=true&no-bg=true&margin-w=8&rank=SSS,SS,S,AAA,AA,A,B";
 
-const outFile = new URL("../assets/github-dashboard.svg", import.meta.url);
+const assetsDir = new URL("../assets/", import.meta.url);
+
+const THEMES = {
+  dark: {
+    file: "github-dashboard-dark.svg",
+    bgA: "#020617",
+    bgB: "#0f172a",
+    bgC: "#111827",
+    panelA: "#111827",
+    panelB: "#020617",
+    title: "#f8fafc",
+    text: "#dbeafe",
+    muted: "#94a3b8",
+    faint: "#64748b",
+    track: "#1f2937",
+    line: "#334155",
+    glass: "#020617",
+    glassOpacity: ".46",
+    glowOpacity: ".58",
+  },
+  light: {
+    file: "github-dashboard-light.svg",
+    bgA: "#eff6ff",
+    bgB: "#f8fafc",
+    bgC: "#ecfeff",
+    panelA: "#ffffff",
+    panelB: "#f8fafc",
+    title: "#0f172a",
+    text: "#1e293b",
+    muted: "#475569",
+    faint: "#64748b",
+    track: "#dbeafe",
+    line: "#bfdbfe",
+    glass: "#ffffff",
+    glassOpacity: ".72",
+    glowOpacity: ".42",
+  },
+};
 
 const htmlDecode = (value) =>
   value
@@ -35,7 +74,8 @@ const parseStats = (svg) => {
   const desc = htmlDecode(svg.match(/<desc[^>]*>(.*?)<\/desc>/s)?.[1] || "");
   const rank = title.match(/Rank:\s*([^<,]+)/)?.[1]?.trim() || "A+";
   const get = (label) => {
-    const raw = desc.match(new RegExp(`${label}\\s*:?\\s*([0-9,]+)`, "i"))?.[1] || "0";
+    const raw =
+      desc.match(new RegExp(`${label}\\s*:?\\s*([0-9,]+)`, "i"))?.[1] || "0";
     const value = Number.parseInt(raw.replaceAll(",", ""), 10);
     return Number.isFinite(value) ? value.toLocaleString("en-US") : "0";
   };
@@ -51,9 +91,11 @@ const parseStats = (svg) => {
 };
 
 const parseLanguages = (svg) => {
-  const names = [...svg.matchAll(/<text[^>]*data-testid="lang-name"[^>]*>\s*([^<]+)\s*<\/text>/g)].map(
-    (match) => htmlDecode(match[1].trim()),
-  );
+  const names = [
+    ...svg.matchAll(
+      /<text[^>]*data-testid="lang-name"[^>]*>\s*([^<]+)\s*<\/text>/g,
+    ),
+  ].map((match) => htmlDecode(match[1].trim()));
   const colors = [...svg.matchAll(/<circle[^>]*fill="([^"]+)"/g)].map(
     (match) => match[1],
   );
@@ -73,128 +115,207 @@ const parseLanguages = (svg) => {
   });
 };
 
-const metricCard = ({ x, y, label, value, accent, delay }) => `
-  <g class="float" style="animation-delay:${delay}ms" transform="translate(${x} ${y})">
-    <rect width="154" height="86" rx="18" fill="url(#panel)" stroke="${accent}" stroke-opacity=".32"/>
-    <text x="18" y="29" class="label">${escapeXml(label)}</text>
-    <text x="18" y="62" class="metric" fill="${accent}">${escapeXml(value)}</text>
+const parseTrophies = (svg) => {
+  const texts = [
+    ...svg.matchAll(/<text[^>]*>\s*([^<]+?)\s*<\/text>/g),
+  ].map((match) => htmlDecode(match[1].trim()));
+  const rankPattern = /^(SSS|SS|S|AAA|AA|A|B|C)$/;
+  const trophies = [];
+
+  for (let index = 0; index < texts.length; index += 1) {
+    if (!rankPattern.test(texts[index])) {
+      continue;
+    }
+
+    const title = texts[index + 1];
+    const subtitle = texts[index + 2];
+    const score = texts[index + 3];
+    if (!title || !subtitle || !score || rankPattern.test(title)) {
+      continue;
+    }
+
+    trophies.push({
+      rank: texts[index],
+      title,
+      subtitle,
+      score,
+    });
+    index += 3;
+  }
+
+  return trophies.slice(0, 6);
+};
+
+const typingLines = [
+  "AI Researcher",
+  "Open-source Builder",
+  "Multimodal Systems",
+  "Making models see, reason, and act",
+];
+
+const metricCard = ({ x, y, label, value, accent }) => `
+  <g transform="translate(${x} ${y})">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="${accent}" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">${escapeXml(label)}</text>
+    <text x="18" y="58" class="metric" fill="${accent}">${escapeXml(value)}</text>
   </g>`;
 
-const languageRows = (languages) =>
+const languageRows = (languages, theme) =>
   languages
     .slice(0, 8)
     .map((language, index) => {
-      const y = index * 31;
-      const width = Math.max(8, Math.min(270, (language.value / 100) * 270));
+      const y = index * 27;
+      const width = Math.max(8, Math.min(260, (language.value / 100) * 260));
       return `
-        <g class="langRow" transform="translate(0 ${y})">
+        <g transform="translate(0 ${y})">
           <circle cx="8" cy="8" r="5" fill="${language.color}"/>
           <text x="22" y="12" class="lang">${escapeXml(language.name)}</text>
-          <text x="266" y="12" class="langPercent" text-anchor="end">${escapeXml(language.percent)}</text>
-          <rect x="0" y="19" width="270" height="7" rx="3.5" fill="#1f2937"/>
-          <rect x="0" y="19" width="${width.toFixed(1)}" height="7" rx="3.5" fill="${language.color}">
+          <text x="258" y="12" class="langPercent" text-anchor="end">${escapeXml(language.percent)}</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="${theme.track}"/>
+          <rect x="0" y="18" width="${width.toFixed(1)}" height="6" rx="3" fill="${language.color}">
             <animate attributeName="width" from="0" to="${width.toFixed(1)}" dur="1.2s" begin="${index * 0.08}s" fill="freeze"/>
           </rect>
         </g>`;
     })
     .join("");
 
-const renderDashboard = ({ stats, languages }) => {
+const trophyCards = (trophies, theme) =>
+  trophies
+    .map((trophy, index) => {
+      const x = 64 + (index % 3) * 170;
+      const y = 410 + Math.floor(index / 3) * 86;
+      const rankColor =
+        trophy.rank === "S" || trophy.rank === "SS" || trophy.rank === "SSS"
+          ? "#f59e0b"
+          : "#38bdf8";
+      return `
+        <g transform="translate(${x} ${y})">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="${rankColor}" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="${rankColor}" fill-opacity=".18" stroke="${rankColor}" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="${rankColor}">${escapeXml(trophy.rank)}</text>
+          <text x="52" y="27" class="trophyTitle">${escapeXml(trophy.title)}</text>
+          <text x="52" y="46" class="trophyScore">${escapeXml(trophy.score)}</text>
+        </g>`;
+    })
+    .join("");
+
+const renderTyping = () => `
+  <text x="64" y="128" class="typing">
+    ${typingLines
+      .map(
+        (line, index) => `
+      <tspan opacity="0">${escapeXml(line)}
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="${index * 3}s" repeatCount="indefinite"/>
+      </tspan>`,
+      )
+      .join("")}
+  </text>`;
+
+const renderDashboard = ({ stats, languages, trophies, themeName }) => {
+  const theme = THEMES[themeName];
   const generatedAt = new Date().toISOString().slice(0, 10);
-  return `<svg width="980" height="430" viewBox="0 0 980 430" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Xiang An's GitHub stats and top languages</title>
+  return `<svg width="980" height="620" viewBox="0 0 980 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Xiang An's GitHub stats, trophies, and top languages</title>
   <desc id="desc">Stars ${escapeXml(stats.stars)}, commits ${escapeXml(stats.commits)}, rank ${escapeXml(stats.rank)}, top language ${escapeXml(languages[0]?.name || "Python")}.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="980" y2="430" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#020617"/>
-      <stop offset=".48" stop-color="#0f172a"/>
-      <stop offset="1" stop-color="#111827"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="980" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="${theme.bgA}"/>
+      <stop offset=".52" stop-color="${theme.bgB}"/>
+      <stop offset="1" stop-color="${theme.bgC}"/>
     </linearGradient>
-    <linearGradient id="glow" x1="110" y1="31" x2="865" y2="390" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glow" x1="110" y1="31" x2="865" y2="560" gradientUnits="userSpaceOnUse">
       <stop stop-color="#22d3ee"/>
       <stop offset=".5" stop-color="#8b5cf6"/>
       <stop offset="1" stop-color="#22c55e"/>
     </linearGradient>
     <linearGradient id="panel" x1="0" y1="0" x2="154" y2="86" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#111827" stop-opacity=".88"/>
-      <stop offset="1" stop-color="#020617" stop-opacity=".76"/>
+      <stop stop-color="${theme.panelA}" stop-opacity=".90"/>
+      <stop offset="1" stop-color="${theme.panelB}" stop-opacity=".78"/>
     </linearGradient>
-    <filter id="blurGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.25 0 0 0 0 0.9 0 0 0 0 1 0 0 0 .65 0"/>
-      <feBlend in="SourceGraphic"/>
-    </filter>
-    <radialGradient id="orbA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(140 92) rotate(49) scale(190 120)">
-      <stop stop-color="#0ea5e9" stop-opacity=".55"/>
+    <radialGradient id="orbA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(132 88) rotate(49) scale(190 120)">
+      <stop stop-color="#0ea5e9" stop-opacity="${theme.glowOpacity}"/>
       <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="orbB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(820 320) rotate(49) scale(220 140)">
-      <stop stop-color="#22c55e" stop-opacity=".42"/>
+    <radialGradient id="orbB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(830 356) rotate(49) scale(220 140)">
+      <stop stop-color="#22c55e" stop-opacity="${theme.glowOpacity}"/>
       <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
     </radialGradient>
-    <clipPath id="clip"><rect width="980" height="430" rx="30"/></clipPath>
+    <clipPath id="clip"><rect width="980" height="620" rx="30"/></clipPath>
     <style>
-      .title{font:700 34px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
-      .subtitle{font:500 14px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
-      .label{font:600 12px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;text-transform:uppercase;letter-spacing:.08em}
-      .metric{font:800 28px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
-      .rank{font:900 68px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
-      .sectionTitle{font:800 24px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
-      .lang{font:700 13px Inter,Segoe UI,Arial,sans-serif;fill:#dbeafe;letter-spacing:0}
-      .langPercent{font:700 13px Inter,Segoe UI,Arial,sans-serif;fill:#93c5fd;letter-spacing:0}
-      .tiny{font:600 11px Inter,Segoe UI,Arial,sans-serif;fill:#64748b;letter-spacing:0}
+      .title{font:800 34px Inter,Segoe UI,Arial,sans-serif;fill:${theme.title};letter-spacing:0}
+      .subtitle{font:500 14px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
+      .typing{font:700 22px Fira Code,Consolas,monospace;fill:#0ea5e9;letter-spacing:0}
+      .label{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};text-transform:uppercase;letter-spacing:.08em}
+      .metric{font:800 27px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
+      .sectionTitle{font:800 22px Inter,Segoe UI,Arial,sans-serif;fill:${theme.title};letter-spacing:0}
+      .lang{font:700 12px Inter,Segoe UI,Arial,sans-serif;fill:${theme.text};letter-spacing:0}
+      .langPercent{font:700 12px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
+      .tiny{font:600 11px Inter,Segoe UI,Arial,sans-serif;fill:${theme.faint};letter-spacing:0}
+      .trophyRank{font:900 12px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
+      .trophyTitle{font:800 12px Inter,Segoe UI,Arial,sans-serif;fill:${theme.text};letter-spacing:0}
+      .trophyScore{font:700 10px Inter,Segoe UI,Arial,sans-serif;fill:${theme.muted};letter-spacing:0}
       .scan{animation:scan 4s linear infinite}
-      .float{}
-      .langRow{}
       @keyframes scan{0%{transform:translateX(-500px)}100%{transform:translateX(980px)}}
     </style>
   </defs>
 
   <g clip-path="url(#clip)">
-    <rect width="980" height="430" fill="url(#bg)"/>
-    <rect width="980" height="430" fill="url(#orbA)"/>
-    <rect width="980" height="430" fill="url(#orbB)"/>
-    <path d="M-90 329C80 250 130 406 283 301C436 196 519 254 660 152C766 76 864 92 1078 14" stroke="url(#glow)" stroke-width="2" stroke-opacity=".42"/>
-    <path d="M-80 374C119 273 226 408 359 306C491 204 579 286 736 174C848 95 908 131 1064 72" stroke="#38bdf8" stroke-width="1" stroke-opacity=".18"/>
-    <rect class="scan" y="0" width="280" height="430" fill="url(#glow)" opacity=".06"/>
+    <rect width="980" height="620" fill="url(#bg)"/>
+    <rect width="980" height="620" fill="url(#orbA)"/>
+    <rect width="980" height="620" fill="url(#orbB)"/>
+    <path d="M-90 351C80 272 130 428 283 323C436 218 519 276 660 174C766 98 864 114 1078 36" stroke="url(#glow)" stroke-width="2" stroke-opacity=".42"/>
+    <path d="M-80 396C119 295 226 430 359 328C491 226 579 308 736 196C848 117 908 153 1064 94" stroke="#38bdf8" stroke-width="1" stroke-opacity=".18"/>
+    <rect class="scan" y="0" width="280" height="620" fill="url(#glow)" opacity=".06"/>
 
-    <rect x="24" y="24" width="932" height="382" rx="26" fill="#020617" fill-opacity=".46" stroke="url(#glow)" stroke-opacity=".65"/>
-    <rect x="36" y="36" width="908" height="358" rx="20" fill="#0f172a" fill-opacity=".36" stroke="#334155" stroke-opacity=".42"/>
+    <rect x="24" y="24" width="932" height="572" rx="26" fill="${theme.glass}" fill-opacity="${theme.glassOpacity}" stroke="url(#glow)" stroke-opacity=".62"/>
+    <rect x="36" y="36" width="908" height="548" rx="20" fill="${theme.panelA}" fill-opacity=".22" stroke="${theme.line}" stroke-opacity=".46"/>
 
-    <text x="64" y="82" class="title">Xiang An's GitHub stats</text>
-    <text x="64" y="110" class="subtitle">Private-instance telemetry, refreshed from GitHub Readme Stats APIs</text>
-    <text x="64" y="132" class="tiny">Generated ${generatedAt}</text>
+    <text x="64" y="78" class="title">Xiang An's GitHub stats</text>
+    <text x="64" y="106" class="subtitle">Private-instance telemetry, refreshed from GitHub Readme Stats APIs</text>
+    ${renderTyping()}
+    <text x="64" y="154" class="tiny">Generated ${generatedAt}</text>
 
-    ${metricCard({ x: 64, y: 162, label: "Stars", value: stats.stars, accent: "#22d3ee", delay: 0 })}
-    ${metricCard({ x: 236, y: 162, label: "Commits", value: stats.commits, accent: "#a78bfa", delay: 160 })}
-    ${metricCard({ x: 408, y: 162, label: "Pull requests", value: stats.prs, accent: "#34d399", delay: 320 })}
-    ${metricCard({ x: 64, y: 272, label: "Issues", value: stats.issues, accent: "#fbbf24", delay: 480 })}
-    ${metricCard({ x: 236, y: 272, label: "Contributed", value: stats.contribs, accent: "#fb7185", delay: 640 })}
-    ${metricCard({ x: 408, y: 272, label: "Rank", value: stats.rank, accent: "#38bdf8", delay: 800 })}
+    ${metricCard({ x: 64, y: 184, label: "Stars", value: stats.stars, accent: "#22d3ee" })}
+    ${metricCard({ x: 236, y: 184, label: "Commits", value: stats.commits, accent: "#a78bfa" })}
+    ${metricCard({ x: 408, y: 184, label: "Pull requests", value: stats.prs, accent: "#34d399" })}
+    ${metricCard({ x: 64, y: 278, label: "Issues", value: stats.issues, accent: "#fbbf24" })}
+    ${metricCard({ x: 236, y: 278, label: "Contributed", value: stats.contribs, accent: "#fb7185" })}
+    ${metricCard({ x: 408, y: 278, label: "Rank", value: stats.rank, accent: "#38bdf8" })}
 
-    <g transform="translate(610 160)">
+    <g transform="translate(620 184)">
       <text x="0" y="-18" class="sectionTitle">Top languages</text>
-      ${languageRows(languages)}
+      ${languageRows(languages, theme)}
     </g>
+
+    <text x="64" y="390" class="sectionTitle">Xiang An's GitHub trophies</text>
+    ${trophyCards(trophies, theme)}
   </g>
 </svg>
 `;
 };
 
 const main = async () => {
-  const [statsSvg, langsSvg] = await Promise.all([
+  const [statsSvg, langsSvg, trophySvg] = await Promise.all([
     fetchText(STATS_URL),
     fetchText(LANGS_URL),
+    fetchText(TROPHY_URL),
   ]);
   const stats = parseStats(statsSvg);
   const languages = parseLanguages(langsSvg);
+  const trophies = parseTrophies(trophySvg);
   if (!languages.length) {
     throw new Error("Could not parse languages");
   }
+  if (!trophies.length) {
+    throw new Error("Could not parse trophies");
+  }
 
-  await mkdir(new URL("../assets/", import.meta.url), { recursive: true });
-  await writeFile(outFile, renderDashboard({ stats, languages }));
-  console.log(`Wrote ${outFile.pathname}`);
+  await mkdir(assetsDir, { recursive: true });
+  for (const themeName of Object.keys(THEMES)) {
+    const outFile = new URL(`../assets/${THEMES[themeName].file}`, import.meta.url);
+    await writeFile(outFile, renderDashboard({ stats, languages, trophies, themeName }));
+    console.log(`Wrote ${outFile.pathname}`);
+  }
 };
 
 main().catch((error) => {

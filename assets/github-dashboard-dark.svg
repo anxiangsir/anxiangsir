@@ -1,0 +1,236 @@
+<svg width="980" height="620" viewBox="0 0 980 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Xiang An's GitHub stats, trophies, and top languages</title>
+  <desc id="desc">Stars 48,858, commits 16,025, rank A+, top language Python.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="980" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#020617"/>
+      <stop offset=".52" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="110" y1="31" x2="865" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset=".5" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="154" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827" stop-opacity=".90"/>
+      <stop offset="1" stop-color="#020617" stop-opacity=".78"/>
+    </linearGradient>
+    <radialGradient id="orbA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(132 88) rotate(49) scale(190 120)">
+      <stop stop-color="#0ea5e9" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(830 356) rotate(49) scale(220 140)">
+      <stop stop-color="#22c55e" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="clip"><rect width="980" height="620" rx="30"/></clipPath>
+    <style>
+      .title{font:800 34px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
+      .subtitle{font:500 14px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
+      .typing{font:700 22px Fira Code,Consolas,monospace;fill:#0ea5e9;letter-spacing:0}
+      .label{font:700 11px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;text-transform:uppercase;letter-spacing:.08em}
+      .metric{font:800 27px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
+      .sectionTitle{font:800 22px Inter,Segoe UI,Arial,sans-serif;fill:#f8fafc;letter-spacing:0}
+      .lang{font:700 12px Inter,Segoe UI,Arial,sans-serif;fill:#dbeafe;letter-spacing:0}
+      .langPercent{font:700 12px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
+      .tiny{font:600 11px Inter,Segoe UI,Arial,sans-serif;fill:#64748b;letter-spacing:0}
+      .trophyRank{font:900 12px Inter,Segoe UI,Arial,sans-serif;letter-spacing:0}
+      .trophyTitle{font:800 12px Inter,Segoe UI,Arial,sans-serif;fill:#dbeafe;letter-spacing:0}
+      .trophyScore{font:700 10px Inter,Segoe UI,Arial,sans-serif;fill:#94a3b8;letter-spacing:0}
+      .scan{animation:scan 4s linear infinite}
+      @keyframes scan{0%{transform:translateX(-500px)}100%{transform:translateX(980px)}}
+    </style>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="980" height="620" fill="url(#bg)"/>
+    <rect width="980" height="620" fill="url(#orbA)"/>
+    <rect width="980" height="620" fill="url(#orbB)"/>
+    <path d="M-90 351C80 272 130 428 283 323C436 218 519 276 660 174C766 98 864 114 1078 36" stroke="url(#glow)" stroke-width="2" stroke-opacity=".42"/>
+    <path d="M-80 396C119 295 226 430 359 328C491 226 579 308 736 196C848 117 908 153 1064 94" stroke="#38bdf8" stroke-width="1" stroke-opacity=".18"/>
+    <rect class="scan" y="0" width="280" height="620" fill="url(#glow)" opacity=".06"/>
+
+    <rect x="24" y="24" width="932" height="572" rx="26" fill="#020617" fill-opacity=".46" stroke="url(#glow)" stroke-opacity=".62"/>
+    <rect x="36" y="36" width="908" height="548" rx="20" fill="#111827" fill-opacity=".22" stroke="#334155" stroke-opacity=".46"/>
+
+    <text x="64" y="78" class="title">Xiang An's GitHub stats</text>
+    <text x="64" y="106" class="subtitle">Private-instance telemetry, refreshed from GitHub Readme Stats APIs</text>
+    
+  <text x="64" y="128" class="typing">
+    
+      <tspan opacity="0">AI Researcher
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+      </tspan>
+      <tspan opacity="0">Open-source Builder
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+      </tspan>
+      <tspan opacity="0">Multimodal Systems
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="6s" repeatCount="indefinite"/>
+      </tspan>
+      <tspan opacity="0">Making models see, reason, and act
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.72;0.86;1" dur="12s" begin="9s" repeatCount="indefinite"/>
+      </tspan>
+  </text>
+    <text x="64" y="154" class="tiny">Generated 2026-06-23</text>
+
+    
+  <g transform="translate(64 184)">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="#22d3ee" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">Stars</text>
+    <text x="18" y="58" class="metric" fill="#22d3ee">48,858</text>
+  </g>
+    
+  <g transform="translate(236 184)">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="#a78bfa" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">Commits</text>
+    <text x="18" y="58" class="metric" fill="#a78bfa">16,025</text>
+  </g>
+    
+  <g transform="translate(408 184)">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="#34d399" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">Pull requests</text>
+    <text x="18" y="58" class="metric" fill="#34d399">479</text>
+  </g>
+    
+  <g transform="translate(64 278)">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="#fbbf24" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">Issues</text>
+    <text x="18" y="58" class="metric" fill="#fbbf24">23</text>
+  </g>
+    
+  <g transform="translate(236 278)">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="#fb7185" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">Contributed</text>
+    <text x="18" y="58" class="metric" fill="#fb7185">18</text>
+  </g>
+    
+  <g transform="translate(408 278)">
+    <rect width="154" height="76" rx="18" fill="url(#panel)" stroke="#38bdf8" stroke-opacity=".36"/>
+    <text x="18" y="27" class="label">Rank</text>
+    <text x="18" y="58" class="metric" fill="#38bdf8">A+</text>
+  </g>
+
+    <g transform="translate(620 184)">
+      <text x="0" y="-18" class="sectionTitle">Top languages</text>
+      
+        <g transform="translate(0 0)">
+          <circle cx="8" cy="8" r="5" fill="#3572A5"/>
+          <text x="22" y="12" class="lang">Python</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">81.12%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="210.9" height="6" rx="3" fill="#3572A5">
+            <animate attributeName="width" from="0" to="210.9" dur="1.2s" begin="0s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 27)">
+          <circle cx="8" cy="8" r="5" fill="#e34c26"/>
+          <text x="22" y="12" class="lang">HTML</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">12.21%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="31.7" height="6" rx="3" fill="#e34c26">
+            <animate attributeName="width" from="0" to="31.7" dur="1.2s" begin="0.08s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 54)">
+          <circle cx="8" cy="8" r="5" fill="#89e051"/>
+          <text x="22" y="12" class="lang">Shell</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">2.94%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="8.0" height="6" rx="3" fill="#89e051">
+            <animate attributeName="width" from="0" to="8.0" dur="1.2s" begin="0.16s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 81)">
+          <circle cx="8" cy="8" r="5" fill="#DA5B0B"/>
+          <text x="22" y="12" class="lang">Jupyter Notebook</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">1.77%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="8.0" height="6" rx="3" fill="#DA5B0B">
+            <animate attributeName="width" from="0" to="8.0" dur="1.2s" begin="0.24s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 108)">
+          <circle cx="8" cy="8" r="5" fill="#3A4E3A"/>
+          <text x="22" y="12" class="lang">Cuda</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">0.66%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="8.0" height="6" rx="3" fill="#3A4E3A">
+            <animate attributeName="width" from="0" to="8.0" dur="1.2s" begin="0.32s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 135)">
+          <circle cx="8" cy="8" r="5" fill="#f1e05a"/>
+          <text x="22" y="12" class="lang">JavaScript</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">0.46%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="8.0" height="6" rx="3" fill="#f1e05a">
+            <animate attributeName="width" from="0" to="8.0" dur="1.2s" begin="0.4s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 162)">
+          <circle cx="8" cy="8" r="5" fill="#f34b7d"/>
+          <text x="22" y="12" class="lang">C++</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">0.43%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="8.0" height="6" rx="3" fill="#f34b7d">
+            <animate attributeName="width" from="0" to="8.0" dur="1.2s" begin="0.48s" fill="freeze"/>
+          </rect>
+        </g>
+        <g transform="translate(0 189)">
+          <circle cx="8" cy="8" r="5" fill="#663399"/>
+          <text x="22" y="12" class="lang">CSS</text>
+          <text x="258" y="12" class="langPercent" text-anchor="end">0.41%</text>
+          <rect x="0" y="18" width="260" height="6" rx="3" fill="#1f2937"/>
+          <rect x="0" y="18" width="8.0" height="6" rx="3" fill="#663399">
+            <animate attributeName="width" from="0" to="8.0" dur="1.2s" begin="0.56s" fill="freeze"/>
+          </rect>
+        </g>
+    </g>
+
+    <text x="64" y="390" class="sectionTitle">Xiang An's GitHub trophies</text>
+    
+        <g transform="translate(64 410)">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="#f59e0b" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="#f59e0b" fill-opacity=".18" stroke="#f59e0b" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
+          <text x="52" y="27" class="trophyTitle">Commits</text>
+          <text x="52" y="46" class="trophyScore">3.5kpt</text>
+        </g>
+        <g transform="translate(234 410)">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="#f59e0b" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="#f59e0b" fill-opacity=".18" stroke="#f59e0b" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
+          <text x="52" y="27" class="trophyTitle">Stars</text>
+          <text x="52" y="46" class="trophyScore">524pt</text>
+        </g>
+        <g transform="translate(404 410)">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="#f59e0b" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="#f59e0b" fill-opacity=".18" stroke="#f59e0b" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
+          <text x="52" y="27" class="trophyTitle">Followers</text>
+          <text x="52" y="46" class="trophyScore">289pt</text>
+        </g>
+        <g transform="translate(64 496)">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="#f59e0b" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="#f59e0b" fill-opacity=".18" stroke="#f59e0b" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="#f59e0b">S</text>
+          <text x="52" y="27" class="trophyTitle">PullRequest</text>
+          <text x="52" y="46" class="trophyScore">223pt</text>
+        </g>
+        <g transform="translate(234 496)">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="#38bdf8" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="#38bdf8" fill-opacity=".18" stroke="#38bdf8" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="#38bdf8">A</text>
+          <text x="52" y="27" class="trophyTitle">Repositories</text>
+          <text x="52" y="46" class="trophyScore">36pt</text>
+        </g>
+        <g transform="translate(404 496)">
+          <rect width="150" height="70" rx="16" fill="url(#panel)" stroke="#38bdf8" stroke-opacity=".34"/>
+          <circle cx="26" cy="28" r="15" fill="#38bdf8" fill-opacity=".18" stroke="#38bdf8" stroke-opacity=".55"/>
+          <text x="26" y="33" class="trophyRank" text-anchor="middle" fill="#38bdf8">A</text>
+          <text x="52" y="27" class="trophyTitle">Experience</text>
+          <text x="52" y="46" class="trophyScore">32pt</text>
+        </g>
+  </g>
+</svg>

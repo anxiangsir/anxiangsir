@@ -274,7 +274,7 @@
     
     <circle cx="150" cy="11" r="4" fill="#22d3ee"/>
     <text x="161" y="15" class="lang">InsightFace</text>
-    <text x="235.6" y="15" class="langPercent">29,066</text>
+    <text x="235.6" y="15" class="langPercent">29,067</text>
     <circle cx="297.5" cy="11" r="4" fill="#a78bfa"/>
     <text x="308.5" y="15" class="lang">LLaVA-OneVision-2</text>
     <text x="422.7" y="15" class="langPercent">1,107</text>

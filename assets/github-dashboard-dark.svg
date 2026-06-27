@@ -1,6 +1,6 @@
 <svg width="900" height="1010" viewBox="0 0 900 1010" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
-  <desc id="desc">Stars 48,968, commits 16,299, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
+  <desc id="desc">Stars 48,971, commits 16,299, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
   
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
@@ -160,7 +160,7 @@
   <g transform="translate(34 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#22d3ee" opacity=".9"/>
     <text x="0" y="19" class="label">Stars</text>
-    <text x="0" y="52" class="metric" fill="#22d3ee">48,968</text>
+    <text x="0" y="52" class="metric" fill="#22d3ee">48,971</text>
   </g>
       
   <g transform="translate(194 166)">

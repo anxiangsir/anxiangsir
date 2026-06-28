@@ -85,7 +85,7 @@
 </svg>
   <svg x="0" y="506.25" width="900" height="860" viewBox="0 150 900 860" fill="none">
   <title id="title">Xiang An's GitHub dashboard</title>
-  <desc id="desc">Stars 48,976, commits 16,300, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
+  <desc id="desc">Stars 48,978, commits 16,551, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
   
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
@@ -245,13 +245,13 @@
   <g transform="translate(34 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#22d3ee" opacity=".9"/>
     <text x="0" y="19" class="label">Stars</text>
-    <text x="0" y="52" class="metric" fill="#22d3ee">48,976</text>
+    <text x="0" y="52" class="metric" fill="#22d3ee">48,978</text>
   </g>
       
   <g transform="translate(194 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#a78bfa" opacity=".9"/>
     <text x="0" y="19" class="label">Commits</text>
-    <text x="0" y="52" class="metric" fill="#a78bfa">16,300</text>
+    <text x="0" y="52" class="metric" fill="#a78bfa">16,551</text>
   </g>
       
   <g transform="translate(354 166)">
@@ -359,7 +359,7 @@
     
     <circle cx="150" cy="11" r="4" fill="#22d3ee"/>
     <text x="161" y="15" class="lang">InsightFace</text>
-    <text x="235.6" y="15" class="langPercent">29,102</text>
+    <text x="235.6" y="15" class="langPercent">29,104</text>
     <circle cx="297.5" cy="11" r="4" fill="#a78bfa"/>
     <text x="308.5" y="15" class="lang">LLaVA-OneVision-2</text>
     <text x="422.7" y="15" class="langPercent">1,115</text>

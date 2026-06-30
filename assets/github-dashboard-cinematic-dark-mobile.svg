@@ -3,17 +3,17 @@
   <desc id="cdesc">A pure-SVG cinematic sunset banner above Xiang An's animated GitHub dashboard.</desc>
   <svg x="0" y="0" width="370" height="208.13" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" font-family="-apple-system, 'PingFang SC', system-ui, sans-serif">
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a1130"/><stop offset="20%" stop-color="#2c2154"/><stop offset="40%" stop-color="#7a3a64"/><stop offset="60%" stop-color="#c2593f"/><stop offset="80%" stop-color="#ec8a47"/><stop offset="100%" stop-color="#f9c06a"/></linearGradient>
-    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eda165"/><stop offset="50%" stop-color="#824064"/><stop offset="100%" stop-color="#080814"/></linearGradient>
-    <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff9ea"/><stop offset="30%" stop-color="#ffdc8e"/><stop offset="100%" stop-color="#ffb24d" stop-opacity="0"/></radialGradient>
-    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffdc8e" stop-opacity=".5"/><stop offset="100%" stop-color="#ffdc8e" stop-opacity="0"/></linearGradient>
-    <radialGradient id="flareOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffd9a0" stop-opacity=".7"/><stop offset="100%" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>
-    <linearGradient id="flareStreak" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffd9a0" stop-opacity="0"/><stop offset="50%" stop-color="#eaf7ff" stop-opacity=".85"/><stop offset="100%" stop-color="#ffd9a0" stop-opacity="0"/></linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#161616"/><stop offset="25%" stop-color="#333333"/><stop offset="50%" stop-color="#555555"/><stop offset="75%" stop-color="#777777"/><stop offset="100%" stop-color="#999999"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8a8a8a"/><stop offset="50%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#050505"/></linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffffff"/><stop offset="30%" stop-color="#dcdcdc"/><stop offset="100%" stop-color="#9a9a9a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dcdcdc" stop-opacity=".5"/><stop offset="100%" stop-color="#dcdcdc" stop-opacity="0"/></linearGradient>
+    <radialGradient id="flareOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f0f0f0" stop-opacity=".7"/><stop offset="100%" stop-color="#f0f0f0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="flareStreak" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f0f0f0" stop-opacity="0"/><stop offset="50%" stop-color="#eaf7ff" stop-opacity=".85"/><stop offset="100%" stop-color="#f0f0f0" stop-opacity="0"/></linearGradient>
     <radialGradient id="ember" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffe6b0"/><stop offset="60%" stop-color="#ffb863" stop-opacity=".8"/><stop offset="100%" stop-color="#ffb863" stop-opacity="0"/></radialGradient>
-    <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3e3258"/><stop offset="100%" stop-color="#251b3c"/></linearGradient>
-    <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#201a34"/><stop offset="100%" stop-color="#0c0a1c"/></linearGradient>
-    <linearGradient id="grade" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff7828" stop-opacity=".3"/><stop offset="100%" stop-color="#142878" stop-opacity=".35"/></linearGradient>
-    <radialGradient id="vig" cx="50%" cy="46%" r="65%"><stop offset="45%" stop-color="#000" stop-opacity="0"/><stop offset="82%" stop-color="#000" stop-opacity="0.4"/><stop offset="100%" stop-color="#000" stop-opacity="0.85"/></radialGradient>
+    <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#141414"/></linearGradient>
+    <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#181818"/><stop offset="100%" stop-color="#070707"/></linearGradient>
+    <linearGradient id="grade" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#888888" stop-opacity=".3"/><stop offset="100%" stop-color="#222222" stop-opacity=".35"/></linearGradient>
+    <radialGradient id="vig" cx="50%" cy="46%" r="65%"><stop offset="45%" stop-color="#000" stop-opacity="0"/><stop offset="82%" stop-color="#000" stop-opacity="0.55"/><stop offset="100%" stop-color="#000" stop-opacity="0.95"/></radialGradient>
     <radialGradient id="leak" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffdca8" stop-opacity=".5"/><stop offset="100%" stop-color="#ffdca8" stop-opacity="0"/></radialGradient>
     <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch" result="n"><animate attributeName="seed" values="1;9;3;7;2;8;4" dur="0.5s" repeatCount="indefinite"/></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0"/><feComposite operator="in" in2="SourceGraphic"/></filter>
     <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -24,7 +24,7 @@
   </defs>
   <g clip-path="url(#screen)">
     <rect x="0" y="0" width="960" height="540" fill="#000"/>
-    <g>
+    <g><animateTransform attributeName="transform" type="translate" values="0 0;0.6 -0.4;-0.5 0.5;0 0" dur="0.32s" repeatCount="indefinite" additive="sum"/>
       <g>
         <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="26s" repeatCount="indefinite" additive="sum"/>
         <animateTransform attributeName="transform" type="translate" values="0 0;-24 -9;0 0" dur="26s" repeatCount="indefinite" additive="sum"/>
@@ -33,23 +33,16 @@
         
         <g stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0"><line x1="0" y1="0" x2="46" y2="20"/><animate attributeName="opacity" values="0;0;.9;0;0" keyTimes="0;.55;.62;.7;1" dur="9s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="760 40;560 130;560 130" keyTimes="0;.12;1" dur="9s" repeatCount="indefinite"/></g>
         <circle cx="480" cy="300" r="155" fill="url(#sun)"><animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/></circle>
-        <circle cx="480" cy="300" r="48" fill="#fff4d6" filter="url(#glow)"><animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/></circle>
-        <g opacity=".4" filter="url(#soft)" style="mix-blend-mode:screen">
-        <polygon points="480,300 350,440 610,440" fill="url(#ray)"><animateTransform attributeName="transform" type="rotate" values="-6 480 300;6 480 300;-6 480 300" dur="15s" repeatCount="indefinite"/></polygon>
-        <polygon points="480,300 430,440 530,440" fill="url(#ray)"><animateTransform attributeName="transform" type="rotate" values="5 480 300;-5 480 300;5 480 300" dur="11s" repeatCount="indefinite"/></polygon>
-      </g>
-        <g style="mix-blend-mode:screen">
-        <rect x="120" y="296" width="720" height="6" rx="3" fill="url(#flareStreak)" filter="url(#soft)"><animate attributeName="opacity" values=".5;.9;.5" dur="6s" repeatCount="indefinite"/></rect>
-        <circle cx="600" cy="240" r="24" fill="url(#flareOrb)" opacity=".55"/>
-        <circle cx="380" cy="360" r="18" fill="url(#flareOrb)" opacity=".4"/>
-      </g>
+        <circle cx="480" cy="300" r="48" fill="#ffffff" filter="url(#glow)"><animate attributeName="cy" values="288;306;288" dur="22s" repeatCount="indefinite"/></circle>
+        
+        
         <g><path d="M-80 360 L120 300 L280 350 L460 285 L640 345 L820 295 L1040 350 L1040 380 L-80 380 Z" fill="url(#m1)"/><animateTransform attributeName="transform" type="translate" values="0 0;16 0;0 0" dur="26s" repeatCount="indefinite"/></g>
         <g><path d="M-80 372 L160 320 L380 372 L560 318 L760 372 L980 326 L1040 372 L-80 372 Z" fill="url(#m2)"/><animateTransform attributeName="transform" type="translate" values="0 0;36 0;0 0" dur="26s" repeatCount="indefinite"/></g>
         <rect x="-80" y="372" width="1120" height="220" fill="url(#water)"/>
-        <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen"><circle cx="480" cy="430" r="120" fill="url(#sun)"><animate attributeName="cy" values="424;408;424" dur="22s" repeatCount="indefinite"/></circle><rect x="430" y="372" width="100" height="200" fill="#ffdc8e" opacity=".5"/></g>
+        <g clip-path="url(#below)" filter="url(#rip)" opacity=".75" style="mix-blend-mode:screen"><circle cx="480" cy="430" r="120" fill="url(#sun)"><animate attributeName="cy" values="424;408;424" dur="22s" repeatCount="indefinite"/></circle><rect x="430" y="372" width="100" height="200" fill="#dcdcdc" opacity=".5"/></g>
         
         
-  <g fill="#05050e">
+  <g fill="#000000">
     <g>
       <animateTransform attributeName="transform" type="translate" values="300 392;640 386;300 392" dur="48s" repeatCount="indefinite"/>
       <g>
@@ -63,31 +56,31 @@
     </g>
   </g>
         
-  <g fill="none" stroke="#05050e" stroke-linecap="round">
+  <g fill="none" stroke="#000000" stroke-linecap="round">
     <animateTransform attributeName="transform" type="rotate" values="-1 96 540;1.4 96 540;-1 96 540" dur="9s" repeatCount="indefinite"/>
     <path stroke-width="11" d="M96 542 C94 472 90 420 98 372"/>
     <path stroke-width="6" d="M98 372 C86 352 70 344 52 340 M98 372 C112 350 130 342 150 340 M96 396 C82 386 68 384 54 384 M98 416 C114 408 130 408 146 406"/>
     <path stroke-width="3" d="M52 340 C44 332 38 324 32 312 M150 340 C160 332 166 322 172 310 M54 384 C46 380 40 374 36 364 M146 406 C156 402 164 396 170 386 M98 352 C100 340 104 330 110 320"/>
   </g>
-        <g style="mix-blend-mode:screen"><circle cx="300" cy="520" r="1.8" fill="url(#ember)"><animate attributeName="cy" values="520;180" dur="11s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="11s" begin="0s" repeatCount="indefinite"/><animate attributeName="cx" values="300;318;300" dur="5s" repeatCount="indefinite"/></circle><circle cx="640" cy="520" r="2.1" fill="url(#ember)"><animate attributeName="cy" values="520;192" dur="13s" begin="-4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="13s" begin="-4s" repeatCount="indefinite"/><animate attributeName="cx" values="640;658;640" dur="6s" repeatCount="indefinite"/></circle><circle cx="470" cy="520" r="2.4" fill="url(#ember)"><animate attributeName="cy" values="520;204" dur="14s" begin="-8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="14s" begin="-8s" repeatCount="indefinite"/><animate attributeName="cx" values="470;488;470" dur="7s" repeatCount="indefinite"/></circle><circle cx="800" cy="520" r="1.8" fill="url(#ember)"><animate attributeName="cy" values="520;216" dur="12s" begin="-6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="12s" begin="-6s" repeatCount="indefinite"/><animate attributeName="cx" values="800;818;800" dur="5s" repeatCount="indefinite"/></circle><circle cx="180" cy="520" r="2.1" fill="url(#ember)"><animate attributeName="cy" values="520;228" dur="13.5s" begin="-2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.8;1" dur="13.5s" begin="-2s" repeatCount="indefinite"/><animate attributeName="cx" values="180;198;180" dur="6s" repeatCount="indefinite"/></circle></g>
         
-  <g fill="none" stroke="#0d0a1a" stroke-width="2" stroke-linecap="round" opacity=".85">
+        
+  <g fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" opacity=".85">
     <g><path transform="translate(0 0) scale(0.95)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(-15 7) scale(0.92)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(15 7) scale(0.89)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(-30 14) scale(0.86)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(30 14) scale(0.83)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(-45 21) scale(0.80)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/><path transform="translate(45 21) scale(0.77)" d="M0 0 q5 -5 10 0 q5 -5 10 0"/>
       <animateTransform attributeName="transform" type="translate" values="1000 96;-160 150;-160 150" keyTimes="0;.85;1" dur="26s" repeatCount="indefinite"/>
     </g>
   </g>
       </g>
     </g>
-    <ellipse cx="0" cy="160" rx="320" ry="200" fill="url(#leak)" style="mix-blend-mode:screen"><animate attributeName="cx" values="-200;1160;-200" dur="15s" repeatCount="indefinite"/></ellipse>
+    
     <rect x="0" y="0" width="960" height="540" fill="url(#grade)" style="mix-blend-mode:soft-light"/>
     <rect x="0" y="0" width="960" height="540" fill="url(#vig)"/>
-    <rect x="0" y="0" width="960" height="540" fill="#ffdca0" style="mix-blend-mode:overlay"><animate attributeName="opacity" values="0;.05;0;.03;0" dur="4s" repeatCount="indefinite"/></rect>
-    
+    <rect x="0" y="0" width="960" height="540" fill="#ffffff" style="mix-blend-mode:overlay"><animate attributeName="opacity" values="0;.09;0;.03;0" dur="3s" repeatCount="indefinite"/></rect>
+    <g stroke="#fff" style="mix-blend-mode:overlay"><line x1="210" y1="0" x2="210" y2="540" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;0.6;0;0" keyTimes="0;.04;.1;1" dur="2.3s" repeatCount="indefinite"/><animate attributeName="x1" values="210;216;206" dur="2.3s" repeatCount="indefinite"/><animate attributeName="x2" values="210;216;206" dur="2.3s" repeatCount="indefinite"/></line><line x1="620" y1="0" x2="620" y2="540" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;0.5;0;0" keyTimes="0;.04;.1;1" dur="3.1s" repeatCount="indefinite"/><animate attributeName="x1" values="620;626;616" dur="3.1s" repeatCount="indefinite"/><animate attributeName="x2" values="620;626;616" dur="3.1s" repeatCount="indefinite"/></line><line x1="810" y1="0" x2="810" y2="540" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;0.7;0;0" keyTimes="0;.04;.1;1" dur="1.9s" repeatCount="indefinite"/><animate attributeName="x1" values="810;816;806" dur="1.9s" repeatCount="indefinite"/><animate attributeName="x2" values="810;816;806" dur="1.9s" repeatCount="indefinite"/></line></g>
     <g text-anchor="middle" fill="#fff" filter="url(#glow)" font-weight="700">
-      <text x="480" y="266" font-size="58" letter-spacing="2"><tspan>an</tspan><tspan fill="#ffd9a0">xiang</tspan><tspan>sir</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.08;.2;.5;.62;1" dur="13s" repeatCount="indefinite"/></text>
+      <text x="480" y="266" font-size="58" letter-spacing="2"><tspan>an</tspan><tspan fill="#f0f0f0">xiang</tspan><tspan>sir</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.08;.2;.5;.62;1" dur="13s" repeatCount="indefinite"/></text>
     </g>
-    <g text-anchor="middle" fill="#ffd9a0"><text x="480" y="304" font-size="14" letter-spacing="7" opacity=".9">S U N S E T   ·   P U R E   S V G<animate attributeName="opacity" values="0;0;.9;.9;0;0" keyTimes="0;.12;.24;.5;.62;1" dur="13s" repeatCount="indefinite"/></text></g>
-    <rect x="0" y="0" width="960" height="540" filter="url(#grain)" opacity="0.5" style="mix-blend-mode:overlay"/>
+    <g text-anchor="middle" fill="#f0f0f0"><text x="480" y="304" font-size="14" letter-spacing="7" opacity=".9">S I L E N T   F I L M   ·   P U R E   S V G<animate attributeName="opacity" values="0;0;.9;.9;0;0" keyTimes="0;.12;.24;.5;.62;1" dur="13s" repeatCount="indefinite"/></text></g>
+    <rect x="0" y="0" width="960" height="540" filter="url(#grain)" opacity="0.85" style="mix-blend-mode:overlay"/>
   </g>
 </svg>
   <svg x="0" y="208.13" width="370" height="1406" viewBox="0 154 370 1406" fill="none">

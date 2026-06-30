@@ -92,7 +92,7 @@
 </svg>
   <svg x="0" y="506.25" width="900" height="860" viewBox="0 150 900 860" fill="none">
   <title id="title">Xiang An's GitHub dashboard</title>
-  <desc id="desc">Stars 48,991, commits 16,552, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
+  <desc id="desc">Stars 48,992, commits 16,552, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
   
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
@@ -246,13 +246,13 @@
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
     <animateTransform attributeName="transform" type="translate" values="0 4;0 0;0 0;0 -4;0 -4" keyTimes="0;0.035;0.09;0.125;1" dur="17.6s" begin="15.4s" repeatCount="indefinite"/>
   </text>
-      <text x="34" y="146" class="tiny">Generated 2026-06-29</text>
+      <text x="34" y="146" class="tiny">Generated 2026-06-30</text>
 
       
   <g transform="translate(34 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#22d3ee" opacity=".9"/>
     <text x="0" y="19" class="label">Stars</text>
-    <text x="0" y="52" class="metric" fill="#22d3ee">48,991</text>
+    <text x="0" y="52" class="metric" fill="#22d3ee">48,992</text>
   </g>
       
   <g transform="translate(194 166)">
@@ -366,7 +366,7 @@
     
     <circle cx="150" cy="11" r="4" fill="#22d3ee"/>
     <text x="161" y="15" class="lang">InsightFace</text>
-    <text x="235.6" y="15" class="langPercent">29,109</text>
+    <text x="235.6" y="15" class="langPercent">29,110</text>
     <circle cx="297.5" cy="11" r="4" fill="#a78bfa"/>
     <text x="308.5" y="15" class="lang">LLaVA-OneVision-2</text>
     <text x="422.7" y="15" class="langPercent">1,117</text>

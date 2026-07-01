@@ -1,6 +1,6 @@
 <svg width="900" height="1010" viewBox="0 0 900 1010" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Xiang An's GitHub dashboard</title>
-  <desc id="desc">Stars 49,017, commits 16,554, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
+  <desc id="desc">Stars 49,023, commits 16,556, rank A+. Combined star history of InsightFace, LLaVA-OneVision-2, OneVision-Encoder.</desc>
   
   <defs>
     <linearGradient id="heroGradient" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
@@ -160,13 +160,13 @@
   <g transform="translate(34 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#22d3ee" opacity=".9"/>
     <text x="0" y="19" class="label">Stars</text>
-    <text x="0" y="52" class="metric" fill="#22d3ee">49,017</text>
+    <text x="0" y="52" class="metric" fill="#22d3ee">49,023</text>
   </g>
       
   <g transform="translate(194 166)">
     <rect x="0" y="0" width="34" height="3" rx="1.5" fill="#a78bfa" opacity=".9"/>
     <text x="0" y="19" class="label">Commits</text>
-    <text x="0" y="52" class="metric" fill="#a78bfa">16,554</text>
+    <text x="0" y="52" class="metric" fill="#a78bfa">16,556</text>
   </g>
       
   <g transform="translate(354 166)">
@@ -277,7 +277,7 @@
     <text x="235.6" y="15" class="langPercent">29,129</text>
     <circle cx="297.5" cy="11" r="4" fill="#a78bfa"/>
     <text x="308.5" y="15" class="lang">LLaVA-OneVision-2</text>
-    <text x="422.7" y="15" class="langPercent">1,119</text>
+    <text x="422.7" y="15" class="langPercent">1,120</text>
     <circle cx="477.5" cy="11" r="4" fill="#34d399"/>
     <text x="488.5" y="15" class="lang">OneVision-Encoder</text>
     <text x="602.7" y="15" class="langPercent">378</text>

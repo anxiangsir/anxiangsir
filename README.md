@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/Portfolio-Visit_Website-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"></a>
-  <a href="https://scholar.google.com.hk/citations?hl=en&user=1ckaPgwAAAAJ&view_op=list_works&sortby=pubdate"><img src="https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Google Scholar"></a>
+  <a href="https://scholar.google.com/citations?hl=en&user=1ckaPgwAAAAJ&view_op=list_works&sortby=pubdate"><img src="https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Google Scholar"></a>
   <a href="https://anxiangsir.github.io/pages/chat/"><img src="https://img.shields.io/badge/AI_Agent-Chat-10B981?style=for-the-badge&logo=openai&logoColor=white" alt="Chat with AI Agent"></a>
   <img src="https://komarev.com/ghpvc/?username=anxiangsir&style=for-the-badge&color=0e75b6" alt="Profile views">
   <a href="https://github.com/anxiangsir?tab=followers"><img src="https://img.shields.io/github/followers/anxiangsir?label=Followers&style=for-the-badge&color=0e75b6&logo=github" alt="GitHub followers"></a>

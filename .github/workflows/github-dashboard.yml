@@ -2,7 +2,7 @@ name: Update GitHub dashboard
 
 on:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "15 0 * * 0"
   workflow_dispatch:
 
 permissions:

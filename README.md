@@ -1,4 +1,4 @@
-<p align="center">
+<!-- <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-dark-mobile.svg">
     <source media="(prefers-color-scheme: light) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-light-mobile.svg">
@@ -34,4 +34,4 @@
   <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV">
   <img src="https://img.shields.io/badge/Weights_&_Biases-FFBE00?style=for-the-badge&logo=weightsandbiases&logoColor=111827" alt="Weights & Biases">
   <img src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white" alt="LaTeX">
-</p>
+</p> -->

@@ -8,6 +8,16 @@
   </picture>
 </p>
 
+<div align="center">
+
+## MiniMax 招聘内推
+
+MiniMax 在招岗位开放内推，欢迎对大模型与 AI 产品感兴趣的同学查看职位并投递。
+
+<a href="https://vrfi1sk8a0.jobs.feishu.cn/s/1L8tiq2-IzA"><img src="https://img.shields.io/badge/MiniMax-查看在招岗位并申请-FF4D00?style=for-the-badge" alt="查看 MiniMax 在招岗位并申请内推"></a>
+
+</div>
+
 <p align="center">
   <a href="https://anxiangsir.github.io/"><img src="https://img.shields.io/badge/Portfolio-Visit_Website-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"></a>
   <a href="https://scholar.google.com/citations?hl=en&user=1ckaPgwAAAAJ&view_op=list_works&sortby=pubdate"><img src="https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Google Scholar"></a>

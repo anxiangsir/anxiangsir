@@ -1,3 +1,5 @@
+<a href="https://vrfi1sk8a0.jobs.feishu.cn/s/1L8tiq2-IzA"><img src="https://img.shields.io/badge/MiniMax-查看在招岗位并申请-FF4D00?style=for-the-badge" alt="查看 MiniMax 在招岗位并申请内推"></a>
+
 <!-- <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark) and (max-width: 700px)" srcset="assets/github-dashboard-cinematic-dark-mobile.svg">

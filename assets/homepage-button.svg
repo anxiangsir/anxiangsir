@@ -24,7 +24,7 @@
 
   <g clip-path="url(#pill)">
     <rect x="-140" y="2" width="80" height="60" fill="url(#shine)" transform="skewX(-18)">
-      <animate attributeName="x" from="-140" to="380" dur="3.4s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="x" from="-140" to="380" dur="1.6s" begin="0s" repeatCount="indefinite"/>
     </rect>
   </g>
 
@@ -45,7 +45,7 @@
 
   <g transform="translate(296 25)" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <path d="M0 0l7 7-7 7">
-      <animateTransform attributeName="transform" type="translate" values="0 0; 4 0; 0 0" dur="1.8s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 4 0; 0 0" dur="0.9s" repeatCount="indefinite"/>
     </path>
   </g>
 </svg>
